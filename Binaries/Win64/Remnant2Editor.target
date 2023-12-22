@@ -22,238 +22,6 @@
 	},
 	"BuildProducts": [
 		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-GunfireRuntime.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-GunfireRuntime.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-Remnant.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-Remnant.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UnrealEditor-HoudiniEngineRuntime.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UnrealEditor-HoudiniEngineRuntime.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPlugin.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPlugin.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPluginEditor.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPluginEditor.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor-DLSS.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor-DLSS.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor-DLSSBlueprint.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor-DLSSBlueprint.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/FSR2/Binaries/Win64/UnrealEditor-FSR2TemporalUpscaling.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/FSR2/Binaries/Win64/UnrealEditor-FSR2TemporalUpscaling.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/FSR2/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Gunfire3DNavigation/Binaries/Win64/UnrealEditor-Gunfire3DNavigation.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Gunfire3DNavigation/Binaries/Win64/UnrealEditor-Gunfire3DNavigation.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Gunfire3DNavigation/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireOnlineModule/Binaries/Win64/UnrealEditor-GunfireOnlineModule.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireOnlineModule/Binaries/Win64/UnrealEditor-GunfireOnlineModule.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireOnlineModule/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireSaveSystem/Binaries/Win64/UnrealEditor-GunfireSaveSystem.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireSaveSystem/Binaries/Win64/UnrealEditor-GunfireSaveSystem.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireSaveSystem/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsEOS/Binaries/Win64/UnrealEditor-GunfireTechRequirementsEOS.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsEOS/Binaries/Win64/UnrealEditor-GunfireTechRequirementsEOS.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsEOS/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsSteam/Binaries/Win64/UnrealEditor-GunfireTechRequirementsSteam.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsSteam/Binaries/Win64/UnrealEditor-GunfireTechRequirementsSteam.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsSteam/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirements/Binaries/Win64/UnrealEditor-GunfireTechRequirements.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirements/Binaries/Win64/UnrealEditor-GunfireTechRequirements.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirements/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/JsonCsvToDataTableToStruct/Binaries/Win64/UnrealEditor-JsonCsvToDataTableToStruct.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/JsonCsvToDataTableToStruct/Binaries/Win64/UnrealEditor-JsonCsvToDataTableToStruct.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/JsonCsvToDataTableToStruct/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor-ConstructionSystemRuntime.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor-ConstructionSystemRuntime.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor-PrefabricatorRuntime.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor-PrefabricatorRuntime.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/UIPF/Binaries/Win64/UnrealEditor-UIPF.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/UIPF/Binaries/Win64/UnrealEditor-UIPF.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/UIPF/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor-XeSSBlueprint.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor-XeSSBlueprint.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor-XeSSPlugin.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor-XeSSPlugin.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Wwise/Binaries/Win64/UnrealEditor-AkAudio.dll",
-			"Type": "DynamicLibrary"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Wwise/Binaries/Win64/UnrealEditor-AkAudio.pdb",
-			"Type": "SymbolFile"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Wwise/Binaries/Win64/UnrealEditor.modules",
-			"Type": "RequiredResource"
-		},
-		{
 			"Path": "$(EngineDir)/Binaries/Win64/AgentInterface.dll",
 			"Type": "RequiredResource"
 		},
@@ -3596,85 +3364,241 @@
 		{
 			"Path": "$(EngineDir)/Plugins/XGEController/Binaries/Win64/UnrealEditor.modules",
 			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-GunfireRuntime.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-GunfireRuntime.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-Remnant.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor-Remnant.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UnrealEditor-HoudiniEngineRuntime.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UnrealEditor-HoudiniEngineRuntime.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPlugin.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPlugin.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPluginEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor-ACLPluginEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor-DLSS.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor-DLSS.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor-DLSSBlueprint.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor-DLSSBlueprint.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/FSR2/Binaries/Win64/UnrealEditor-FSR2TemporalUpscaling.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/FSR2/Binaries/Win64/UnrealEditor-FSR2TemporalUpscaling.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/FSR2/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Gunfire3DNavigation/Binaries/Win64/UnrealEditor-Gunfire3DNavigation.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Gunfire3DNavigation/Binaries/Win64/UnrealEditor-Gunfire3DNavigation.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Gunfire3DNavigation/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireOnlineModule/Binaries/Win64/UnrealEditor-GunfireOnlineModule.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireOnlineModule/Binaries/Win64/UnrealEditor-GunfireOnlineModule.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireOnlineModule/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireSaveSystem/Binaries/Win64/UnrealEditor-GunfireSaveSystem.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireSaveSystem/Binaries/Win64/UnrealEditor-GunfireSaveSystem.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireSaveSystem/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsEOS/Binaries/Win64/UnrealEditor-GunfireTechRequirementsEOS.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsEOS/Binaries/Win64/UnrealEditor-GunfireTechRequirementsEOS.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsEOS/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsSteam/Binaries/Win64/UnrealEditor-GunfireTechRequirementsSteam.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsSteam/Binaries/Win64/UnrealEditor-GunfireTechRequirementsSteam.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsSteam/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirements/Binaries/Win64/UnrealEditor-GunfireTechRequirements.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirements/Binaries/Win64/UnrealEditor-GunfireTechRequirements.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirements/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/JsonCsvToDataTableToStruct/Binaries/Win64/UnrealEditor-JsonCsvToDataTableToStruct.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/JsonCsvToDataTableToStruct/Binaries/Win64/UnrealEditor-JsonCsvToDataTableToStruct.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/JsonCsvToDataTableToStruct/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor-ConstructionSystemRuntime.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor-ConstructionSystemRuntime.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor-PrefabricatorRuntime.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor-PrefabricatorRuntime.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/UIPF/Binaries/Win64/UnrealEditor-UIPF.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/UIPF/Binaries/Win64/UnrealEditor-UIPF.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/UIPF/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor-XeSSBlueprint.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor-XeSSBlueprint.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor-XeSSPlugin.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor-XeSSPlugin.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Wwise/Binaries/Win64/UnrealEditor-AkAudio.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Wwise/Binaries/Win64/UnrealEditor-AkAudio.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Wwise/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
 		}
 	],
 	"RuntimeDependencies": [
-		{
-			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/HoudiniEngine.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/ACLPlugin.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/DLSS.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/DaedalicTestAutomationPlugin/DaedalicTestAutomationPlugin.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/FSR2/FSR2.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Gunfire3DNavigation/Gunfire3DNavigation.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireOnlineModule/GunfireOnlineModule.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireSaveSystem/GunfireSaveSystem.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsEOS/GunfireTechRequirementsEOS.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsPS5/GunfireTechRequirementsPS5.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsSteam/GunfireTechRequirementsSteam.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsXSX/GunfireTechRequirementsXSX.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirements/GunfireTechRequirements.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/JsonCsvToDataTableToStruct/JsonCsvToDataTableToStruct.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Prefabricator.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/UIPF/UIPF.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/XeSS.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Plugins/Wwise/Wwise.uplugin",
-			"Type": "UFS"
-		},
-		{
-			"Path": "$(ProjectDir)/Remnant2.uproject",
-			"Type": "UFS"
-		},
 		{
 			"Path": "$(EngineDir)/Binaries/ThirdParty/ARM/Win64/astcenc-sse2.exe",
 			"Type": "NonUFS"
@@ -24885,6 +24809,82 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/XGEController/XGEController.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/HoudiniEngine.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/ACLPlugin/ACLPlugin.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/DLSS/DLSS.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/DaedalicTestAutomationPlugin/DaedalicTestAutomationPlugin.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/FSR2/FSR2.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Gunfire3DNavigation/Gunfire3DNavigation.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireOnlineModule/GunfireOnlineModule.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireSaveSystem/GunfireSaveSystem.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsEOS/GunfireTechRequirementsEOS.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsPS5/GunfireTechRequirementsPS5.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsSteam/GunfireTechRequirementsSteam.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirementsXSX/GunfireTechRequirementsXSX.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/GunfireTechRequirements/GunfireTechRequirements.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/JsonCsvToDataTableToStruct/JsonCsvToDataTableToStruct.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/Prefabricator/Prefabricator.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/UIPF/UIPF.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Shared/XeSS/XeSS.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/Wwise/Wwise.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Remnant2.uproject",
 			"Type": "UFS"
 		}
 	],
