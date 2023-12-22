@@ -6,7 +6,7 @@
 
 class UActorCustomizationEffectEntry;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UActorCustomizationSetEffect : public UInheritableObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
@@ -14,7 +14,7 @@ public:
     FName NameID;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UActorCustomizationEffectEntry*> Entries;
     
 public:

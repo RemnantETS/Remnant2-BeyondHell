@@ -4,8 +4,8 @@
 #include "HierarchicalEditInterface.h"
 #include "SpawnTableEntry.generated.h"
 
-UCLASS(Abstract, Blueprintable)
-class GUNFIRERUNTIME_API USpawnTableEntry : public UObject, public IHierarchicalEditInterface {
+UCLASS(Abstract, Blueprintable, EditInlineNew)
+class GUNFIRERUNTIME_API USpawnTableEntry : public UDataAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

@@ -3,7 +3,7 @@
 #include "ParticleCustomization.h"
 #include "RemnantWeaponParticleCustomization.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class URemnantWeaponParticleCustomization : public UParticleCustomization {
     GENERATED_BODY()
 public:

@@ -8,17 +8,17 @@ class UActorCustomizationSetEffect;
 class UActorCustomizationSetSlot;
 class UObject;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UActorCustomizationSet : public UInheritableAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool HardReferenceAssets;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UActorCustomizationSetSlot*> Slots;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UActorCustomizationSetEffect*> Effects;
     
 protected:

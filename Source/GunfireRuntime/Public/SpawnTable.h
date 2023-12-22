@@ -8,7 +8,7 @@
 
 class UObject;
 
-UCLASS(Blueprintable)
+UCLASS(BlueprintType)
 class GUNFIRERUNTIME_API USpawnTable : public USpawnTableEntry {
     GENERATED_BODY()
 public:

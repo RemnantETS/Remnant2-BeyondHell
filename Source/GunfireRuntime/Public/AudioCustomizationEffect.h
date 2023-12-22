@@ -6,7 +6,7 @@
 #include "SoundGunfire.h"
 #include "AudioCustomizationEffect.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UAudioCustomizationEffect : public UActorCustomizationEffect {
     GENERATED_BODY()
 public:

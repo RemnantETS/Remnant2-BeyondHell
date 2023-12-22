@@ -6,14 +6,14 @@
 
 class UActorCustomizationID;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UActorCustomizationSetSlot : public UInheritableObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName SlotID;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UActorCustomizationID*> CustomizationIDs;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

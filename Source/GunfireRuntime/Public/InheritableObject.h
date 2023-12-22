@@ -4,7 +4,7 @@
 #include "InheritableObject.generated.h"
 
 UCLASS(Abstract, Blueprintable)
-class GUNFIRERUNTIME_API UInheritableObject : public UObject {
+class GUNFIRERUNTIME_API UInheritableObject : public UDataAsset {
     GENERATED_BODY()
 public:
     UInheritableObject();

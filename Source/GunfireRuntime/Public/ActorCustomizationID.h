@@ -8,14 +8,14 @@
 class UActorCustomization;
 class UTexture2D;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UActorCustomizationID : public UInheritableObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName NameID;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<UActorCustomization*> Customizations;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

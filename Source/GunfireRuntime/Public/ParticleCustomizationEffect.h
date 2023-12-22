@@ -7,7 +7,7 @@
 
 class UNiagaraSystem;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UParticleCustomizationEffect : public UActorCustomizationEffect {
     GENERATED_BODY()
 public:

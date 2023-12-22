@@ -7,7 +7,7 @@
 #include "SoftSoundGunfire.h"
 #include "AudioCustomization.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UAudioCustomization : public USceneCustomization {
     GENERATED_BODY()
 public:
