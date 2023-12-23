@@ -91,6 +91,22 @@ void UActorModifier::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
     DOREPLIFETIME(UActorModifier, Level);
 }
 
+UWorld* UActorModifier::GetWorld() const
+{
+    //Return null if the called from the CDO, or if the outer is being destroyed
+    if (!HasAnyFlags(RF_ClassDefaultObject) && !GetOuter()->HasAnyFlags(RF_BeginDestroyed) && !GetOuter()->IsUnreachable())
+    {
+        //Try to get the world from the owning actor if we have one
+        AActor* Outer = GetTypedOuter<AActor>();
+        if (Outer != nullptr)
+        {
+            return Outer->GetWorld();
+        }
+    }
+    //Else return null - the latent action will fail to initialize
+    return nullptr;
+}
+
 UActorModifier::UActorModifier() {
     this->Scope = EActorModifierScope::StatsOnly;
     this->Level = 0;

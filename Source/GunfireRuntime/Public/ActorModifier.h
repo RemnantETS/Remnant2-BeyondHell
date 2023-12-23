@@ -68,6 +68,8 @@ public:
     UActorModifier();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
     
+    virtual UWorld* GetWorld() const override;
+
     UFUNCTION(BlueprintCallable)
     void SetOwner(AActor* NewOwner);
     
