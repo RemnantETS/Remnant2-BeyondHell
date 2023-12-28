@@ -7,7 +7,7 @@
 class UCraftingRecipe_Base;
 
 UCLASS(Blueprintable)
-class GUNFIRERUNTIME_API UCraftingRecipeList : public UObject, public IHierarchicalEditInterface {
+class GUNFIRERUNTIME_API UCraftingRecipeList : public UDataAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
