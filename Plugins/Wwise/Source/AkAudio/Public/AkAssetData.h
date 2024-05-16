@@ -1,10 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
+#include "UObject/Object.h"
 #include "AkAssetData.generated.h"
 
 UCLASS(Blueprintable)
-class AKAUDIO_API UAkAssetData : public UObject {
+class AKAUDIO_API UAkAssetData : public UDataAsset {
     GENERATED_BODY()
 public:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))

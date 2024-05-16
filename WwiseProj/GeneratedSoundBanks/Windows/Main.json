@@ -1,0 +1,112 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "R:\\UnrealProjects\\Remnant2-BeyondHell\\WwiseProj\\",
+   "SourceFilesRoot": "R:\\UnrealProjects\\Remnant2-BeyondHell\\WwiseProj\\.cache\\Windows\\",
+   "SoundBanksRoot": "R:\\UnrealProjects\\Remnant2-BeyondHell\\WwiseProj\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "R:\\UnrealProjects\\Remnant2-BeyondHell\\WwiseProj\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "3161908922",
+    "GUID": "{AF36946C-4BEA-4B01-A504-E88BC9506A71}",
+    "Language": "SFX",
+    "Hash": "1569122346",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
+    "ShortName": "Main",
+    "Path": "Main.bnk",
+    "IncludedMemoryFiles": [
+     {
+      "Id": "33217674",
+      "Language": "SFX",
+      "ShortName": "WPN_Rifle_Plasma_Fire_2D.wav",
+      "Path": "SFX\\WPN_Rifle_Plasma_Fire_2D_10C4C929.wem"
+     },
+     {
+      "Id": "191839554",
+      "Language": "SFX",
+      "ShortName": "WPN_PistolPlasma_Reload_MagIn_01.wav",
+      "Path": "SFX\\WPN_PistolPlasma_Reload_MagIn_01_10C4C929.wem"
+     },
+     {
+      "Id": "282819398",
+      "Language": "SFX",
+      "ShortName": "WPN_PistolPlasma_Reload_MagOut_01.wav",
+      "Path": "SFX\\WPN_PistolPlasma_Reload_MagOut_01_10C4C929.wem"
+     },
+     {
+      "Id": "375627571",
+      "Language": "SFX",
+      "ShortName": "WPN_RiflePlasma_Fire_Auto_0660rpm_LPM.wav",
+      "Path": "SFX\\WPN_RiflePlasma_Fire_Auto_0660rpm_LPM_10C4C929.wem"
+     },
+     {
+      "Id": "513912406",
+      "Language": "SFX",
+      "ShortName": "WPN_RiflePlasma_Fire_Auto_0420rpm_LPM.wav",
+      "Path": "SFX\\WPN_RiflePlasma_Fire_Auto_0420rpm_LPM_10C4C929.wem"
+     },
+     {
+      "Id": "516743386",
+      "Language": "SFX",
+      "ShortName": "WPN_RiflePlasma_Fire_Auto_0540rpm_LPM.wav",
+      "Path": "SFX\\WPN_RiflePlasma_Fire_Auto_0540rpm_LPM_10C4C929.wem"
+     },
+     {
+      "Id": "571242569",
+      "Language": "SFX",
+      "ShortName": "WPN_RiflePlasma_Fire_Auto_0900rpm_LPM.wav",
+      "Path": "SFX\\WPN_RiflePlasma_Fire_Auto_0900rpm_LPM_10C4C929.wem"
+     },
+     {
+      "Id": "614136276",
+      "Language": "SFX",
+      "ShortName": "WPN_PistolPlasma_EquipUp_01.wav",
+      "Path": "SFX\\WPN_PistolPlasma_EquipUp_01_10C4C929.wem"
+     },
+     {
+      "Id": "627965770",
+      "Language": "SFX",
+      "ShortName": "WPN_PistolPlasma_Reload_BoltOpen_01.wav",
+      "Path": "SFX\\WPN_PistolPlasma_Reload_BoltOpen_01_10C4C929.wem"
+     },
+     {
+      "Id": "921900468",
+      "Language": "SFX",
+      "ShortName": "WPN_RiflePlasma_Fire_Semi_NPC_LayerA_01.wav",
+      "Path": "SFX\\WPN_RiflePlasma_Fire_Semi_NPC_LayerA_01_10C4C929.wem"
+     },
+     {
+      "Id": "946509206",
+      "Language": "SFX",
+      "ShortName": "WPN_Plasma_Flamer_Fire_Player_LPM.wav",
+      "Path": "SFX\\WPN_Plasma_Flamer_Fire_Player_LPM_10C4C929.wem"
+     },
+     {
+      "Id": "977220367",
+      "Language": "SFX",
+      "ShortName": "WPN_RiflePlasma_Fire_Auto_0780rpm_LPM.wav",
+      "Path": "SFX\\WPN_RiflePlasma_Fire_Auto_0780rpm_LPM_10C4C929.wem"
+     },
+     {
+      "Id": "1011753777",
+      "Language": "SFX",
+      "ShortName": "WPN_RiflePlasma_Fire_Semi_01.wav",
+      "Path": "SFX\\WPN_RiflePlasma_Fire_Semi_01_10C4C929.wem"
+     },
+     {
+      "Id": "1065429714",
+      "Language": "SFX",
+      "ShortName": "WPN_RiflePlasma_EquipUp_01.wav",
+      "Path": "SFX\\WPN_RiflePlasma_EquipUp_01_10C4C929.wem"
+     }
+    ]
+   }
+  ]
+ }
+}

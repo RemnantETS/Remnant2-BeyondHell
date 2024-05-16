@@ -4,7 +4,7 @@
 #include "AkAudioType.generated.h"
 
 UCLASS(Blueprintable)
-class AKAUDIO_API UAkAudioType : public UObject {
+class AKAUDIO_API UAkAudioType : public UDataAsset {
     GENERATED_BODY()
 public:
     UPROPERTY(AssetRegistrySearchable, EditAnywhere, meta=(AllowPrivateAccess=true))

@@ -75,7 +75,7 @@ public:
     UActionBase* GetActionByID(int32 ID) const;
     
 protected:
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable,meta=(AutoCreateRefTerm="AdditionalTags, DamageInfo"))
     int32 DoActionInternal(UActionBase* Action, const FDamageInfo& DamageInfo, const TArray<FName>& AdditionalTags);
     
 public:
@@ -83,7 +83,7 @@ public:
     int32 DoAction(TSubclassOf<UActionBase> Action, AActor* Cause, AActor* Target, FHitResult HitInfo, TSubclassOf<UDamageType> DamageType);
     
 protected:
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(AutoCreateRefTerm = "DamageInfo"))
     bool CanDoActionInternal(TSubclassOf<UActionBase> ActionBP, const FDamageInfo& DamageInfo, UActionBase* NewAction);
     
     

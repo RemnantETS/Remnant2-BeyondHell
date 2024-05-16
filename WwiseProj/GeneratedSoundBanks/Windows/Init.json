@@ -1,0 +1,26 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "R:\\UnrealProjects\\Remnant2-BeyondHell\\WwiseProj\\",
+   "SourceFilesRoot": "R:\\UnrealProjects\\Remnant2-BeyondHell\\WwiseProj\\.cache\\Windows\\",
+   "SoundBanksRoot": "R:\\UnrealProjects\\Remnant2-BeyondHell\\WwiseProj\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "R:\\UnrealProjects\\Remnant2-BeyondHell\\WwiseProj\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "1355168291",
+    "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
+    "Language": "SFX",
+    "Hash": "3690994985",
+    "ObjectPath": "Init",
+    "ShortName": "Init",
+    "Path": "Init.bnk"
+   }
+  ]
+ }
+}
