@@ -41,10 +41,13 @@ TSubclassOf<UComputedStats> UStatsComponent::GetComputedStats() {
 void UStatsComponent::ComputeStatsIfDirty() {
 }
 
+void UStatsComponent::ClampStat(float& Value, FName Stat) {
+}
+
 void UStatsComponent::ApplyStats(const FDataTableRowHandle& DataTable, int32 Level) {
 }
 
-void UStatsComponent::ApplyStatModsTo(float& Value, FName Stat) {
+void UStatsComponent::ApplyStatModsTo(float& Value, FName Stat, bool NewClampStat) {
 }
 
 UStatsComponent::UStatsComponent() {

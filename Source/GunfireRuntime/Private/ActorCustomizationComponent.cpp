@@ -19,6 +19,9 @@ void UActorCustomizationComponent::SetCustomizationAt(FName SlotID, int32 Idx) {
 void UActorCustomizationComponent::SetCustomization(FName SlotID, FName CustomizationID) {
 }
 
+void UActorCustomizationComponent::RemoveBPCustomizationTags(const TArray<FName>& InTags) {
+}
+
 void UActorCustomizationComponent::PlayCustomizationEffect(FName NameID, bool bCache) {
 }
 
@@ -65,6 +68,9 @@ bool UActorCustomizationComponent::GetAllCustomizationsForSlot(FName SlotID, TAr
 }
 
 void UActorCustomizationComponent::ClearCustomization(FName SlotID) {
+}
+
+void UActorCustomizationComponent::AddBPCustomizationTags(const TArray<FName>& InTags) {
 }
 
 void UActorCustomizationComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {

@@ -128,6 +128,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     ButtonEvent GetButtonStateByName(const FName& Name) const;
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool CheckForEventByName(const FName& Name, ButtonEvent Event, float Window) const;
+    
     UFUNCTION(BlueprintCallable)
     void AddButtonListener(const FName& Name, const FInputButtonDelegate& Event);
     

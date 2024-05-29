@@ -178,6 +178,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasAttributeValue(FName Key);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool HasActiveDialog();
+    
     UFUNCTION(BlueprintCallable)
     void HandleEvent(FName EventName);
     

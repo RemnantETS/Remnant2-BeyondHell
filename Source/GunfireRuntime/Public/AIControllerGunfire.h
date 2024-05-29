@@ -197,6 +197,9 @@ public:
     bool IsTargetLocked() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsActorCurrentlyRelevant(AActor* TestActor) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasLineOfSightToAnyPlayer() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

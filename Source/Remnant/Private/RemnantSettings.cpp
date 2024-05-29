@@ -6,5 +6,6 @@ URemnantSettings::URemnantSettings() {
     this->BonusModPower = 100.00f;
     this->bAnalogCursorOverridesMouseLock = true;
     this->AnalogCursorMouseLockMode = EMouseLockMode::LockAlways;
+    this->PingDistance = 10000.00f;
 }
 

@@ -47,6 +47,12 @@ bool ARangedWeapon::ServerFireWithAllData_Validate(FVector_NetQuantize From, con
     return true;
 }
 
+void ARangedWeapon::ServerFireCustomReloadNotifications_Implementation() {
+}
+bool ARangedWeapon::ServerFireCustomReloadNotifications_Validate() {
+    return true;
+}
+
 void ARangedWeapon::ServerFire_Implementation(FVector_NetQuantize From, const FReplicatedHits& ClientHits, float WeaponSpread, uint32 RandomSeed) {
 }
 bool ARangedWeapon::ServerFire_Validate(FVector_NetQuantize From, const FReplicatedHits& ClientHits, float WeaponSpread, uint32 RandomSeed) {
@@ -128,11 +134,16 @@ void ARangedWeapon::MulticastFire_Implementation(FVector_NetQuantize From, const
 }
 
 
+
 bool ARangedWeapon::IsWindupOverdrawn() const {
     return false;
 }
 
 bool ARangedWeapon::IsWindingUp() const {
+    return false;
+}
+
+bool ARangedWeapon::IsUsingToggleAimInput() const {
     return false;
 }
 
@@ -172,6 +183,9 @@ bool ARangedWeapon::IsAiming() const {
     return false;
 }
 
+void ARangedWeapon::InitializeWeaponMode(FRangedWeaponMode& InWeaponMode, AActor* InterfaceObject) {
+}
+
 bool ARangedWeapon::HasScope() const {
     return false;
 }
@@ -205,6 +219,10 @@ FRangedWeaponMode ARangedWeapon::GetWeaponMode() const {
 }
 
 float ARangedWeapon::GetTotalWindup() const {
+    return 0.0f;
+}
+
+float ARangedWeapon::GetTotalFireLength(FName AnimationID, int32& SeedOut) {
     return 0.0f;
 }
 
@@ -259,6 +277,10 @@ int32 ARangedWeapon::GetMaxAmmo() const {
     return 0;
 }
 
+FHitResult ARangedWeapon::GetFirstNonPiercedAimTarget(bool bInitialSegmentOnly) const {
+    return FHitResult{};
+}
+
 float ARangedWeapon::GetFalloff(bool bPrimaryFalloffOnly) const {
     return 0.0f;
 }
@@ -277,6 +299,10 @@ float ARangedWeapon::GetBurstRateOfFire() const {
 
 int32 ARangedWeapon::GetBurstCount() const {
     return 0;
+}
+
+FSoundGunfire ARangedWeapon::GetBulletWhizBySound_Implementation() const {
+    return FSoundGunfire{};
 }
 
 int32 ARangedWeapon::GetAmmoPerReload() const {
@@ -314,10 +340,13 @@ UAimingComponent* ARangedWeapon::GetAimingComponent() const {
     return NULL;
 }
 
-void ARangedWeapon::ForceReload() {
+void ARangedWeapon::ForceReload(bool FireReloadNotifications) {
 }
 
 void ARangedWeapon::ForceIdle() {
+}
+
+void ARangedWeapon::ForceFullReload() {
 }
 
 AActor* ARangedWeapon::FireProjectile(AActor* Cause, const FVector& Origin, const FVector& End, float WeaponSpread, TSubclassOf<AActor> ProjectileBP, float Velocity) {
@@ -339,7 +368,7 @@ void ARangedWeapon::DoInstantHit(const FVector& Origin, const FVector& End, floa
 void ARangedWeapon::DoImpact(const FHitResult& Hit) {
 }
 
-bool ARangedWeapon::DoCustomReload_Implementation() {
+bool ARangedWeapon::DoCustomReload_Implementation(bool& FireReloadNotifications) {
     return false;
 }
 
@@ -361,6 +390,10 @@ bool ARangedWeapon::CanUse() const {
 }
 
 bool ARangedWeapon::CanReload() const {
+    return false;
+}
+
+bool ARangedWeapon::CanFireEndAnimation_Implementation() const {
     return false;
 }
 
@@ -410,6 +443,7 @@ ARangedWeapon::ARangedWeapon() {
     this->FireInputBufferDuration = 0.20f;
     this->bUseCameraWhenAimingWithScope = false;
     this->AimScopeInputAction = NULL;
+    this->WeaponDoesHitScanOnFire = true;
     this->AimTag = TEXT("Aim");
     this->bRequiresInHandToUse = true;
     this->ReloadStartTime = 0.00f;

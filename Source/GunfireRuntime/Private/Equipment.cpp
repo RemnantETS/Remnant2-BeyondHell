@@ -47,6 +47,12 @@ void AEquipment::OnSkeletalMeshAnimInitialized() {
 
 
 
+void AEquipment::OnFinishLoadingAssets() {
+}
+
+
+void AEquipment::OnEquipmentAssetsLoaded_Implementation() {
+}
 
 
 
@@ -115,6 +121,14 @@ AEquipmentMod* AEquipment::GetEquipmentMod(uint8 Slot) {
     return NULL;
 }
 
+UClass* AEquipment::GetEquipmentAssetClass(FName AssetName) const {
+    return NULL;
+}
+
+UObject* AEquipment::GetEquipmentAsset(FName AssetName) const {
+    return NULL;
+}
+
 FName AEquipment::GetCurrentAnimation() const {
     return NAME_None;
 }
@@ -139,6 +153,10 @@ void AEquipment::ComputeStats() {
 void AEquipment::ComputeCharacterStats() {
 }
 
+bool AEquipment::AreAssetsLoaded() const {
+    return false;
+}
+
 void AEquipment::Activate() {
 }
 
@@ -161,6 +179,9 @@ AEquipment::AEquipment() {
     this->AutoEnableInput = true;
     this->ShouldUnequip = true;
     this->UseEquipmentAnimTimings = false;
+    this->FallbackToCharacterTimings = false;
+    this->StopAnimsRegardlessOfTimingTarget = false;
+    this->bSupportSlaveAnimations = false;
     this->StatsComp = CreateDefaultSubobject<UStatsComponent>(TEXT("StatsComp"));
     this->Character = NULL;
     this->CharacterReplicated = NULL;

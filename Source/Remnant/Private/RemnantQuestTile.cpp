@@ -15,6 +15,7 @@ URemnantQuestTile::URemnantQuestTile() {
     this->IsWorldMapLocation = false;
     this->IsMainPath = false;
     this->Exclusive = true;
+    this->IsOptionalForPlacement = false;
     this->OverrideFlags = 255;
     this->TileID = 0;
 }

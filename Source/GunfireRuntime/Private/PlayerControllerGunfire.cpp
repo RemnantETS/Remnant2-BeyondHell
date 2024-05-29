@@ -1,4 +1,5 @@
 #include "PlayerControllerGunfire.h"
+#include "DamageValidationComponent.h"
 #include "Net/UnrealNetwork.h"
 #include "PlayStateComponent.h"
 
@@ -130,6 +131,10 @@ bool APlayerControllerGunfire::IsJoiningAsSpectator() const {
     return false;
 }
 
+bool APlayerControllerGunfire::IsJoiningAsPlayer() const {
+    return false;
+}
+
 bool APlayerControllerGunfire::IsJoining() const {
     return false;
 }
@@ -147,6 +152,10 @@ bool APlayerControllerGunfire::IsFlaggedAsSpectator() const {
 }
 
 bool APlayerControllerGunfire::IsDisconnected() const {
+    return false;
+}
+
+bool APlayerControllerGunfire::HasLicense(const FString& License) {
     return false;
 }
 
@@ -209,5 +218,6 @@ APlayerControllerGunfire::APlayerControllerGunfire() {
     this->RuntimeManagedMappingContext = NULL;
     this->SpectateActor = NULL;
     this->PlayState = CreateDefaultSubobject<UPlayStateComponent>(TEXT("PlayState"));
+    this->DamageValidationComponent = CreateDefaultSubobject<UDamageValidationComponent>(TEXT("DamageValidationComponent"));
 }
 

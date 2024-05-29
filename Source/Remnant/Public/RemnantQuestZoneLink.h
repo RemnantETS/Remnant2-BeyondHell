@@ -80,6 +80,9 @@ public:
     UFUNCTION(BlueprintCallable)
     static TArray<FZoneLinkInfo> GetWaypointsForMapLocation(AQuest* Quest, FName InWorldMapID);
     
+    UFUNCTION(BlueprintCallable)
+    FZoneLinkInfo GetLinkInfo();
+    
 protected:
     UFUNCTION(BlueprintCallable)
     void DestinationZoneLoaded();

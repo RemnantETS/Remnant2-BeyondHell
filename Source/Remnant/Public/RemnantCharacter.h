@@ -62,6 +62,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool bHasAggro;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    bool bHasCloseAggro;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     TArray<ACharacterGunfire*> ProxyAggroCharacters;
     
@@ -203,6 +206,9 @@ public:
     UFUNCTION(BlueprintCallable)
     void OnCharacterDied(uint8 Reason, ACharacterGunfire* Character, AActor* Cause);
     
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnArchetypeRevoked();
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsReviving() const;
     
@@ -216,13 +222,14 @@ public:
     bool HasUnlockedSecondaryArchetype() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    float GetHealthClampMod() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     ARangedWeapon* GetCurrentRangedWeapon() const;
     
-protected:
     UFUNCTION(BlueprintCallable)
     USavedCharacter* GetCharacterInfo();
     
-public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetAge() const;
     

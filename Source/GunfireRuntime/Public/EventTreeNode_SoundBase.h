@@ -29,7 +29,7 @@ public:
     UEventTreeNode_SoundBase();
 protected:
     UFUNCTION(BlueprintCallable)
-    void OnFinishedWaiting(UEventTreeComponent* Component) const;
+    void OnFinishedWaiting(UEventTreeComponent* Component);
     
 };
 

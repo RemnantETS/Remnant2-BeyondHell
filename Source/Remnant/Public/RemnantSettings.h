@@ -36,6 +36,9 @@ public:
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, Config, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FDirectoryPath> QuestDirectoryBlacklist;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, GlobalConfig, meta=(AllowPrivateAccess=true))
+    float PingDistance;
+    
     URemnantSettings();
 };
 

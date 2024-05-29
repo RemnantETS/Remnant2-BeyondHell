@@ -1,7 +1,10 @@
 #include "FactionManager.h"
 #include "Templates/SubclassOf.h"
 
-void UFactionManager::PropagateFactionOverride(UFactionComponent* Source, TSubclassOf<UFaction> Faction, EAffiliation Affiliation) {
+void UFactionManager::PropagateFactionOverrideAtLocation(const FVector& Location, TSubclassOf<UFaction> Faction, TSubclassOf<UFaction> FactionToOverride, EAffiliation NewAffiliation, float PropogationRadiusOverride) {
+}
+
+void UFactionManager::PropagateFactionOverride(UFactionComponent* Source, TSubclassOf<UFaction> Faction, EAffiliation Affiliation, float PropogationRadiusOverride) {
 }
 
 UFactionManager* UFactionManager::GetFactionManager(UObject* WorldContextObject) {

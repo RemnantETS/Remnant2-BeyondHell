@@ -7,7 +7,11 @@ bool AItem::ValidateAdd_Implementation(UInventoryComponent* Inventory, int32 Des
     return false;
 }
 
+
 void AItem::SetQuantity(int32 Quantity) {
+}
+
+void AItem::SetNewStatsHandle(FDataTableRowHandle InStatsHandle) {
 }
 
 void AItem::SetLevel(uint8 Level) {
@@ -47,6 +51,10 @@ void AItem::InitializeLootFxForLocalPawn(APawn* Pawn) {
 
 FText AItem::GetSubLabel_Implementation() const {
     return FText::GetEmpty();
+}
+
+bool AItem::GetRewardForMaxStackPickup_Implementation(UInventoryComponent* Inventory, int32 Level, TSubclassOf<AItem>& OutRewardClass, int32& OutQuantity, int32& OutLevel) const {
+    return false;
 }
 
 bool AItem::GetRewardForLowerQualityPickup_Implementation(UInventoryComponent* Inventory, int32 Level, TSubclassOf<AItem>& OutRewardClass, int32& OutQuantity, int32& OutLevel) const {
@@ -102,6 +110,7 @@ AItem::AItem() {
     this->Category = NULL;
     this->MaxStackCount = 1;
     this->BaseMaxQuantity = -1;
+    this->KeepInInventoryWithNoQuantity = false;
     this->InstanceData = NULL;
     this->Unique = false;
     this->bNeedsQuantityToSelect = true;

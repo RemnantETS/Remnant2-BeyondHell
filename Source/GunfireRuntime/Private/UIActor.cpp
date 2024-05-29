@@ -44,6 +44,7 @@ AUIActor::AUIActor() {
     this->bInvulnerable = false;
     this->bRemoveOnHidden = false;
     this->bRemoveWhenNotOnTop = false;
+    this->bRemoveOnCinematic = false;
     this->bFixedCameraFoV = false;
 }
 

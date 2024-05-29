@@ -10,6 +10,8 @@ FHitLocationInfo::FHitLocationInfo() {
     this->bResistSpot = false;
     this->bIsWeakSpot = false;
     this->Destroyed = false;
+    this->AoEPriority = 0;
+    this->bAoERequiresLoS = false;
     this->DamageTaken = 0.00f;
 }
 

@@ -18,6 +18,10 @@ FHitResult UAimingComponent::GetMuzzleObstruction() {
     return FHitResult{};
 }
 
+FHitResult UAimingComponent::GetFirstNonPiercedAimTarget(bool bInitialSegmentOnly) const {
+    return FHitResult{};
+}
+
 void UAimingComponent::GetAimVector(FVector& From, FVector& To, bool bApplyAimAssist, bool bOverrideTrajectoryMode, ERangedWeaponTrajectoryMode TrajectoryModeOverride) {
 }
 

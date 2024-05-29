@@ -8,6 +8,9 @@ void UActionComponent::StopActionByType(TSubclassOf<UActionBase> ActionBP) {
 void UActionComponent::StopAction(int32 ActionID) {
 }
 
+void UActionComponent::RemoveAnyActionAppliedListener(const FOnAnyActionAppliedDelegate& Event) {
+}
+
 void UActionComponent::OnRep_Actions() {
 }
 
@@ -55,6 +58,9 @@ int32 UActionComponent::DoAction(TSubclassOf<UActionBase> Action, AActor* Cause,
 
 bool UActionComponent::CanDoActionInternal(TSubclassOf<UActionBase> ActionBP, const FDamageInfo& DamageInfo, UActionBase* NewAction) {
     return false;
+}
+
+void UActionComponent::AddAnyActionAppliedListener(const FOnAnyActionAppliedDelegate& Event) {
 }
 
 void UActionComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {

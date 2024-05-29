@@ -169,7 +169,7 @@ void UInventoryComponent::PickupAndEquipItem(AItem* Item, int32 SlotIndex, bool 
 void UInventoryComponent::OnRep_Items() {
 }
 
-void UInventoryComponent::OnInstanceDataChanged() {
+void UInventoryComponent::OnInstanceDataVisuallyChanged() {
 }
 
 void UInventoryComponent::NotifyUsedItem(TSubclassOf<AItem> ItemBP) {
@@ -281,8 +281,16 @@ UInventoryComponent* UInventoryComponent::GetInventoryForItemType(AActor* Actor,
     return NULL;
 }
 
+UInventoryComponent* UInventoryComponent::GetInventoryForItemSoft(AActor* Actor, TSoftClassPtr<AItem> Item) {
+    return NULL;
+}
+
 UInventoryComponent* UInventoryComponent::GetInventoryForItem(AActor* Actor, TSubclassOf<AItem> Item) {
     return NULL;
+}
+
+int32 UInventoryComponent::GetHighestLevelForItem(TSoftClassPtr<AItem> ItemBP) const {
+    return 0;
 }
 
 AEquipment* UInventoryComponent::GetEquippedItemBySlotName(FName NameID) {
@@ -299,6 +307,10 @@ AEquipment* UInventoryComponent::GetEquippedItem(int32 SlotIndex) {
 
 FName UInventoryComponent::GetEquipmentSlotNameForItem(TSubclassOf<AItem> ItemBP) {
     return NAME_None;
+}
+
+int32 UInventoryComponent::GetEquipmentSlotIndexBySlotName(FName SlotName) {
+    return 0;
 }
 
 int32 UInventoryComponent::GetEquipmentSlotIndexByNameID(FName SlotNameID) {
@@ -321,7 +333,7 @@ AEquipment* UInventoryComponent::GetEquipmentInHand() const {
     return NULL;
 }
 
-int32 UInventoryComponent::GetBuyValue(UInventoryComponent* OtherInventory, TSubclassOf<AItem> ItemBP, int32 Level) {
+int32 UInventoryComponent::GetBuyValue(UInventoryComponent* OtherInventory, int32 ItemId, int32 Level) {
     return 0;
 }
 

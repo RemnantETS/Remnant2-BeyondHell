@@ -31,6 +31,9 @@ void UStateCameraComponent::ResetFromCurrentView(float BlendTime) {
 void UStateCameraComponent::OnCinematicExitMoveEvent() {
 }
 
+void UStateCameraComponent::OnCinematicExitInputEvent(const FName& ButtonName, ButtonEvent Event) {
+}
+
 void UStateCameraComponent::LockCameraState() {
 }
 

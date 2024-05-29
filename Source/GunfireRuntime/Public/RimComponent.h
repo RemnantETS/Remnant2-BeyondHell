@@ -2,13 +2,14 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
+#include "ManagedTickInterface.h"
 #include "RimMaterial.h"
 #include "RimComponent.generated.h"
 
 class UMeshComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
-class GUNFIRERUNTIME_API URimComponent : public UActorComponent {
+class GUNFIRERUNTIME_API URimComponent : public UActorComponent, public IManagedTickInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -41,5 +42,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetRimColor(FLinearColor InColor);
     
+    
+    // Fix for true pure virtual functions not being implemented
 };
 

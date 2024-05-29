@@ -20,6 +20,7 @@ class UActionBase;
 class UActionComponent;
 class UCameraShakeBase;
 class UDamageTypeGunfire;
+class UFXSystemComponent;
 class UForceFeedbackAttenuation;
 class UForceFeedbackEffect;
 class UNiagaraSystem;
@@ -34,6 +35,9 @@ class GUNFIRERUNTIME_API AProjectileBase : public AActor, public IDamageableInte
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     AActor* Cause;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    FVector Origin;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float MaxLifetime;
@@ -99,6 +103,9 @@ protected:
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float AdditionalActivateRadius;
     
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float ActivateSimulationTime;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ApplyDamage;
     
@@ -116,6 +123,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Evadable;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool SoftDeactivatePooledFXComponents;
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -279,6 +289,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetClientCameraTransform(FVector& CameraLocation, FRotator& CameraRotation) const;
     
+protected:
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    TArray<UFXSystemComponent*> GatherPooledProjectileComponentsForDeactivation();
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void FilterIncomingDamage(const FDamageInfo& DamageInfo, float& DamageOut, bool& ShouldApplyDamage);
     

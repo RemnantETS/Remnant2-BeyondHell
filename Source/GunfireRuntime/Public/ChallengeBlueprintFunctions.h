@@ -16,16 +16,16 @@ class GUNFIRERUNTIME_API UChallengeBlueprintFunctions : public UBlueprintFunctio
 public:
     UChallengeBlueprintFunctions();
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static void UnlockChallenges(UObject* WorldContextObject, FChallengeEvent ObjectiveId);
+    static void UnlockChallenges(UObject* WorldContextObject, FChallengeEvent ObjectiveID);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static void IncrementObjectivesFromObject(UObject* WorldContextObject, FChallengeEvent ObjectiveId, UObject* Object, const TArray<FName>& AdditionalTags, int32 Amount);
+    static void IncrementObjectivesFromObject(UObject* WorldContextObject, FChallengeEvent ObjectiveID, UObject* Object, const TArray<FName>& AdditionalTags, int32 Amount);
     
     UFUNCTION(BlueprintCallable)
-    static void IncrementObjectivesFor(APlayerController* Controller, FChallengeEvent ObjectiveId, const TArray<FName>& Tags, int32 Amount);
+    static void IncrementObjectivesFor(APlayerController* Controller, FChallengeEvent ObjectiveID, const TArray<FName>& Tags, int32 Amount);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static void IncrementObjectives(UObject* WorldContextObject, FChallengeEvent ObjectiveId, const TArray<FName>& Tags, int32 Amount);
+    static void IncrementObjectives(UObject* WorldContextObject, FChallengeEvent ObjectiveID, const TArray<FName>& Tags, int32 Amount);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void IncrementObjective(UObject* WorldContextObject, FChallengeObjectiveSelection ObjectiveSelection, int32 Amount);

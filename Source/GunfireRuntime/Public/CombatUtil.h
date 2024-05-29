@@ -12,6 +12,7 @@
 #include "DamageInfo.h"
 #include "EAffiliation.h"
 #include "EAutoArcType.h"
+#include "EEquipmentTarget.h"
 #include "EFireOutExec.h"
 #include "GunfireAudioPlayParams.h"
 #include "ImpactEffectDescriptor.h"
@@ -25,7 +26,9 @@
 class AActor;
 class ACharacter;
 class ACharacterGunfire;
+class AEquipment;
 class APawn;
+class ARangedWeapon;
 class UCurveFloat;
 class UDamageClass;
 class UDamageType;
@@ -72,6 +75,12 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector PredictLocation(ACharacter* Querier, ACharacter* Target, float Time, float Offset);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static bool IsViewTargetedPlayerInRangeOf(UObject* WorldContextObject, const FVector& ReferencePoint, float Range, bool UseNavDistance, APawn* OptionalNavAgentOverride);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+    static bool IsViewTargetedPlayerInBoundsOf(UObject* WorldContextObject, const FVector& ReferencePoint, const FVector& BoundsExtent);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsValidAimTarget(AActor* TestTarget, const AActor* AimingOwner);
     
@@ -102,8 +111,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool GetReticuleLocation(APawn* Pawn, float Range, float Radius, FRotator& Direction, FVector& Location);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static TArray<ARangedWeapon*> GetRangedWeaponsForCharacter(AActor* Target, EEquipmentTarget WeaponTarget, FName TargetSlotNameID);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
-    static FName GetRandomHitPhantomThatIsntInvulnerable(const UObject* WorldContextObject, const AActor* Actor, const FVector& ImpactPoint, float Radius);
+    static FName GetRandomHitPhantomThatIsntInvulnerable(const UObject* WorldContextObject, const AActor* Actor, const FVector& ImpactPoint, const FVector& Origin, float Radius);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static AActor* GetPlayerCameraAimTarget(APawn* Cause, float Range);
@@ -125,6 +137,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector GetEyePos(ACharacter* Character);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static AEquipment* GetEquippedItemForCharacter(AActor* Target, FName EquipmentSlot);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static float GetDamageReductionFromResistanceByDamageClass(const UDamageClass* DamageClass, float DamageResistance, float AttackerLevel);
@@ -187,7 +202,7 @@ public:
     static void ApplyDamage(AActor* CauseActor, AActor* TargetActor, float Damage, float DamageMod, float DamageScalar, int32 PowerOverride, TSubclassOf<UDamageTypeGunfire> DamageType);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static TArray<FVector> ApplyCustomWeaponSpread(AActor* Cause, const FVector& Origin, const FVector& End, int32 SprayCount, float Spread, UPARAM(Ref) FRandomStream& RandomStream, UPARAM(Ref) FCustomWeaponSpread& CustomSpread);
+    static TArray<FVector> ApplyCustomWeaponSpread(AActor* Cause, const FVector& Origin, const FVector& End, int32 SprayCount, float Spread, UPARAM(Ref) FRandomStream& RandomStream, const FCustomWeaponSpread& CustomSpread);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool AllowsWeakSpots(TSubclassOf<UDamageType> DamageType);

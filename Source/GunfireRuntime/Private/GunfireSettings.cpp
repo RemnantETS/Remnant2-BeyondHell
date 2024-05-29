@@ -14,6 +14,7 @@ UGunfireSettings::UGunfireSettings() {
     this->WaterSurfaceType = SurfaceType22;
     this->bLoadTemplateSublevels = true;
     this->SublevelsKeywordsToIgnore.AddDefaulted(1);
+    this->HighDetailSublevelKeywords.AddDefaulted(1);
     this->HitPauseMode = EHitPauseMode::AnyDamage;
     this->bAutoMarkDamageAsResisted = true;
     this->ResistedDamageThreshold = 0.50f;
@@ -51,13 +52,15 @@ UGunfireSettings::UGunfireSettings() {
     this->bEnableMeshActivationOptimizations = true;
     this->MeshActivationLingerTime = 1.00f;
     this->MeshActivationBoneOnlyLingerTime = 0.20f;
-    this->GlobalObjectPoolCull = 12;
-    this->Challenges.AddDefaulted(2);
+    this->GlobalObjectPoolCull = 4;
+    this->Challenges.AddDefaulted(4);
     this->DirectionalAnimationFilter = EDirectionalAnimationFilter::DefaultToRight;
     this->LeftSideTagName = TEXT("FootL");
     this->RightSideTagName = TEXT("FootR");
     this->MiddleSideTagName = TEXT("FootM");
     this->MaxAimSnapAngle = 20.00f;
     this->MaxPiercingTargets = 16;
+    this->AITargetingRelevancyDistance = 1000.00f;
+    this->RelevantCharacterStatsForTwitch.AddDefaulted(21);
 }
 

@@ -22,6 +22,10 @@ TArray<FZoneLinkInfo> URemnantQuestZoneLink::GetWaypointsForMapLocation(AQuest* 
     return TArray<FZoneLinkInfo>();
 }
 
+FZoneLinkInfo URemnantQuestZoneLink::GetLinkInfo() {
+    return FZoneLinkInfo{};
+}
+
 void URemnantQuestZoneLink::DestinationZoneLoaded() {
 }
 

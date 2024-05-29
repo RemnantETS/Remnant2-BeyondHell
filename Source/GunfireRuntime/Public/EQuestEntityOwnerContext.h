@@ -6,5 +6,6 @@ UENUM(BlueprintType)
 enum class EQuestEntityOwnerContext : uint8 {
     Quest,
     Actor,
+    NoOverride,
 };
 

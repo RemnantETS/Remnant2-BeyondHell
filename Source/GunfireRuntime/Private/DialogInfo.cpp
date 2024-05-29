@@ -8,5 +8,6 @@ FDialogInfo::FDialogInfo() {
     this->IgnoreVocalRange = false;
     this->VocalRange = NULL;
     this->BlockInteractions = false;
+    this->PlayOnlyLocally = false;
 }
 

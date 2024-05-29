@@ -5,6 +5,7 @@
 #include "DamageInfo.h"
 #include "ManagedTickInterface.h"
 #include "OnActionDelegateDelegate.h"
+#include "OnAnyActionAppliedDelegateDelegate.h"
 #include "Templates/SubclassOf.h"
 #include "ActionComponent.generated.h"
 
@@ -41,6 +42,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void StopAction(int32 ActionID);
+    
+    UFUNCTION(BlueprintCallable)
+    static void RemoveAnyActionAppliedListener(const FOnAnyActionAppliedDelegate& Event);
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -85,6 +89,10 @@ public:
 protected:
     UFUNCTION(BlueprintCallable, meta=(AutoCreateRefTerm = "DamageInfo"))
     bool CanDoActionInternal(TSubclassOf<UActionBase> ActionBP, const FDamageInfo& DamageInfo, UActionBase* NewAction);
+    
+public:
+    UFUNCTION(BlueprintCallable)
+    static void AddAnyActionAppliedListener(const FOnAnyActionAppliedDelegate& Event);
     
     
     // Fix for true pure virtual functions not being implemented

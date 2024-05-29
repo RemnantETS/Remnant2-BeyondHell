@@ -2,6 +2,10 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+bool AEquipmentMod::ValidateAttach(ACharacterGunfire* ToCharacter) const {
+    return false;
+}
+
 bool AEquipmentMod::UnequipMod(UInventoryComponent* Inventory, int32 ItemId, uint8 Slot, bool AddToInventory) {
     return false;
 }
@@ -10,6 +14,12 @@ void AEquipmentMod::ScaleStat(FName Stat, float Scalar, bool AutoInitValue) cons
 }
 
 void AEquipmentMod::OnPostComputeStats_Implementation() const {
+}
+
+void AEquipmentMod::OnFinishLoadingAssets() {
+}
+
+void AEquipmentMod::OnEquipmentModAssetsLoaded_Implementation() {
 }
 
 
@@ -49,6 +59,14 @@ bool AEquipmentMod::GetInspectInfoForModBySlotName(AActor* Actor, UInventoryComp
     return false;
 }
 
+UClass* AEquipmentMod::GetEquipmentModAssetClass(FName AssetName) const {
+    return NULL;
+}
+
+UObject* AEquipmentMod::GetEquipmentModAsset(FName AssetName) const {
+    return NULL;
+}
+
 AEquipment* AEquipmentMod::GetEquipment() const {
     return NULL;
 }
@@ -62,6 +80,14 @@ bool AEquipmentMod::EquipModFromInventory(UInventoryComponent* Inventory, int32 
 }
 
 bool AEquipmentMod::EquipMod(UInventoryComponent* Inventory, int32 ItemId, uint8 Slot, TSubclassOf<AEquipmentMod> Mod, uint8 ModLevel, int32 ModItemID) {
+    return false;
+}
+
+bool AEquipmentMod::CanEquipMod(ACharacterGunfire* Character, TSubclassOf<AEquipmentMod> Mod) {
+    return false;
+}
+
+bool AEquipmentMod::AreEquipmentModAssetsLoaded() const {
     return false;
 }
 

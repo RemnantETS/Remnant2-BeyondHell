@@ -1,8 +1,10 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "VariableContainer.h"
 #include "VariableDef.h"
 #include "VariableStatements.h"
+#include "VariableValue.h"
 #include "VariableComponent.generated.h"
 
 class AActor;
@@ -25,8 +27,13 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool DummyVar;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    FVariableContainer Variables;
+    
 public:
     UVariableComponent();
+    virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
     UFUNCTION(BlueprintCallable)
     void SetVariableName(const FName& NameID, FName Value, float Expiration);
     
@@ -51,8 +58,15 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetVariableBool(const FName& NameID);
     
+    UFUNCTION(BlueprintCallable)
+    static void ExecuteStatements(AActor* ContextActor, const FVariableStatements& Statements);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool EvaluateStatements(AActor* ContextActor, const FVariableStatements& Statements);
+    
+protected:
+    UFUNCTION(Client, Reliable)
+    void ClientSetVariable(int16 Index, const FVariableValue& NewValue);
     
 };
 

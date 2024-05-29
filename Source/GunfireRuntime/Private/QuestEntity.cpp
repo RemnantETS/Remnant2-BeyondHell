@@ -29,6 +29,7 @@ void UQuestEntity::BeginDialog(AActor* Initiator) {
 }
 
 UQuestEntity::UQuestEntity() {
+    this->ShouldBeContextProviderForDefaultTree = false;
     this->OwnerContext = EQuestEntityOwnerContext::Quest;
 }
 

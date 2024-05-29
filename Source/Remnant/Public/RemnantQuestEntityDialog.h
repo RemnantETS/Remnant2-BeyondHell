@@ -14,6 +14,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UEventTree* Dialog;
     
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool ShouldBeContextProviderForDefaultTree;
+    
     URemnantQuestEntityDialog();
 protected:
     UFUNCTION(BlueprintCallable)

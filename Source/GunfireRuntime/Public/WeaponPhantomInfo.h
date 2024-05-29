@@ -86,6 +86,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float CollisionCheckRadius;
     
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bServerOnlySimulation;
+    
     FWeaponPhantomInfo();
 };
 

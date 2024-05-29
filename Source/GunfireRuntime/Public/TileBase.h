@@ -25,7 +25,7 @@ public:
     FName SpawnTag;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
-    FName RegionID;
+    FName RegionId;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FName WorldMapID;

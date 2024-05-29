@@ -64,6 +64,7 @@ void ARemnantCharacter::OnRep_Deactivated() {
 void ARemnantCharacter::OnCharacterDied(uint8 Reason, ACharacterGunfire* Character, AActor* Cause) {
 }
 
+
 bool ARemnantCharacter::IsReviving() const {
     return false;
 }
@@ -75,6 +76,10 @@ bool ARemnantCharacter::IsDead() const {
 void ARemnantCharacter::InitializePersistentBuffs() {
 }
 
+
+float ARemnantCharacter::GetHealthClampMod() const {
+    return 0.0f;
+}
 
 ARangedWeapon* ARemnantCharacter::GetCurrentRangedWeapon() const {
     return NULL;
@@ -138,6 +143,7 @@ void ARemnantCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     
     DOREPLIFETIME(ARemnantCharacter, Gender);
     DOREPLIFETIME(ARemnantCharacter, bHasAggro);
+    DOREPLIFETIME(ARemnantCharacter, bHasCloseAggro);
     DOREPLIFETIME(ARemnantCharacter, ControllerIndex);
     DOREPLIFETIME(ARemnantCharacter, ShowHelmet);
     DOREPLIFETIME(ARemnantCharacter, GrabbedCheckpoint);
@@ -153,6 +159,7 @@ ARemnantCharacter::ARemnantCharacter() {
     this->FemaleCustomizationSet = NULL;
     this->Gender = EGender::Female;
     this->bHasAggro = false;
+    this->bHasCloseAggro = false;
     this->ControllerIndex = -1;
     this->LastUsedItemId = -1;
     this->ShowHelmet = true;

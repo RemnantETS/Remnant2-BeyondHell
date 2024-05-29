@@ -9,5 +9,6 @@ enum class EEntitlementPlatform : uint8 {
     Epic,
     XboxSeries,
     PS5,
+    WinGDK,
 };
 

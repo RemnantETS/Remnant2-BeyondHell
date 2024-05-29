@@ -284,6 +284,7 @@ void ACharacterGunfire::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
     DOREPLIFETIME(ACharacterGunfire, Faction);
     DOREPLIFETIME(ACharacterGunfire, Level);
     DOREPLIFETIME(ACharacterGunfire, Seed);
+    DOREPLIFETIME(ACharacterGunfire, InitialCharacterTags);
     DOREPLIFETIME(ACharacterGunfire, HealthNormalized);
     DOREPLIFETIME(ACharacterGunfire, Target);
     DOREPLIFETIME(ACharacterGunfire, AimTarget);
@@ -314,6 +315,7 @@ ACharacterGunfire::ACharacterGunfire() {
     this->ActivationHalfHeightInflation = 60.00f;
     this->ActivationRadiusInflation = 60.00f;
     this->MinimumTimeDilation = 0.00f;
+    this->RemoveNetRepReferencesOnDestroy = true;
     this->CachedStateMachine = NULL;
     this->CachedInventory = NULL;
     this->Target = NULL;

@@ -9,7 +9,7 @@ void URootVariableContext::RegisterContext(FName Name, UVariableComponent* Varia
 void URootVariableContext::K2_GetContextVariables(FName Name, TArray<UVariableComponent*>& VariablesOut) const {
 }
 
-URootVariableContext* URootVariableContext::GetInstance(const UObject* WorldContextObject) {
+URootVariableContext* URootVariableContext::GetInstance(const UObject* WorldContextObject, bool bCreateIfMissing) {
     return NULL;
 }
 

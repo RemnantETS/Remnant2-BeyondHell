@@ -246,7 +246,7 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
-    void OnInstanceDataChanged();
+    void OnInstanceDataVisuallyChanged();
     
     UFUNCTION(BlueprintCallable)
     void NotifyUsedItem(TSubclassOf<AItem> ItemBP);
@@ -333,7 +333,13 @@ public:
     static UInventoryComponent* GetInventoryForItemType(AActor* Actor, TSubclassOf<UItemType> ItemType);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    static UInventoryComponent* GetInventoryForItemSoft(AActor* Actor, TSoftClassPtr<AItem> Item);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static UInventoryComponent* GetInventoryForItem(AActor* Actor, TSubclassOf<AItem> Item);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetHighestLevelForItem(TSoftClassPtr<AItem> ItemBP) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AEquipment* GetEquippedItemBySlotName(FName NameID);
@@ -346,6 +352,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetEquipmentSlotNameForItem(TSubclassOf<AItem> ItemBP);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    int32 GetEquipmentSlotIndexBySlotName(FName SlotName);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetEquipmentSlotIndexByNameID(FName SlotNameID);
@@ -363,7 +372,7 @@ public:
     AEquipment* GetEquipmentInHand() const;
     
     UFUNCTION(BlueprintCallable)
-    int32 GetBuyValue(UInventoryComponent* OtherInventory, TSubclassOf<AItem> ItemBP, int32 Level);
+    int32 GetBuyValue(UInventoryComponent* OtherInventory, int32 ItemId, int32 Level);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AEquipment* GetActiveItem(TSubclassOf<UItemType> Type) const;

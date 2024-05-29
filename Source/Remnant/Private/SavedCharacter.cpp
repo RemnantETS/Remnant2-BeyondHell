@@ -47,6 +47,7 @@ USavedCharacter::USavedCharacter() {
     this->QuestDifficulty = 1;
     this->InitialDifficulty = 1;
     this->PowerLevel = 1;
+    this->ItemLevel = 1;
     this->CharacterType = ERemnantCharacterType::Standard;
     this->bDeceased = false;
     this->BossCount = 0;
@@ -54,5 +55,6 @@ USavedCharacter::USavedCharacter() {
     this->InvalidExitCount = 0;
     this->bHasHandledCurrencyAward = false;
     this->bHasEntitledArchetype = false;
+    this->LastSavedTraitPoints = 0;
 }
 

@@ -26,6 +26,7 @@ UInteractiveState::UInteractiveState() {
     this->ResetNonAnchorCollisionOnExit = true;
     this->IgnoreOtherActorWhileMoving = true;
     this->ConvergeMode = EInteractiveConvergeMode::Converge;
+    this->bAttachToInteractNode = false;
     this->PlayInteractAfterFinishedConverging = false;
     this->ConvergeTime = 0.25f;
     this->ConvergeRadius = 0.00f;
@@ -53,6 +54,7 @@ UInteractiveState::UInteractiveState() {
     this->ValidateCapsule = false;
     this->CapsuleInflation = 0.00f;
     this->CapsuleHeightOffset = 0.00f;
+    this->ValidationShapeMethod = EValidationShapeMethod::Static;
     this->InputWindowStart = 0.00f;
     this->InputWindowEnd = 1000.00f;
     this->InputMashEnable = false;

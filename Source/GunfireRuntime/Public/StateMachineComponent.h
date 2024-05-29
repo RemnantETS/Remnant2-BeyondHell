@@ -122,7 +122,13 @@ protected:
     void OnPostComputeStats();
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
+    void MulticastDoFlinchWithHitLocationIgnoreClient(UHitReactionState* HitReaction, const FName& HitLocation);
+    
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastDoFlinchWithHitLocation(UHitReactionState* HitReaction, const FName& HitLocation);
+    
+    UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
+    void MulticastDoFlinchIgnoreClient(UHitReactionState* HitReaction);
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastDoFlinch(UHitReactionState* HitReaction);

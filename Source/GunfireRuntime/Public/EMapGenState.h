@@ -7,6 +7,7 @@ enum class EMapGenState : uint8 {
     Uninitialized,
     WaitForServer,
     LoadingTemplate,
+    LoadingTemplateSubLevels,
     Loading,
     LoadingSubLevels,
     ProcessingInitialTiles,

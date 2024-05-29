@@ -21,6 +21,10 @@ bool UHitLogComponent::IsMaterialResisted(UPhysicalMaterial* PhysicsMaterial) {
     return false;
 }
 
+UPhysicalMaterial* UHitLogComponent::GetMaterialForHitLocation(FName HitLocation) {
+    return NULL;
+}
+
 FDamageInfo UHitLogComponent::GetLastHitInfo() {
     return FDamageInfo{};
 }

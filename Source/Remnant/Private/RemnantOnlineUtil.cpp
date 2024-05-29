@@ -1,5 +1,8 @@
 #include "RemnantOnlineUtil.h"
 
+void URemnantOnlineUtil::UpdateSessionCrossplayPlatformSetting(const UObject* WorldContextObject) {
+}
+
 void URemnantOnlineUtil::SetModeFilter(int32 Mode) {
 }
 

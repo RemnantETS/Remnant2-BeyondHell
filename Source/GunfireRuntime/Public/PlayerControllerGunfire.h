@@ -13,6 +13,7 @@
 class AActor;
 class APawn;
 class APlayerStateGunfire;
+class UDamageValidationComponent;
 class UInputMappingContext;
 class UObject;
 class UPlayStateComponent;
@@ -42,6 +43,9 @@ protected:
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UPlayStateComponent* PlayState;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UDamageValidationComponent* DamageValidationComponent;
     
     APlayerControllerGunfire();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
@@ -135,6 +139,9 @@ public:
     bool IsJoiningAsSpectator() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsJoiningAsPlayer() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsJoining() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -148,6 +155,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsDisconnected() const;
+    
+    UFUNCTION(BlueprintCallable)
+    bool HasLicense(const FString& License);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasJoined() const;

@@ -5,6 +5,9 @@
 void ARemnantRangedWeapon::UseMod() {
 }
 
+void ARemnantRangedWeapon::UseCharges(int32 NumCharges) {
+}
+
 void ARemnantRangedWeapon::UseCharge() {
 }
 
@@ -15,12 +18,24 @@ bool ARemnantRangedWeapon::ShouldModCancelUse() const {
     return false;
 }
 
+void ARemnantRangedWeapon::SetOverrideWeaponModeFromMod() {
+}
+
 void ARemnantRangedWeapon::SetModActive(EModActiveState ModState, int32 ActionID, bool bForceNotify) {
 }
 
-void ARemnantRangedWeapon::ServerUseWithAim_Implementation(FVector_NetQuantize AimOrigin, FVector_NetQuantize AimEnd) {
+void ARemnantRangedWeapon::SetIgnoreWindUp(bool Ignore) {
 }
-bool ARemnantRangedWeapon::ServerUseWithAim_Validate(FVector_NetQuantize AimOrigin, FVector_NetQuantize AimEnd) {
+
+void ARemnantRangedWeapon::ServerUseWithAim_Implementation(FVector_NetQuantize AimOrigin, FVector_NetQuantize AimEnd, bool bAltFireHeld) {
+}
+bool ARemnantRangedWeapon::ServerUseWithAim_Validate(FVector_NetQuantize AimOrigin, FVector_NetQuantize AimEnd, bool bAltFireHeld) {
+    return true;
+}
+
+void ARemnantRangedWeapon::ServerUseHeld_Implementation() {
+}
+bool ARemnantRangedWeapon::ServerUseHeld_Validate() {
     return true;
 }
 
@@ -66,7 +81,15 @@ void ARemnantRangedWeapon::OnActionRemoved(UActionBase* Action) {
 void ARemnantRangedWeapon::MulticastUse_Implementation() {
 }
 
+bool ARemnantRangedWeapon::IsModSecondaryUse() const {
+    return false;
+}
+
 bool ARemnantRangedWeapon::IsModActive() const {
+    return false;
+}
+
+bool ARemnantRangedWeapon::HasCharges() const {
     return false;
 }
 
@@ -113,6 +136,7 @@ ARemnantRangedWeapon::ARemnantRangedWeapon() {
     this->Power = 0.00f;
     this->Charges = 0;
     this->PassiveModPowerRegenFrequency = 1.00f;
+    this->IgnoreWindUp = false;
     this->ActiveState = EModActiveState::NotActive;
     this->ActiveModActionID = 0;
     this->AdditionalRadius = 0.00f;

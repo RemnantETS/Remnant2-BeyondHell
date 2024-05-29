@@ -62,6 +62,10 @@ bool UDialogComponent::HasAttributeValue(FName Key) {
     return false;
 }
 
+bool UDialogComponent::HasActiveDialog() {
+    return false;
+}
+
 void UDialogComponent::HandleEvent(FName EventName) {
 }
 

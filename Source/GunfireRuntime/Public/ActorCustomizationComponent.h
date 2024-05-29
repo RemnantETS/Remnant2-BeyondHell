@@ -80,6 +80,9 @@ public:
     void SetCustomization(FName SlotID, FName CustomizationID);
     
     UFUNCTION(BlueprintCallable)
+    void RemoveBPCustomizationTags(const TArray<FName>& InTags);
+    
+    UFUNCTION(BlueprintCallable)
     void PlayCustomizationEffect(FName NameID, bool bCache);
     
 protected:
@@ -119,6 +122,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void ClearCustomization(FName SlotID);
+    
+    UFUNCTION(BlueprintCallable)
+    void AddBPCustomizationTags(const TArray<FName>& InTags);
     
 };
 

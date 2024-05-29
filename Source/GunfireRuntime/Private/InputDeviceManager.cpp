@@ -22,10 +22,6 @@ bool UInputDeviceManager::IsUsingGamepad() {
     return false;
 }
 
-bool UInputDeviceManager::IsUsingAltImageSet() {
-    return false;
-}
-
 UInputDeviceManager* UInputDeviceManager::GetInstance() {
     return NULL;
 }
@@ -47,6 +43,5 @@ bool UInputDeviceManager::CheckInputAction(const APlayerController* PlayerContro
 }
 
 UInputDeviceManager::UInputDeviceManager() {
-    this->ImageSet = NULL;
 }
 

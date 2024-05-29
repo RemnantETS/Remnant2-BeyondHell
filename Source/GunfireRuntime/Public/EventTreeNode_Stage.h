@@ -15,7 +15,7 @@ public:
     EStageAction Action;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    USequencerShotGroup* SequenceGroup;
+    TSoftObjectPtr<USequencerShotGroup> SequenceGroup;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool OnlyTargetInstigator;

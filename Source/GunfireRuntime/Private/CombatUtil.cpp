@@ -39,6 +39,14 @@ FVector UCombatUtil::PredictLocation(ACharacter* Querier, ACharacter* Target, fl
     return FVector{};
 }
 
+bool UCombatUtil::IsViewTargetedPlayerInRangeOf(UObject* WorldContextObject, const FVector& ReferencePoint, float Range, bool UseNavDistance, APawn* OptionalNavAgentOverride) {
+    return false;
+}
+
+bool UCombatUtil::IsViewTargetedPlayerInBoundsOf(UObject* WorldContextObject, const FVector& ReferencePoint, const FVector& BoundsExtent) {
+    return false;
+}
+
 bool UCombatUtil::IsValidAimTarget(AActor* TestTarget, const AActor* AimingOwner) {
     return false;
 }
@@ -79,7 +87,11 @@ bool UCombatUtil::GetReticuleLocation(APawn* Pawn, float Range, float Radius, FR
     return false;
 }
 
-FName UCombatUtil::GetRandomHitPhantomThatIsntInvulnerable(const UObject* WorldContextObject, const AActor* Actor, const FVector& ImpactPoint, float Radius) {
+TArray<ARangedWeapon*> UCombatUtil::GetRangedWeaponsForCharacter(AActor* Target, EEquipmentTarget WeaponTarget, FName TargetSlotNameID) {
+    return TArray<ARangedWeapon*>();
+}
+
+FName UCombatUtil::GetRandomHitPhantomThatIsntInvulnerable(const UObject* WorldContextObject, const AActor* Actor, const FVector& ImpactPoint, const FVector& Origin, float Radius) {
     return NAME_None;
 }
 
@@ -109,6 +121,10 @@ TSubclassOf<UFaction> UCombatUtil::GetFaction(const AActor* Actor) {
 
 FVector UCombatUtil::GetEyePos(ACharacter* Character) {
     return FVector{};
+}
+
+AEquipment* UCombatUtil::GetEquippedItemForCharacter(AActor* Target, FName EquipmentSlot) {
+    return NULL;
 }
 
 float UCombatUtil::GetDamageReductionFromResistanceByDamageClass(const UDamageClass* DamageClass, float DamageResistance, float AttackerLevel) {
@@ -186,7 +202,7 @@ void UCombatUtil::ApplyDamageInfo(UObject* WorldContextObject, FDamageInfo Damag
 void UCombatUtil::ApplyDamage(AActor* CauseActor, AActor* TargetActor, float Damage, float DamageMod, float DamageScalar, int32 PowerOverride, TSubclassOf<UDamageTypeGunfire> DamageType) {
 }
 
-TArray<FVector> UCombatUtil::ApplyCustomWeaponSpread(AActor* Cause, const FVector& Origin, const FVector& End, int32 SprayCount, float Spread, FRandomStream& RandomStream, FCustomWeaponSpread& CustomSpread) {
+TArray<FVector> UCombatUtil::ApplyCustomWeaponSpread(AActor* Cause, const FVector& Origin, const FVector& End, int32 SprayCount, float Spread, FRandomStream& RandomStream, const FCustomWeaponSpread& CustomSpread) {
     return TArray<FVector>();
 }
 

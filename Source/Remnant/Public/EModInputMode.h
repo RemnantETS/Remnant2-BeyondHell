@@ -6,5 +6,6 @@ UENUM(BlueprintType)
 enum class EModInputMode : uint8 {
     Press,
     Release,
+    QuickReleaseAndHold,
 };
 

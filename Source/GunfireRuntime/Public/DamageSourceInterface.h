@@ -41,5 +41,8 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     TSubclassOf<UDamageTypeGunfire> GetDamageType();
     
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void GatherDamageCooldownTags(UPARAM(Ref) TArray<FName>& Tags);
+    
 };
 

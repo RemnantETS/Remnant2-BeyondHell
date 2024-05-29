@@ -5,6 +5,6 @@ UCheatInputSettings::UCheatInputSettings() {
     this->bCheatMenuWaitsFullDuration = false;
     this->GlobalCheatToggleKeys.AddDefaulted(2);
     this->CheatCategories.AddDefaulted(8);
-    this->ActionMappings.AddDefaulted(69);
+    this->ActionMappings.AddDefaulted(78);
 }
 

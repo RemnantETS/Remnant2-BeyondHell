@@ -3,8 +3,10 @@
 #include "EInputDevice.h"
 #include "GameInstanceGunfire.h"
 #include "ERemnantDemoMode.h"
+#include "Templates/SubclassOf.h"
 #include "RemnantGameInstance.generated.h"
 
+class UEntitlementType;
 class URemnantCharacterManager;
 
 UCLASS(Blueprintable, NonTransient)
@@ -15,6 +17,9 @@ public:
     URemnantCharacterManager* CharacterManager;
     
     URemnantGameInstance();
+    UFUNCTION(BlueprintCallable)
+    void SetInFullscreenDialog(bool InDialog);
+    
     UFUNCTION(BlueprintCallable)
     void OnOnlinePrivilegeChecked();
     
@@ -28,7 +33,13 @@ protected:
     UFUNCTION(BlueprintCallable)
     void OnActiveProfileSet();
     
+    UFUNCTION(BlueprintCallable)
+    void OnActiveProfileCleared();
+    
 public:
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void NotifyMissingTravelEntitlements(const TArray<TSubclassOf<UEntitlementType>>& MissingEntitlements);
+    
     UFUNCTION(BlueprintCallable)
     bool IsDemo();
     

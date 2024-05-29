@@ -32,10 +32,21 @@ void AUIHud::OnDialogEnd_Implementation(AUIActor* Dialog) {
 void AUIHud::OnDialogBegin_Implementation(AUIActor* Dialog) {
 }
 
+void AUIHud::OnCinematicEvent(APlayerControllerGunfire* Player, bool bIsInCinematic) {
+}
+
 void AUIHud::LoadLargeIcons(FOnIconsLoaded OnIconsLoaded, FLatentActionInfo LatentInfo) {
 }
 
 bool AUIHud::IsVisible() const {
+    return false;
+}
+
+bool AUIHud::IsExternalOverlayTakingInput() const {
+    return false;
+}
+
+bool AUIHud::IsExternalOverlayActive() const {
     return false;
 }
 

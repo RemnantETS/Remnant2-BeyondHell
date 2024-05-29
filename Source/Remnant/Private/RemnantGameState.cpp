@@ -49,6 +49,7 @@ ARemnantGameState::ARemnantGameState() {
     this->PingManagerType = NULL;
     this->ActivatedCheckpoint = NULL;
     this->DeactivatingCheckpoint = NULL;
+    this->TwitchIntegrationManager = NULL;
     this->PreviouslyActivatingCheckpoint = NULL;
     this->TravelCountdownSource = NULL;
 }

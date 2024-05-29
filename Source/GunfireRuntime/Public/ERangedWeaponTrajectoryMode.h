@@ -6,6 +6,7 @@ UENUM(BlueprintType)
 enum class ERangedWeaponTrajectoryMode : uint8 {
     Socket,
     SocketToAimTarget,
+    SocketToAimTargetIgnoreCharacters,
     Camera,
 };
 

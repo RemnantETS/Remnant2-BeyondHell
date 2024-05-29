@@ -31,6 +31,12 @@ public:
     static void ModifyCrit(UPARAM(Ref) FDamageInfo& Info, float CritChance, float CritDamageMod);
     
     UFUNCTION(BlueprintCallable)
+    static void MarkRequiresClientAuthorization(UPARAM(Ref) FDamageInfo& Info);
+    
+    UFUNCTION(BlueprintCallable)
+    static void MarkClientAuthorizedDamage(UPARAM(Ref) FDamageInfo& Info);
+    
+    UFUNCTION(BlueprintCallable)
     static float GetTotalAppliedDamage(const FDamageInfo& Info);
     
 };

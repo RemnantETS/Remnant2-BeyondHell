@@ -6,6 +6,7 @@ FOnlineSessionDetailsRemnant::FOnlineSessionDetailsRemnant() {
     this->Difficulty = 0;
     this->GameMode = EQuestMode::Campaign;
     this->NumPlayers = 0;
-    this->Platform = EMatchmakingPlatform::Steam;
+    this->Platform = (EMatchmakingPlatform)0;
+
 }
 

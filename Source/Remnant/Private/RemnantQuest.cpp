@@ -16,6 +16,12 @@ bool ARemnantQuest::ShouldBreadcrumb(FZoneLinkInfo ZoneLink) {
     return false;
 }
 
+void ARemnantQuest::SetRespawn_Implementation(const FZoneLinkInfo& Respawn) {
+}
+
+void ARemnantQuest::SetLastCheckpoint_Implementation(const FZoneLinkInfo& Checkpoint) {
+}
+
 void ARemnantQuest::OnRep_Status() {
 }
 
@@ -48,7 +54,15 @@ bool ARemnantQuest::HasRespawn() const {
     return false;
 }
 
+bool ARemnantQuest::HasQuestEntitlements() const {
+    return false;
+}
+
 bool ARemnantQuest::HasLastCheckpoint() const {
+    return false;
+}
+
+bool ARemnantQuest::HasFailedToLoad() const {
     return false;
 }
 
@@ -83,6 +97,9 @@ UInventoryComponent* ARemnantQuest::GetQuestInventory() {
     return NULL;
 }
 
+void ARemnantQuest::GetQuestEntitlements(TArray<TSubclassOf<UEntitlementType>>& OutEntitlements, bool bGetMissingOnly) const {
+}
+
 bool ARemnantQuest::GetObjectQuestValue(UClass* ObjectBP, int32& ObjectValue, float& OutSellScalar, int32& OutPickupValue) {
     return false;
 }
@@ -114,7 +131,11 @@ void ARemnantQuest::DeactivateQuest() {
 void ARemnantQuest::CompleteBreadcrumb(FName BreadcrumbNameID) {
 }
 
-void ARemnantQuest::ActivateQuest() {
+void ARemnantQuest::ActivateQuestItemEvents() {
+}
+
+ERemnantQuestStatus ARemnantQuest::ActivateQuest() {
+    return ERemnantQuestStatus::Unloaded;
 }
 
 void ARemnantQuest::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
@@ -137,13 +158,16 @@ ARemnantQuest::ARemnantQuest() {
     this->Rarity = ERemnantQuestRarity::Common;
     this->MaxUsageCount = 1;
     this->DebugState = ERemnantQuestDebugState::None;
+    this->IsOneShot = false;
+    this->IgnoreTileExclusivity = false;
+    this->IgnoresTileIDRequirement = false;
     this->QuestGameMode = EQuestMode::Campaign;
     this->RequiredAward = NULL;
     this->LevelMin = 0;
     this->LevelMax = 100;
     this->Level = 1;
     this->Difficulty = 1;
-    this->SlotID = -1;
+    this->SlotID = -2;
     this->ZoneID = -1;
     this->RequiredEntitlement = NULL;
     this->bDisableMultiplayer = false;

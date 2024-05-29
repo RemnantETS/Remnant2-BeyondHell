@@ -144,6 +144,7 @@ APortal::APortal() {
     this->bIgnoreHitscanImpactEffects = true;
     this->DefaultHitscanEnterVFX = NULL;
     this->DefaultHitscanExitVFX = NULL;
+    this->bPoolRenderTarget = false;
     this->TargetPortal = NULL;
     this->RenderTarget = NULL;
     this->AttachComponent = NULL;

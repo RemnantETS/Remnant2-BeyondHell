@@ -17,6 +17,9 @@ public:
     void ModifyReticule(AActor* Aimable, UPARAM(Ref) bool& IsAimableDisabled, UPARAM(Ref) bool& ShowDefaultReticule, UPARAM(Ref) bool& ShowDisabledColor) const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void ModifyAimInputDown(const AActor* Aimable, UPARAM(Ref) bool& IsAimInputDown, UPARAM(Ref) bool& IsToggleAim) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     AActor* ModifyAimable(AActor* Aimable) const;
     
 };

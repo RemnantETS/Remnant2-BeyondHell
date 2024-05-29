@@ -1,6 +1,9 @@
 #include "CharacterMovementComponentGunfire.h"
 #include "Templates/SubclassOf.h"
 
+void UCharacterMovementComponentGunfire::SetUseAccelerationForPaths(bool Enabled) {
+}
+
 void UCharacterMovementComponentGunfire::SetSwingConstraint(bool Enabled, const FVector& SwingPoint, float RopeLength) {
 }
 

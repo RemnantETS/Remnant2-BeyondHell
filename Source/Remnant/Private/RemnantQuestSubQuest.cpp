@@ -17,6 +17,8 @@ URemnantQuestSubQuest::URemnantQuestSubQuest() {
     this->QuestType = ERemnantQuestType::Default;
     this->ChanceToSpawn = 100.00f;
     this->Optional = false;
+    this->SubquestIgnoresTileExclusivity = false;
+    this->SubquestIgnoresTileIDRequirement = false;
     this->LevelMin = 0;
     this->LevelRemapping = false;
     this->LevelRemappingMin = 1;

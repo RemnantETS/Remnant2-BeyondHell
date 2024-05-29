@@ -2,9 +2,9 @@
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
 #include "AmbientSoundMix.h"
-#include "InterpolatedSoundMix.h"
 #include "AmbientAudioManager.generated.h"
 
+class UInterpolatedSoundMix;
 class USoundMix;
 
 UCLASS(Blueprintable)

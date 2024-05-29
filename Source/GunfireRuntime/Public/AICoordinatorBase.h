@@ -27,6 +27,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTargeted(AActor* Actor) const;
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsCloselyTargeted(AActor* Actor) const;
+    
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UAICoordinatorBase* GetAICoordinator(UObject* WorldContextObject);
     

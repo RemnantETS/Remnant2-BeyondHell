@@ -66,16 +66,19 @@ bool ARemnantPlayerController::ServerUnlockAccountCurrency_Validate(TSubclassOf<
 void ARemnantPlayerController::ServerStreamCharacterFinalize_Implementation() {
 }
 
-void ARemnantPlayerController::ServerStreamCharacterChunk_Implementation(const TArray<uint8>& CharacterData) {
+void ARemnantPlayerController::ServerStreamCharacterChunk_Implementation(const TArray<uint8>& Chunk) {
 }
 
-void ARemnantPlayerController::ServerStreamCharacterBegin_Implementation(int32 CharacterBlobSize) {
+void ARemnantPlayerController::ServerStreamCharacterBegin_Implementation(int32 DataSize, int32 DataSize_Compressed) {
 }
 
 void ARemnantPlayerController::ServerSetCurrentLock_Implementation(EZoneTravelLock NewLock, bool bNewIsSaving, bool bNewWantsTravelMenuAccess) {
 }
 bool ARemnantPlayerController::ServerSetCurrentLock_Validate(EZoneTravelLock NewLock, bool bNewIsSaving, bool bNewWantsTravelMenuAccess) {
     return true;
+}
+
+void ARemnantPlayerController::ServerSetCrossplayPlatform_Implementation(uint8 ClientCrossplayPlatform) {
 }
 
 void ARemnantPlayerController::ServerSetArchetype_Implementation(const FString& NameOfBP, int32 ArchetypeLevel, int32 GearLevel, int32 Slot) {
@@ -191,6 +194,8 @@ void ARemnantPlayerController::RefreshAccountAwards() {
 void ARemnantPlayerController::QueueManualQuestReward(ARemnantQuest* Quest, const TArray<TSoftClassPtr<AItem>>& Items, bool bSkipDuplicates, bool bAutoEquip, ERemnantQuestRewardType RewardType, int32 Quantity, int32 LevelOverride, bool bIsArchetype, bool bWantsSaveOnAward) {
 }
 
+
+
 void ARemnantPlayerController::OnSessionDisconnected(UWorld* InWorld, UNetDriver* NetDriver) {
 }
 
@@ -244,10 +249,6 @@ bool ARemnantPlayerController::IsAwardingArchetype() const {
     return false;
 }
 
-bool ARemnantPlayerController::HasLicense(const FString& License) {
-    return false;
-}
-
 bool ARemnantPlayerController::HasGivenLicenses() {
     return false;
 }
@@ -298,6 +299,10 @@ UInventoryComponent* ARemnantPlayerController::GetPlayerInventory() const {
     return NULL;
 }
 
+bool ARemnantPlayerController::GetIsAwaitingSpawnLocation() const {
+    return false;
+}
+
 TSubclassOf<UUserWidget> ARemnantPlayerController::GetDeathScreenContextClass() {
     return NULL;
 }
@@ -337,6 +342,9 @@ void ARemnantPlayerController::ClientUpdateFogOfWar_Implementation(int32 ZoneID,
 }
 
 void ARemnantPlayerController::ClientUpdateDeathScreenContextClass_Implementation(TSubclassOf<UUserWidget> ContextClass) {
+}
+
+void ARemnantPlayerController::ClientUpdateAwaitingStartLocation_Implementation(bool bIsFindingSpawnLocation) {
 }
 
 void ARemnantPlayerController::ClientUpdateArchetype_Implementation(TSubclassOf<URemnantArchetype> Archetype, bool bSecondary) {
@@ -441,6 +449,7 @@ void ARemnantPlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProper
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     
     DOREPLIFETIME(ARemnantPlayerController, bPrimaryWeaponToggled);
+    DOREPLIFETIME(ARemnantPlayerController, CrossplayPlatform);
     DOREPLIFETIME(ARemnantPlayerController, MusicState);
     DOREPLIFETIME(ARemnantPlayerController, DeadPawn);
 }
@@ -453,6 +462,7 @@ ARemnantPlayerController::ARemnantPlayerController() {
     this->TravelCleanupDelay = 1.50f;
     this->IntroQuestStartLink = TEXT("Start");
     this->bPrimaryWeaponToggled = false;
+    this->CrossplayPlatform = 0;
     this->CachedArchetype = NULL;
     this->CachedSecondaryArchetype = NULL;
     this->CurrentZoneID = -1;
@@ -460,6 +470,8 @@ ARemnantPlayerController::ARemnantPlayerController() {
     this->DestinationZoneID = -1;
     this->MusicState = EMusicState::Ambient;
     this->Respawning = false;
+    this->bSupportsJoinAtHost = true;
+    this->JoinAtHostTimeout = 30.00f;
     this->DeathScreenContextOverride = NULL;
     this->LoadingState = TEXT("Loading");
     this->PendingTravelState = TEXT("PendingTravel");

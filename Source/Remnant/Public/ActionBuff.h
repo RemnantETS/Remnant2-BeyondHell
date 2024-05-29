@@ -22,7 +22,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float ContextualDialogTriggerRate;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true, ExposeOnSpawn = true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool IgnoreOwnerTimeDilation;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -50,6 +50,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void PauseDuration(bool Paused);
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnAddedFromPersistence();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsDurationPaused() const;

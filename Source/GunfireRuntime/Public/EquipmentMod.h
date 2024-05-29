@@ -4,13 +4,16 @@
 #include "EquipmentModData.h"
 #include "InspectInfo.h"
 #include "Item.h"
+#include "LoadableItemAsset.h"
 #include "Templates/SubclassOf.h"
 #include "EquipmentMod.generated.h"
 
 class AActor;
+class ACharacterGunfire;
 class AEquipment;
 class AEquipmentMod;
 class UInventoryComponent;
+class UObject;
 
 UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API AEquipmentMod : public AItem, public IDamageSourceInterface {
@@ -41,9 +44,15 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     uint8 EquippedLevel;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FLoadableItemAsset> EquipmentModAssets;
+    
 public:
     AEquipmentMod();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool ValidateAttach(ACharacterGunfire* ToCharacter) const;
     
     UFUNCTION(BlueprintCallable)
     static bool UnequipMod(UInventoryComponent* Inventory, int32 ItemId, uint8 Slot, bool AddToInventory);
@@ -54,6 +63,14 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnPostComputeStats() const;
     
+protected:
+    UFUNCTION(BlueprintCallable)
+    void OnFinishLoadingAssets();
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnEquipmentModAssetsLoaded();
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnEquipmentInHandEvent(bool InHand);
     
@@ -87,6 +104,14 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool GetInspectInfoForModBySlotName(AActor* Actor, UInventoryComponent* Inventory, int32 ItemId, FName Slot, FInspectInfo& Rtn);
     
+protected:
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UClass* GetEquipmentModAssetClass(FName AssetName) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UObject* GetEquipmentModAsset(FName AssetName) const;
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     AEquipment* GetEquipment() const;
     
@@ -98,6 +123,13 @@ public:
     
     UFUNCTION(BlueprintCallable)
     static bool EquipMod(UInventoryComponent* Inventory, int32 ItemId, uint8 Slot, TSubclassOf<AEquipmentMod> Mod, uint8 ModLevel, int32 ModItemID);
+    
+    UFUNCTION(BlueprintCallable)
+    static bool CanEquipMod(ACharacterGunfire* Character, TSubclassOf<AEquipmentMod> Mod);
+    
+protected:
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool AreEquipmentModAssetsLoaded() const;
     
     
     // Fix for true pure virtual functions not being implemented

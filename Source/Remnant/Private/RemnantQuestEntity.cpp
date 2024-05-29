@@ -58,6 +58,7 @@ URemnantQuestEntity::URemnantQuestEntity() {
     this->SpawnTable = NULL;
     this->Transient = false;
     this->ForceSpawnIfNotFound = false;
+    this->WarpToSpawnPointOnLoad = false;
     this->PersistDestroyed = true;
     this->LootSpawnTable = NULL;
     this->Faction = NULL;

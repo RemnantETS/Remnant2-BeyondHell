@@ -22,6 +22,9 @@ public:
     
     UChallengeReward();
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool HasBeenAwarded(AActor* Recepient);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool GiveReward(AActor* Recepient);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)

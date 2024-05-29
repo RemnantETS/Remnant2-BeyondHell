@@ -19,6 +19,12 @@ void UDamageInfoUtil::ModifyDamage(FDamageInfo& Info, float Damage, float Damage
 void UDamageInfoUtil::ModifyCrit(FDamageInfo& Info, float CritChance, float CritDamageMod) {
 }
 
+void UDamageInfoUtil::MarkRequiresClientAuthorization(FDamageInfo& Info) {
+}
+
+void UDamageInfoUtil::MarkClientAuthorizedDamage(FDamageInfo& Info) {
+}
+
 float UDamageInfoUtil::GetTotalAppliedDamage(const FDamageInfo& Info) {
     return 0.0f;
 }

@@ -1,14 +1,14 @@
 #include "ItemType.h"
 #include "Templates/SubclassOf.h"
 
-void UItemType::SortQueryResults(const TArray<UInventoryComponent*>& Inventories, TArray<FItemQueryResult>& Results, const TArray<EItemQuerySortMethod>& SortMethods) {
+void UItemType::SortQueryResults(const TArray<UInventoryComponent*>& Inventories, TArray<FItemQueryResult>& Results, const TArray<EItemQuerySortMethod>& SortMethods)  {
 }
 
-TArray<FItemQueryResult> UItemType::QueryRelevantItemsEx(const TArray<UInventoryComponent*>& Inventories, const FItemQueryFilter& Filter, TArray<EItemQuerySortMethod> SortMethods) {
+TArray<FItemQueryResult> UItemType::QueryRelevantItemsEx(const TArray<UInventoryComponent*>& Inventories, const FItemQueryFilter& Filter, TArray<EItemQuerySortMethod> SortMethods)  {
     return TArray<FItemQueryResult>();
 }
 
-TArray<FItemQueryResult> UItemType::QueryRelevantItems(const TArray<UInventoryComponent*>& Inventories, const FItemQueryFilter& Filter, EItemQuerySortMethod SortMethod) {
+TArray<FItemQueryResult> UItemType::QueryRelevantItems(const TArray<UInventoryComponent*>& Inventories, const FItemQueryFilter& Filter, EItemQuerySortMethod SortMethod)  {
     return TArray<FItemQueryResult>();
 }
 

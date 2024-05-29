@@ -15,6 +15,7 @@ class AActor;
 class UDamageTypeGunfire;
 class UObject;
 class UPrimitiveComponent;
+class UWeaponPhantomComponent;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UWeaponPhantomComponent : public UActorComponent, public IManagedTickInterface {
@@ -77,6 +78,9 @@ public:
 protected:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerApplyDamage(const FReplicatedHit& Hit, const FActiveWeaponPhantom& Phantom, bool bIsEnvironmentHit);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerApplyClientValidatedDamage(UWeaponPhantomComponent* Component, const FReplicatedHit& Hit, const FActiveWeaponPhantom& Phantom, bool bIsEnvironmentHit, bool bEvaded, bool bWasEvadeCounter, const UObject* EvadeSource);
     
 public:
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))

@@ -57,6 +57,9 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRangedWeaponActiveDelegate OnActivateMod;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool IgnoreWindUp;
+    
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_ModActive, meta=(AllowPrivateAccess=true))
     EModActiveState ActiveState;
@@ -83,6 +86,9 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
+    void UseCharges(int32 NumCharges);
+    
+    UFUNCTION(BlueprintCallable)
     void UseCharge();
     
     UFUNCTION(BlueprintCallable)
@@ -94,11 +100,20 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
+    void SetOverrideWeaponModeFromMod();
+    
+    UFUNCTION(BlueprintCallable)
     void SetModActive(EModActiveState ModState, int32 ActionID, bool bForceNotify);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetIgnoreWindUp(bool Ignore);
     
 protected:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
-    void ServerUseWithAim(FVector_NetQuantize AimOrigin, FVector_NetQuantize AimEnd);
+    void ServerUseWithAim(FVector_NetQuantize AimOrigin, FVector_NetQuantize AimEnd, bool bAltFireHeld);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerUseHeld();
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerUse();
@@ -139,9 +154,15 @@ protected:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void MulticastUse();
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsModSecondaryUse() const;
+    
 public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsModActive() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool HasCharges() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     ARemnantWeaponMod* GetWeaponMod() const;

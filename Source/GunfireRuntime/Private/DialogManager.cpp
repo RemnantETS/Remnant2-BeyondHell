@@ -9,7 +9,7 @@ bool UDialogManager::StopActiveDialog() {
     return false;
 }
 
-UDialogInstance* UDialogManager::PlayDialogFromTargetSoundSet(AActor* Source, FName SoundID, const FGunfireAudioPlayParams& PlayParams, const FGunfireAudioAttachParams& AttachParams, bool IgnoreVocalRange, bool UseFacialAnimation, TSubclassOf<UDialog_Emote> Emote) {
+UDialogInstance* UDialogManager::PlayDialogFromTargetSoundSet(AActor* Source, FName SoundID, const FGunfireAudioPlayParams& PlayParams, const FGunfireAudioAttachParams& AttachParams, bool IgnoreVocalRange, bool UseFacialAnimation, TSubclassOf<UDialog_Emote> Emote, bool LocalOnly) {
     return NULL;
 }
 

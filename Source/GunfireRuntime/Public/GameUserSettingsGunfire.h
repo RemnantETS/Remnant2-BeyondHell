@@ -18,6 +18,9 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FUserSettingBuiltEvent OnSettingsBuilt;
     
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FUserSettingBuiltEvent OnSettingsInitialized;
+    
     UGameUserSettingsGunfire();
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnSetUserSettingInt(const FName& NameID, int32 Value);
@@ -26,13 +29,19 @@ public:
     void OnSetUserSettingFloat(const FName& NameID, int32 Value);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool NeedsHardwareBenchmark() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<UUserSetting*> GetSettingsForCategory(const FName& Category) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     void GetInputConflicts(URebindableInputSetting* Setting, FGenericInput Key, const TArray<FName>& Categories, TArray<URebindableInputSetting*>& Conflicts);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    UUserSetting* FindUserSetting(const FName& NameID) const;
+    UUserSetting* FindUserSetting(FName NameID) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool AreSettingsInitialized() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AllowsInputRebindings() const;

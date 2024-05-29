@@ -21,8 +21,11 @@ public:
     EMusicState ManualState;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FMusicSetInstance> ActiveMusicSets;
+    
+    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<TWeakObjectPtr<UObject>> ConversationRefObjects;
     
 public:
     UMusicManager();

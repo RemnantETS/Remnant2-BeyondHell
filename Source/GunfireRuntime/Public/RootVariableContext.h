@@ -28,7 +28,7 @@ public:
     void K2_GetContextVariables(FName Name, TArray<UVariableComponent*>& VariablesOut) const;
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static URootVariableContext* GetInstance(const UObject* WorldContextObject);
+    static URootVariableContext* GetInstance(const UObject* WorldContextObject, bool bCreateIfMissing);
     
 };
 

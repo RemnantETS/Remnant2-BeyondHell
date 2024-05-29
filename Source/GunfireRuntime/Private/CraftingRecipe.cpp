@@ -7,5 +7,6 @@ UCraftingRecipe::UCraftingRecipe() {
     this->ItemLevel = 0;
     this->ItemQuantity = 1;
     this->SharedCraftedItem = false;
+    this->MatchToHighestLevelIngredient = false;
 }
 

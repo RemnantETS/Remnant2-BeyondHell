@@ -26,6 +26,9 @@ public:
     FText Group;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bMainMenuOnly;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FString ConsoleVariable;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -33,6 +36,9 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FUserSettingAppliedEvent OnApplied;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FUserSettingAppliedEvent OnChanged;
     
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
@@ -44,7 +50,19 @@ public:
     void ResetToDefault();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsVisible() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsEnabled() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FText GetLabel() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FText GetDisplayValue() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FText GetDescription() const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void Apply();

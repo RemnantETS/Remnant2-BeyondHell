@@ -14,6 +14,7 @@
 
 class AActor;
 class UDamageTypeGunfire;
+class UWeaponPhantomComponent;
 
 UINTERFACE(Blueprintable, MinimalAPI)
 class UKinematicInterface : public UInterface {
@@ -27,13 +28,19 @@ public:
     bool ShouldTargetImpactPoint(const FHitResult& Hit) const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    bool OnProjectileHit(AActor* Projectile, const FHitResult& Hit, UPARAM(Ref) FKinematicInfo& Info);
+    bool OnKinematicProjectileHit(AActor* Projectile, const FHitResult& Hit, UPARAM(Ref) FKinematicInfo& Info);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnKinematicPhantomHit(UWeaponPhantomComponent* WeaponPhantom, UPARAM(Ref) FHitResult& Hit);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool OnHitscanHit(AActor* HitscanOwner, AActor* Cause, const FHitResult& Hit, const FDamageInfo& DamageInfo, bool bIsFinalHit, UPARAM(Ref) FImpactEffectSelector& InOutImpactEffectOverride);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ModifyWeaponTrace(AActor* Cause, const FWeaponTraceSegment& CurrentSegment, const FVector& Size, UPARAM(Ref) FWeaponTracePath& InOutPath);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool ModifyPhantomCooldownActor(AActor*& OutActor);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ModifyImpactEffects(const FHitResult& Hit, const FDamageInfo& DamageInfo, bool bIsFinalHit, UPARAM(Ref) FImpactEffectDescriptor& InOutImpactEffectOverride);

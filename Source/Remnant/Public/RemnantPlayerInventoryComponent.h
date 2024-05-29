@@ -39,6 +39,9 @@ public:
     void RemoveItemTypeOverride(TSubclassOf<AItem> ItemBP);
     
     UFUNCTION(BlueprintCallable)
+    void RemoveItemsOnDeath();
+    
+    UFUNCTION(BlueprintCallable)
     int32 ModifyLevelForNewItem(TSubclassOf<AItem> ItemBP, int32 ItemLevel);
     
     UFUNCTION(BlueprintCallable)

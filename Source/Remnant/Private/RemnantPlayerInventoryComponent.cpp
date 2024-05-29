@@ -4,6 +4,9 @@
 void URemnantPlayerInventoryComponent::RemoveItemTypeOverride(TSubclassOf<AItem> ItemBP) {
 }
 
+void URemnantPlayerInventoryComponent::RemoveItemsOnDeath() {
+}
+
 int32 URemnantPlayerInventoryComponent::ModifyLevelForNewItem(TSubclassOf<AItem> ItemBP, int32 ItemLevel) {
     return 0;
 }

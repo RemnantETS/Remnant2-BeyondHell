@@ -38,7 +38,7 @@ public:
     bool StopActiveDialog();
     
     UFUNCTION(BlueprintCallable)
-    UDialogInstance* PlayDialogFromTargetSoundSet(AActor* Source, FName SoundID, const FGunfireAudioPlayParams& PlayParams, const FGunfireAudioAttachParams& AttachParams, bool IgnoreVocalRange, bool UseFacialAnimation, TSubclassOf<UDialog_Emote> Emote);
+    UDialogInstance* PlayDialogFromTargetSoundSet(AActor* Source, FName SoundID, const FGunfireAudioPlayParams& PlayParams, const FGunfireAudioAttachParams& AttachParams, bool IgnoreVocalRange, bool UseFacialAnimation, TSubclassOf<UDialog_Emote> Emote, bool LocalOnly);
     
     UFUNCTION(BlueprintCallable)
     UDialogInstance* PlayDialogFromSound(AActor* Source, FSoftSoundGunfire Dialog);

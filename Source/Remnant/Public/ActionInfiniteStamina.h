@@ -15,7 +15,7 @@ protected:
     float UpdateFrequency;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FName InfiniteStaminaTag;
+    TArray<FName> OutOfCombatTags;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_HasInfiniteStamina, meta=(AllowPrivateAccess=true))
     bool bHasInfiniteStamina;

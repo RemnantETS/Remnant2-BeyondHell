@@ -196,6 +196,9 @@ public:
     
     UCharacterMovementComponentGunfire();
     UFUNCTION(BlueprintCallable)
+    void SetUseAccelerationForPaths(bool Enabled);
+    
+    UFUNCTION(BlueprintCallable)
     void SetSwingConstraint(bool Enabled, const FVector& SwingPoint, float RopeLength);
     
     UFUNCTION(BlueprintCallable)

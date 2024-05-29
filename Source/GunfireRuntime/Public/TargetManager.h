@@ -37,5 +37,11 @@ public:
     UFUNCTION(BlueprintCallable)
     static float K2_GetScoreForTargetActor(AActor* Source, AActor* Target, float Yaw, float Pitch, float Range, float HorizontalArc, float VerticalArc, bool CullNotVisible);
     
+    UFUNCTION(BlueprintCallable)
+    static FVector GetSoftTargetLocation(AActor* Target, const FVector& OriginLocation);
+    
+    UFUNCTION(BlueprintCallable)
+    static FVector GetBestTargetingLocationOnActorForTarget(AActor* Source, const FVector& TargetLocation);
+    
 };
 

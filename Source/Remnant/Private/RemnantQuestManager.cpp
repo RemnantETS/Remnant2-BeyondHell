@@ -4,7 +4,17 @@ TArray<FRemnantQuestEntry> URemnantQuestManager::SortQuestList(const TArray<FRem
     return TArray<FRemnantQuestEntry>();
 }
 
+void URemnantQuestManager::ResetTransientRootQuests() {
+}
+
+void URemnantQuestManager::MarkOneShotRolled(const FRemnantQuestEntry& Quest) {
+}
+
 bool URemnantQuestManager::IsQuestValid(ARemnantQuest* Quest, AActor* Actor) {
+    return false;
+}
+
+bool URemnantQuestManager::IsOneShotRolled(const FRemnantQuestEntry& Quest) {
     return false;
 }
 
@@ -29,6 +39,10 @@ TArray<FRemnantQuestEntry> URemnantQuestManager::GetRegisteredQuests() {
 }
 
 FRemnantQuestEntry URemnantQuestManager::GetRegisteredQuestByID(const FString& QuestID) {
+    return FRemnantQuestEntry{};
+}
+
+FRemnantQuestEntry URemnantQuestManager::GetRegisteredQuestByClass(TSoftClassPtr<ARemnantQuest> QuestBP) {
     return FRemnantQuestEntry{};
 }
 

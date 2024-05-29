@@ -1,5 +1,9 @@
 #include "ChallengeReward.h"
 
+bool UChallengeReward::HasBeenAwarded_Implementation(AActor* Recepient) {
+    return false;
+}
+
 bool UChallengeReward::GiveReward_Implementation(AActor* Recepient) {
     return false;
 }

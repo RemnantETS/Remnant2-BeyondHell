@@ -19,6 +19,7 @@ void UProjectileMovementComponentGunfire::SetIgnoreNextPenetrate(bool bShouldIgn
 
 UProjectileMovementComponentGunfire::UProjectileMovementComponentGunfire() {
     this->Penetrate = false;
+    this->ZeroPenetrationAdjustment = false;
     this->AntiPenetrateSpeed = 600.00f;
     this->bMaintainInitialRelativeRotation = false;
     this->bApplyPostBounceGravityScale = false;

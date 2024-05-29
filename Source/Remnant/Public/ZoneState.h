@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+#include "MapGenAttribute.h"
 #include "EZoneStatus.h"
 #include "ZoneState.generated.h"
 
@@ -18,6 +19,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UWorld> SkyBox;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FMapGenAttribute> Attributes;
     
     REMNANT_API FZoneState();
 };

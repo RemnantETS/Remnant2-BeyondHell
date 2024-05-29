@@ -19,5 +19,6 @@ FWeaponPhantomInfo::FWeaponPhantomInfo() {
     this->bIgnoreDistanceChecks = false;
     this->CollisionCheckMethod = EWeaponPhantomCollisionCheckMethod::ClosestPoint;
     this->CollisionCheckRadius = 0.00f;
+    this->bServerOnlySimulation = false;
 }
 

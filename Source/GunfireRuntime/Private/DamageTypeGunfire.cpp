@@ -21,6 +21,7 @@ UDamageTypeGunfire::UDamageTypeGunfire() {
     this->NoBlockCounter = false;
     this->Evadable = true;
     this->HitFriendly = false;
+    this->CanBeLethal = true;
     this->Modifiable = true;
     this->FriendlyDamageScalar = 0.25f;
     this->FriendlyDamageScalarOverridesGameScalar = false;

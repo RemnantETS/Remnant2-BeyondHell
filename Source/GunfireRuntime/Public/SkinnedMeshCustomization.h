@@ -3,9 +3,12 @@
 #include "ActorCustomizationMaterialParam.h"
 #include "ActorCustomizationMaterialReplacement.h"
 #include "MeshCustomizationBase.h"
+#include "Templates/SubclassOf.h"
 #include "SkinnedMeshCustomization.generated.h"
 
 class UAnimInstance;
+class UClothingSimulationFactory;
+class UPhysicsAsset;
 class USkeletalMesh;
 
 UCLASS(Blueprintable)
@@ -14,6 +17,12 @@ class GUNFIRERUNTIME_API USkinnedMeshCustomization : public UMeshCustomizationBa
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<USkeletalMesh> Mesh;
+    
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<UPhysicsAsset> PhysicsAsset;
+    
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UClothingSimulationFactory> ClothingSimulationFactory;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bShouldOverrideAnimInstance;

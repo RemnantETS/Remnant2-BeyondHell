@@ -15,6 +15,7 @@ enum class EPlayerTravelState : uint8 {
     WaitingForClientToLoad,
     FinalizingTravel,
     WaitingForClient,
+    FindingStartLocation,
     LoadingRootQuest,
     LoadingDestinationZone,
 };

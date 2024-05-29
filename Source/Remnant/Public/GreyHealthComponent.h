@@ -25,6 +25,9 @@ public:
     FName GreyHealthBonusSegments;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName ForcedGreyHealthPercentStatName;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 InitialGreyhealthSegments;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -46,7 +49,7 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool GreyHealthDisabled;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_GreyHealth, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_GreyHealth, meta=(AllowPrivateAccess=true))
     TArray<float> GreyHealthSegments;
     
 public:
@@ -61,6 +64,9 @@ protected:
     void OnRep_GreyHealth(const TArray<float>& PreviousSegments);
     
 public:
+    UFUNCTION(BlueprintCallable)
+    void OnPostComputeStats();
+    
     UFUNCTION(BlueprintCallable)
     void OnOwnerHealthRegen(ACharacterGunfire* Character, float RegenAmount);
     
@@ -79,11 +85,17 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetMaxSegments() const;
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    float GetHealableGreyHealth() const;
+    
     UFUNCTION(BlueprintCallable)
     static UGreyHealthComponent* GetGreyHealthComponent(AActor* Actor);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetGreyHealth() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    float GetForcedGreyHealthPercent() const;
     
     UFUNCTION(BlueprintCallable)
     FString GetDebugInfo(int32 DebugLevel);

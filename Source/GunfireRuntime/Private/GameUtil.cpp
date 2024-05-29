@@ -1,6 +1,9 @@
 #include "GameUtil.h"
 #include "Templates/SubclassOf.h"
 
+void UGameUtil::XSSCollectGarbageIfNeeded() {
+}
+
 bool UGameUtil::WasComponentRecentlyRenderedOnScreen(UPrimitiveComponent* Component, float Tolerance) {
     return false;
 }
@@ -217,6 +220,10 @@ bool UGameUtil::IsHDREnabled() {
     return false;
 }
 
+bool UGameUtil::IsActorInPersistentLevel(AActor* Actor) {
+    return false;
+}
+
 FVector UGameUtil::InvokeVectorGetter(UObject* Object, FName EventName) {
     return FVector{};
 }
@@ -236,7 +243,7 @@ bool UGameUtil::InvokeCondition(UObject* Object, FName EventName) {
     return false;
 }
 
-TArray<USceneComponent*> UGameUtil::HideVisibleComponents(AActor* Actor, TSubclassOf<USceneComponent> ComponentClass, bool RecurseChildren) {
+TArray<USceneComponent*> UGameUtil::HideVisibleComponents(AActor* Actor, TSubclassOf<USceneComponent> ComponentClass, bool RecurseChildren, const TArray<TSoftClassPtr<AActor>>& IgnoreClasses) {
     return TArray<USceneComponent*>();
 }
 
@@ -426,7 +433,7 @@ bool UGameUtil::CharacterHasWindowOrTag(ACharacterGunfire* Character, FName Requ
 void UGameUtil::CenterViewportCursor(const APlayerController* PlayerController) {
 }
 
-FVector UGameUtil::CalculateTraversableTeleportLocation(const UObject* WorldContextObject, ACharacter* Character, FVector AimStart, FVector AimEnd, float AimObstacleTolerance, float GroundDistance, float CliffTolerance, bool bConstrainToLedges, float ProbeDistance, float StuckCheckHeightOffset, float FlatSurfaceDistance, bool bDebugDraw) {
+FVector UGameUtil::CalculateTraversableTeleportLocation(const UObject* WorldContextObject, ACharacter* Character, FVector AimStart, FVector AimEnd, const TArray<TEnumAsByte<ETraceTypeQuery>>& AdditionalChannels, float AimObstacleTolerance, float GroundDistance, float CliffTolerance, bool bConstrainToLedges, float ProbeDistance, float StuckCheckHeightOffset, float FlatSurfaceDistance, bool bDebugDraw) {
     return FVector{};
 }
 

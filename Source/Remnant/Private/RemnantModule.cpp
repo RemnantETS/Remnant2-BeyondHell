@@ -1,3 +1,3 @@
 #include "Modules/ModuleManager.h"
 
-IMPLEMENT_PRIMARY_GAME_MODULE(FDefaultGameModuleImpl, Remnant, "Remnant2");
+IMPLEMENT_MODULE(FDefaultGameModuleImpl, Remnant);

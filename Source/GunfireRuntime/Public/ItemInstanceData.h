@@ -17,8 +17,14 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FItemDelegate OnChanged;
     
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FItemDelegate OnVisuallyChanged;
+    
     UItemInstanceData();
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+    
+    UFUNCTION(BlueprintCallable)
+    void OnRep_MinorChange();
     
     UFUNCTION(BlueprintCallable)
     void OnRep_InstanceData();

@@ -63,6 +63,9 @@ public:
     bool IsMaterialResisted(UPhysicalMaterial* PhysicsMaterial);
     
     UFUNCTION(BlueprintCallable)
+    UPhysicalMaterial* GetMaterialForHitLocation(FName HitLocation);
+    
+    UFUNCTION(BlueprintCallable)
     FDamageInfo GetLastHitInfo();
     
     UFUNCTION(BlueprintCallable)

@@ -7,6 +7,7 @@
 
 class AGameStateGunfire;
 class APlayerState;
+class UInstancedObjectReplicationManager;
 class UObject;
 class USequencerManager;
 class UTimeDilationManager;
@@ -27,7 +28,10 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USequencerManager* SequencerManager;
-    
+    /*
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UInstancedObjectReplicationManager* InstancedObjectRepManager;
+    */
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<APlayerState*> JoinQueue;
     

@@ -8,6 +8,7 @@
 #include "EquipmentModSlot.h"
 #include "InHandDelegateDelegate.h"
 #include "Item.h"
+#include "LoadableItemAsset.h"
 #include "SoundGunfire.h"
 #include "Equipment.generated.h"
 
@@ -17,6 +18,7 @@ class AUIHud;
 class UActorCustomizationComponent;
 class UAnimInstanceGunfire;
 class UInventoryComponent;
+class UObject;
 class UStatsComponent;
 
 UCLASS(Blueprintable)
@@ -42,6 +44,15 @@ public:
     bool UseEquipmentAnimTimings;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool FallbackToCharacterTimings;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool StopAnimsRegardlessOfTimingTarget;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bSupportSlaveAnimations;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FEquipmentModSlot> ModSlots;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -55,6 +66,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FSoundGunfire EquipSound;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FLoadableItemAsset> EquipmentAssets;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UStatsComponent* StatsComp;
@@ -165,8 +179,14 @@ protected:
     void OnHitTarget(const FDamageInfo& DamageInfo);
     
 public:
+    UFUNCTION(BlueprintCallable)
+    void OnFinishLoadingAssets();
+    
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnEquipped();
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnEquipmentAssetsLoaded();
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnDetached();
@@ -240,6 +260,12 @@ public:
     AEquipmentMod* GetEquipmentMod(uint8 Slot);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    UClass* GetEquipmentAssetClass(FName AssetName) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UObject* GetEquipmentAsset(FName AssetName) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     FName GetCurrentAnimation() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -262,6 +288,9 @@ protected:
     void ComputeCharacterStats();
     
 public:
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool AreAssetsLoaded() const;
+    
     UFUNCTION(BlueprintCallable)
     void Activate();
     

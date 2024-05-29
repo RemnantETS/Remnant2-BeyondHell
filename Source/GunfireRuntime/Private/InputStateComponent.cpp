@@ -83,6 +83,10 @@ ButtonEvent UInputStateComponent::GetButtonStateByName(const FName& Name) const 
     return ButtonEvent::None;
 }
 
+bool UInputStateComponent::CheckForEventByName(const FName& Name, ButtonEvent Event, float Window) const {
+    return false;
+}
+
 void UInputStateComponent::AddButtonListener(const FName& Name, const FInputButtonDelegate& Event) {
 }
 

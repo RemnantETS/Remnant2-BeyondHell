@@ -7,7 +7,7 @@
 class UTrait;
 
 USTRUCT(BlueprintType)
-struct FTraitInfo {
+struct GUNFIRERUNTIME_API FTraitInfo {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -37,6 +37,6 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UTrait* TraitInstance;
     
-    GUNFIRERUNTIME_API FTraitInfo();
+    FTraitInfo();
 };
 

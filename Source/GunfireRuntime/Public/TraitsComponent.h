@@ -40,7 +40,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 UnlockedTraitLevel;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, SaveGame, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_TraitPoints, meta=(AllowPrivateAccess=true))
     int32 TraitPoints;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -90,6 +90,9 @@ public:
     UFUNCTION(BlueprintCallable)
     void SetLevelMod(TSubclassOf<UTrait> TraitBP, uint8 LevelMod, ETraitPointModType ModType, bool bOverrideExistingLevel);
     
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void Server_CorrectTraitPoints(int32 InTraitPoints);
+    
     UFUNCTION(BlueprintCallable)
     void RemoveTraitModifier(TSubclassOf<UTrait> TraitBP, uint8 LevelMod, uint8 MaxLevelMod, ETraitPointModType ModType);
     
@@ -110,6 +113,9 @@ protected:
     void OnRep_Traits();
     
     UFUNCTION(BlueprintCallable)
+    void OnRep_TraitPoints();
+    
+    UFUNCTION(BlueprintCallable)
     void OnLevelUp();
     
     UFUNCTION(BlueprintCallable)
@@ -127,6 +133,12 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void K2_UnlockTraitSoft(TSoftClassPtr<UTrait> TraitBP, const FTraitDeferredDelegate& OnUnlockedTrait, int32 StartingLevel, bool bAllowAutoEquip);
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FTraitInfo K2_GetTraitInfoForSlot(int32 SlotIndex) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FTraitInfo K2_GetTraitInfo(TSoftClassPtr<UTrait> TraitBP) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsTraitTransient(TSubclassOf<UTrait> TraitBP) const;
@@ -160,12 +172,6 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetTraitInstanceData(TSubclassOf<UTrait> TraitBP);
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure)
-    FTraitInfo GetTraitInfoForSlot(int32 SlotIndex) const;
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure)
-    FTraitInfo GetTraitInfo(TSoftClassPtr<UTrait> TraitBP) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetTotalArchetypeLevel();

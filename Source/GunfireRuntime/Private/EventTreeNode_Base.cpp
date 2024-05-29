@@ -8,7 +8,7 @@ UEventTreeNode_Base::UEventTreeNode_Base() {
     this->Enabled = true;
     this->DoOnce = false;
     this->DoOnceExpiration = -1.00f;
-    this->Seed = 19126;
+    this->Seed = 31055;
     this->UniqueId = 0;
 }
 

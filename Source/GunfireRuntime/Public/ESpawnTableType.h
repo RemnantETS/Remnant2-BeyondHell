@@ -9,5 +9,6 @@ enum class ESpawnTableType : uint8 {
     TableGroup,
     IndividualChance,
     IndividualChanceOneShot,
+    IndividualChanceSpawnOnce,
 };
 

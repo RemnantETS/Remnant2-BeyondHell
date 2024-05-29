@@ -24,6 +24,7 @@ AAIPointOfInterest::AAIPointOfInterest() {
     this->CooldownMin = 5.00f;
     this->CooldownMax = 20.00f;
     this->MaxDistance = 2000.00f;
+    this->MaxDistanceToPOI = -1.00f;
     this->UsePathDistance = false;
     this->ScopedToLevel = true;
     this->PatrolPath = NULL;

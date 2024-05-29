@@ -5,12 +5,14 @@
 #include "EDialogBeginMethod.h"
 #include "EDialogLocation.h"
 #include "HudDialogEventDelegate.h"
+#include "OnExternalOverlayChangeEventDelegate.h"
 #include "OnHudEventDelegateDelegate.h"
 #include "OnIconsLoadedDelegate.h"
 #include "Templates/SubclassOf.h"
 #include "UIHud.generated.h"
 
 class APawn;
+class APlayerControllerGunfire;
 class AUIActor;
 class UObject;
 
@@ -31,6 +33,9 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FHudDialogEvent OnHudDialogRemoved;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnExternalOverlayChangeEvent OnExternalOverlayChange;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bAutoHideUMGWidgetsOnHidden;
@@ -78,11 +83,22 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnDialogBegin(AUIActor* Dialog);
     
+protected:
+    UFUNCTION(BlueprintCallable)
+    void OnCinematicEvent(APlayerControllerGunfire* Player, bool bIsInCinematic);
+    
+public:
     UFUNCTION(BlueprintCallable, meta=(Latent, LatentInfo="LatentInfo"))
     void LoadLargeIcons(FOnIconsLoaded OnIconsLoaded, FLatentActionInfo LatentInfo);
     
     UFUNCTION(BlueprintCallable, BlueprintCosmetic, BlueprintPure)
     bool IsVisible() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsExternalOverlayTakingInput() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsExternalOverlayActive() const;
     
     UFUNCTION(BlueprintCallable)
     void InsertUIActor(const AUIActor* UIActor, int32 StackIndex);

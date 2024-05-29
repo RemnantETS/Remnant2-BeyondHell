@@ -10,6 +10,9 @@ class REMNANT_API URemnantOnlineUtil : public UObject {
     GENERATED_BODY()
 public:
     URemnantOnlineUtil();
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    static void UpdateSessionCrossplayPlatformSetting(const UObject* WorldContextObject);
+    
     UFUNCTION(BlueprintCallable)
     static void SetModeFilter(int32 Mode);
     

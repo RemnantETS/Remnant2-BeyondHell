@@ -57,6 +57,10 @@ bool AAIControllerGunfire::IsTargetLocked() const {
     return false;
 }
 
+bool AAIControllerGunfire::IsActorCurrentlyRelevant(AActor* TestActor) const {
+    return false;
+}
+
 bool AAIControllerGunfire::HasLineOfSightToAnyPlayer() const {
     return false;
 }

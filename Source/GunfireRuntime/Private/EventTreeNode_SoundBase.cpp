@@ -1,6 +1,6 @@
 #include "EventTreeNode_SoundBase.h"
 
-void UEventTreeNode_SoundBase::OnFinishedWaiting(UEventTreeComponent* Component) const {
+void UEventTreeNode_SoundBase::OnFinishedWaiting(UEventTreeComponent* Component) {
 }
 
 UEventTreeNode_SoundBase::UEventTreeNode_SoundBase() {

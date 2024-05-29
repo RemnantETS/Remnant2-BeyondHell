@@ -22,7 +22,7 @@ void UInputRebindings::AddActionRebinding(const FInputActionKeyMapping& Action) 
 }
 
 UInputRebindings::UInputRebindings() {
-    this->ActionRebindings.AddDefaulted(31);
+    this->ActionRebindings.AddDefaulted(34);
     this->AxisRebindings.AddDefaulted(5);
 }
 

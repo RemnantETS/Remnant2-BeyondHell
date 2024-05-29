@@ -22,6 +22,14 @@ float UTargetManager::K2_GetScoreForTargetActor(AActor* Source, AActor* Target, 
     return 0.0f;
 }
 
+FVector UTargetManager::GetSoftTargetLocation(AActor* Target, const FVector& OriginLocation) {
+    return FVector{};
+}
+
+FVector UTargetManager::GetBestTargetingLocationOnActorForTarget(AActor* Source, const FVector& TargetLocation) {
+    return FVector{};
+}
+
 UTargetManager::UTargetManager() {
 }
 

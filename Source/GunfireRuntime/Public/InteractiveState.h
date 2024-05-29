@@ -8,6 +8,7 @@
 #include "EInteractiveConvergeMode.h"
 #include "EInteractiveInitiator.h"
 #include "EInteractiveType.h"
+#include "EValidationShapeMethod.h"
 #include "InteractiveConditions.h"
 #include "InteractiveState.generated.h"
 
@@ -103,6 +104,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EInteractiveConvergeMode ConvergeMode;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bAttachToInteractNode;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool PlayInteractAfterFinishedConverging;
@@ -202,6 +206,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName ValidateShape;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EValidationShapeMethod ValidationShapeMethod;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FActorStateID> ValidStateIDs;

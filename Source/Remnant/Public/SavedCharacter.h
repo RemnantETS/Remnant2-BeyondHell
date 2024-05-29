@@ -8,6 +8,7 @@
 #include "ELastHostType.h"
 #include "ERemnantCharacterType.h"
 #include "EntitlementInstance.h"
+#include "LoadoutRecord.h"
 #include "SavedEquipmentVisual.h"
 #include "SavedCharacter.generated.h"
 
@@ -79,6 +80,9 @@ public:
     int32 PowerLevel;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    int32 ItemLevel;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     TArray<FName> Keys;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
@@ -115,6 +119,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     bool bHasEntitledArchetype;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    int32 LastSavedTraitPoints;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    TArray<FLoadoutRecord> LoadoutRecords;
     
     USavedCharacter();
     UFUNCTION(BlueprintCallable)

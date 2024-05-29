@@ -15,6 +15,12 @@ bool UWeaponPhantomComponent::ServerApplyDamage_Validate(const FReplicatedHit& H
     return true;
 }
 
+void UWeaponPhantomComponent::ServerApplyClientValidatedDamage_Implementation(UWeaponPhantomComponent* Component, const FReplicatedHit& Hit, const FActiveWeaponPhantom& Phantom, bool bIsEnvironmentHit, bool bEvaded, bool bWasEvadeCounter, const UObject* EvadeSource) {
+}
+bool UWeaponPhantomComponent::ServerApplyClientValidatedDamage_Validate(UWeaponPhantomComponent* Component, const FReplicatedHit& Hit, const FActiveWeaponPhantom& Phantom, bool bIsEnvironmentHit, bool bEvaded, bool bWasEvadeCounter, const UObject* EvadeSource) {
+    return true;
+}
+
 void UWeaponPhantomComponent::MarkActorHit(UObject* WorldContextObject, UPrimitiveComponent* Shape, AActor* Actor) {
 }
 

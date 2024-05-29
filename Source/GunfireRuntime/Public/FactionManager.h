@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "UObject/NoExportTypes.h"
 #include "Components/ActorComponent.h"
 #include "EAffiliation.h"
 #include "Templates/SubclassOf.h"
@@ -24,7 +25,10 @@ protected:
 public:
     UFactionManager();
     UFUNCTION(BlueprintCallable)
-    void PropagateFactionOverride(UFactionComponent* Source, TSubclassOf<UFaction> Faction, EAffiliation Affiliation);
+    void PropagateFactionOverrideAtLocation(const FVector& Location, TSubclassOf<UFaction> Faction, TSubclassOf<UFaction> FactionToOverride, EAffiliation NewAffiliation, float PropogationRadiusOverride);
+    
+    UFUNCTION(BlueprintCallable)
+    void PropagateFactionOverride(UFactionComponent* Source, TSubclassOf<UFaction> Faction, EAffiliation Affiliation, float PropogationRadiusOverride);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static UFactionManager* GetFactionManager(UObject* WorldContextObject);

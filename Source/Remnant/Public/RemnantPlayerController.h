@@ -13,6 +13,7 @@
 #include "ERemnantQuestRewardType.h"
 #include "EZoneTravelLock.h"
 #include "OnDeathLockEventDelegate.h"
+#include "OnFindingSpawnLocationEventDelegate.h"
 #include "OnGivenLicensesEventDelegate.h"
 #include "OnLocalPlayerFinishedLevelSequenceDelegate.h"
 #include "OnPawnChangedEventDelegate.h"
@@ -31,6 +32,7 @@
 class AActor;
 class ACharacterGunfire;
 class ACheckpoint;
+class AEventRegion;
 class AItem;
 class APawn;
 class AQuest;
@@ -64,6 +66,9 @@ public:
     FOnPawnChangedEvent OnPawnChanged;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnFindingSpawnLocationEvent OnSpawnLocationQueryEvent;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FQuestRewardDelegate OnNotifyQuestReward;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -71,6 +76,9 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTravelCompleteDelegate OnBeginTravelEvent;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FTravelCompleteDelegate OnClientReadyForTravel;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UActionBase> TravelAction;
@@ -98,6 +106,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     bool bPrimaryWeaponToggled;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    uint8 CrossplayPlatform;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnPingFailedEvent OnPingFailed;
@@ -144,6 +155,23 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool Respawning;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bSupportsJoinAtHost;
+    /*
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FEQSParametrizedQueryExecutionRequest JoinHostQuery;
+    */
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> InvalidPlatformTags;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float JoinAtHostTimeout;
+    
+public:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    TArray<AEventRegion*> EventRegions;
+    
+protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UUserWidget> DeathScreenContextOverride;
     
@@ -264,13 +292,16 @@ protected:
     void ServerStreamCharacterFinalize();
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void ServerStreamCharacterChunk(const TArray<uint8>& CharacterData);
+    void ServerStreamCharacterChunk(const TArray<uint8>& Chunk);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void ServerStreamCharacterBegin(int32 CharacterBlobSize);
+    void ServerStreamCharacterBegin(int32 DataSize, int32 DataSize_Compressed);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerSetCurrentLock(EZoneTravelLock NewLock, bool bNewIsSaving, bool bNewWantsTravelMenuAccess);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerSetCrossplayPlatform(uint8 ClientCrossplayPlatform);
     
 public:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
@@ -367,6 +398,12 @@ public:
     UFUNCTION(BlueprintAuthorityOnly, BlueprintCallable)
     void QueueManualQuestReward(ARemnantQuest* Quest, const TArray<TSoftClassPtr<AItem>>& Items, bool bSkipDuplicates, bool bAutoEquip, ERemnantQuestRewardType RewardType, int32 Quantity, int32 LevelOverride, bool bIsArchetype, bool bWantsSaveOnAward);
     
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnStopFindingSpawnLocation();
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void OnStartFindingSpawnLocation();
+    
 protected:
     UFUNCTION(BlueprintCallable)
     void OnSessionDisconnected(UWorld* InWorld, UNetDriver* NetDriver);
@@ -448,9 +485,6 @@ public:
     bool IsAwardingArchetype() const;
     
     UFUNCTION(BlueprintCallable)
-    bool HasLicense(const FString& License);
-    
-    UFUNCTION(BlueprintCallable)
     bool HasGivenLicenses();
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -494,6 +528,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     UInventoryComponent* GetPlayerInventory() const;
     
+protected:
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetIsAwaitingSpawnLocation() const;
+    
+public:
     UFUNCTION(BlueprintCallable)
     TSubclassOf<UUserWidget> GetDeathScreenContextClass();
     
@@ -532,6 +571,11 @@ public:
     UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientUpdateDeathScreenContextClass(TSubclassOf<UUserWidget> ContextClass);
     
+protected:
+    UFUNCTION(BlueprintCallable, Client, Reliable)
+    void ClientUpdateAwaitingStartLocation(bool bIsFindingSpawnLocation);
+    
+public:
     UFUNCTION(BlueprintCallable, Client, Reliable)
     void ClientUpdateArchetype(TSubclassOf<URemnantArchetype> Archetype, bool bSecondary);
     

@@ -6,5 +6,6 @@ UENUM(BlueprintType)
 enum class EReticuleMaterialDrawMode : uint8 {
     FillRadius,
     FixedSize,
+    InnerRadius,
 };
 

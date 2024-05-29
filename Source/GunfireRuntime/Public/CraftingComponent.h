@@ -62,7 +62,13 @@ public:
     FRecipeInfo GetRecipeInfo(AActor* Source, FGuid RecipeID);
     
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void DowngradeItem(AActor* Source, int32 ItemId);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void CraftItem(AActor* Source, FGuid RecipeID);
+    
+    UFUNCTION(BlueprintCallable)
+    bool CanDowngrade(AActor* Source, int32 ItemId, FRecipeInfo& OutDowngradeInfo);
     
 };
 

@@ -56,6 +56,15 @@ public:
     ERemnantQuestDebugState DebugState;
     
     UPROPERTY(AssetRegistrySearchable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool IsOneShot;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    bool IgnoreTileExclusivity;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    bool IgnoresTileIDRequirement;
+    
+    UPROPERTY(AssetRegistrySearchable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     EQuestMode QuestGameMode;
     
     UPROPERTY(AssetRegistrySearchable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -94,7 +103,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     FString BiomeName;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(AssetRegistrySearchable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UEntitlementType> RequiredEntitlement;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -160,6 +169,14 @@ protected:
     UFUNCTION(BlueprintCallable)
     bool ShouldBreadcrumb(FZoneLinkInfo ZoneLink);
     
+public:
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void SetRespawn(const FZoneLinkInfo& Respawn);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void SetLastCheckpoint(const FZoneLinkInfo& Checkpoint);
+    
+protected:
     UFUNCTION(BlueprintCallable)
     void OnRep_Status();
     
@@ -189,7 +206,13 @@ public:
     bool HasRespawn() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool HasQuestEntitlements() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasLastCheckpoint() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool HasFailedToLoad() const;
     
 protected:
     UFUNCTION(BlueprintCallable)
@@ -219,6 +242,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     UInventoryComponent* GetQuestInventory();
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    void GetQuestEntitlements(TArray<TSubclassOf<UEntitlementType>>& OutEntitlements, bool bGetMissingOnly) const;
     
     UFUNCTION(BlueprintCallable)
     bool GetObjectQuestValue(UClass* ObjectBP, UPARAM(Ref) int32& ObjectValue, UPARAM(Ref) float& OutSellScalar, int32& OutPickupValue);
@@ -252,7 +278,10 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
-    void ActivateQuest();
+    void ActivateQuestItemEvents();
+    
+    UFUNCTION(BlueprintCallable)
+    ERemnantQuestStatus ActivateQuest();
     
     
     // Fix for true pure virtual functions not being implemented

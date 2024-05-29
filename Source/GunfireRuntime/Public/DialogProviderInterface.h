@@ -17,6 +17,9 @@ class IDialogProviderInterface : public IInterface {
     GENERATED_BODY()
 public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool ShouldUseProviderForDefaultTree();
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetupContextVariables(UDialogComponent* DialogComponent);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

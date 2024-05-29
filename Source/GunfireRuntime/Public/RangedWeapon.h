@@ -10,10 +10,12 @@
 #include "EHandedness.h"
 #include "ERangedWeaponTrajectoryMode.h"
 #include "OnCurrentAmmoChangedDelegate.h"
+#include "OnFireDelegateDelegate.h"
 #include "OnMaxAmmoChangedDelegate.h"
 #include "OnReloadDelegateDelegate.h"
 #include "ProjectileVisualizationContext.h"
 #include "RangedWeaponMode.h"
+#include "RangedWeaponModeInterface.h"
 #include "ReplicatedHits.h"
 #include "ReplicatedLocation.h"
 #include "SoundGunfire.h"
@@ -32,7 +34,7 @@ class USceneComponent;
 class UVitalityComponent;
 
 UCLASS(Blueprintable)
-class GUNFIRERUNTIME_API ARangedWeapon : public AWeaponBase, public IAimableInterface {
+class GUNFIRERUNTIME_API ARangedWeapon : public AWeaponBase, public IRangedWeaponModeInterface, public IAimableInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -46,6 +48,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName ProjectileSocket;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FName ProjectileAssetToVisualize;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<AItem> AmmoType;
@@ -99,6 +104,9 @@ public:
     FCustomWeaponSpread CustomSpread;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool WeaponDoesHitScanOnFire;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName AimTag;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -148,7 +156,13 @@ public:
     
 protected:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnReloadDelegate OnFired;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnReloadDelegate OnReload;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnFireDelegate OnAdvanceFireState;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnMaxAmmoChanged OnMaxAmmoChanged;
@@ -215,6 +229,9 @@ protected:
     
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerFireWithAllData(FVector_NetQuantize From, const FReplicatedHits& ClientHits, float WeaponSpread, uint32 RandomSeed, FVector_NetQuantize CameraLocation, FRotator CameraRotation, float ClientWindupTime);
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
+    void ServerFireCustomReloadNotifications();
     
     UFUNCTION(Reliable, Server, WithValidation)
     void ServerFire(FVector_NetQuantize From, const FReplicatedHits& ClientHits, float WeaponSpread, uint32 RandomSeed);
@@ -319,11 +336,17 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void ModifyMuzzleFXPointAndDirection(UPARAM(Ref) FVector& MuzzlePoint, UPARAM(Ref) FVector& MuzzleDirection, int32 SprayIndex);
     
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void ModifyMuzzleFX(UPARAM(Ref) FName& MuzzleFXName);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsWindupOverdrawn() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsWindingUp() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsUsingToggleAimInput() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsScopeInputEnabled() const;
@@ -352,6 +375,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsAiming() const;
     
+protected:
+    UFUNCTION(BlueprintCallable)
+    static void InitializeWeaponMode(UPARAM(Ref) FRangedWeaponMode& InWeaponMode, AActor* InterfaceObject);
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasScope() const;
     
@@ -380,6 +408,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetTotalWindup() const;
+    
+    UFUNCTION(BlueprintCallable)
+    float GetTotalFireLength(FName AnimationID, int32& SeedOut);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FString GetStateName() const;
@@ -421,6 +452,9 @@ public:
     int32 GetMaxAmmo() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    FHitResult GetFirstNonPiercedAimTarget(bool bInitialSegmentOnly) const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetFalloff(bool bPrimaryFalloffOnly) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -434,6 +468,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetBurstCount() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    FSoundGunfire GetBulletWhizBySound() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetAmmoPerReload() const;
@@ -464,10 +501,13 @@ public:
     
 protected:
     UFUNCTION(BlueprintCallable)
-    void ForceReload();
+    void ForceReload(bool FireReloadNotifications);
     
     UFUNCTION(BlueprintCallable)
     void ForceIdle();
+    
+    UFUNCTION(BlueprintCallable)
+    void ForceFullReload();
     
 public:
     UFUNCTION(BlueprintCallable)
@@ -491,7 +531,7 @@ public:
     void DoImpact(const FHitResult& Hit);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    bool DoCustomReload();
+    bool DoCustomReload(bool& FireReloadNotifications);
     
     UFUNCTION(BlueprintCallable)
     void ConsumeAmmo(int32 Amount);
@@ -510,6 +550,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanReload() const;
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool CanFireEndAnimation() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanFire() const;

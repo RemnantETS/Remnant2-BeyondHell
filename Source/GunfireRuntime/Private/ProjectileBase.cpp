@@ -65,6 +65,10 @@ bool AProjectileBase::GetClientCameraTransform(FVector& CameraLocation, FRotator
     return false;
 }
 
+TArray<UFXSystemComponent*> AProjectileBase::GatherPooledProjectileComponentsForDeactivation_Implementation() {
+    return TArray<UFXSystemComponent*>();
+}
+
 void AProjectileBase::FilterIncomingDamage_Implementation(const FDamageInfo& DamageInfo, float& DamageOut, bool& ShouldApplyDamage) {
 }
 
@@ -96,12 +100,14 @@ AProjectileBase::AProjectileBase() {
     this->bIgnorePenetratesOnValidHits = false;
     this->bActivateNearbyCharacters = true;
     this->AdditionalActivateRadius = 200.00f;
+    this->ActivateSimulationTime = 0.20f;
     this->ApplyDamage = false;
     this->DamageScalar = 1.00f;
     this->DamageMod = 0.00f;
     this->DamageType = NULL;
     this->PowerOverride = -1;
     this->Evadable = true;
+    this->SoftDeactivatePooledFXComponents = false;
     this->bPenetrate = false;
     this->MaxPenetrations = 1;
     this->PenetrateDelay = 0.50f;

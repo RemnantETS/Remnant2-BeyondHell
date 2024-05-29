@@ -46,6 +46,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FHitResult GetMuzzleObstruction();
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    FHitResult GetFirstNonPiercedAimTarget(bool bInitialSegmentOnly) const;
+    
     UFUNCTION(BlueprintCallable)
     void GetAimVector(FVector& From, FVector& To, bool bApplyAimAssist, bool bOverrideTrajectoryMode, ERangedWeaponTrajectoryMode TrajectoryModeOverride);
     

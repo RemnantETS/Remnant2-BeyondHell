@@ -1,6 +1,9 @@
 #include "ItemInstanceData.h"
 #include "Net/UnrealNetwork.h"
 
+void UItemInstanceData::OnRep_MinorChange() {
+}
+
 void UItemInstanceData::OnRep_InstanceData() {
 }
 

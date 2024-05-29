@@ -10,6 +10,7 @@ void UActionBuff::ResetTimer_Implementation() {
 void UActionBuff::PauseDuration(bool Paused) {
 }
 
+
 bool UActionBuff::IsDurationPaused() const {
     return false;
 }
