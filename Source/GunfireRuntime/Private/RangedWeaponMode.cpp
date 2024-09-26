@@ -16,7 +16,7 @@ FRangedWeaponMode::FRangedWeaponMode() {
     this->SprayCount = 0.00f;
     this->Reticule = NULL;
     this->HasScope = false;
-    this->ScopeFOV = 0.00f;
+    this->ScopeFOV = 60.00f;
     this->ScopeReticule = NULL;
     this->ScopeWidget = NULL;
     this->MinimumAimDelayForScope = 0.00f;

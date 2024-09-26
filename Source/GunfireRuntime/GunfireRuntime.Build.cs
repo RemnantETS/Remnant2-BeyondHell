@@ -56,6 +56,7 @@ public class GunfireRuntime : ModuleRules {
             "PropertyPath",
             "Slate",
             "SlateCore",
+            "StructUtils",
             "StaticMeshDescription",
             "TypedElementFramework",
             "TypedElementRuntime",

@@ -57,6 +57,7 @@ public class Remnant : ModuleRules {
             "PropertyPath",
             "Slate",
             "SlateCore",
+            "StructUtils",
             "StaticMeshDescription",
             "TypedElementFramework",
             "TypedElementRuntime",
