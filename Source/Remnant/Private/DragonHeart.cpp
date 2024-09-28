@@ -1,5 +1,12 @@
 #include "DragonHeart.h"
 
+ADragonHeart::ADragonHeart(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ValidationTags.AddDefaulted(1);
+    this->NumCharges = 3;
+    this->UpgradeItemBP = NULL;
+    this->DHPoolComponent = NULL;
+}
+
 void ADragonHeart::VerifyQuantity() {
 }
 
@@ -13,9 +20,4 @@ int32 ADragonHeart::GetMaxCurrentQuantity() {
     return 0;
 }
 
-ADragonHeart::ADragonHeart() {
-    this->NumCharges = 3;
-    this->UpgradeItemBP = NULL;
-    this->DHPoolComponent = NULL;
-}
 

@@ -47,6 +47,9 @@ public:
     bool bUseAllChargesOnConsume;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    int32 NumChargesConsumedOnAllConsume;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 NumChargesConsumedOnUse;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -72,6 +75,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool AllowWeaponModeDuringAction;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool AllowUseDuringWeaponUseDown;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool NoModGenWhileModActive;
@@ -130,7 +136,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> CharacterAnimTags;
     
-    ARemnantWeaponMod();
+    ARemnantWeaponMod(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ShowReticule();
     
@@ -266,7 +273,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void AddModPower(float Damage, float BonusModPowerMod, bool bFillActiveMods);
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

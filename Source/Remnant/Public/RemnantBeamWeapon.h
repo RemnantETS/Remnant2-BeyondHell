@@ -12,9 +12,10 @@ private:
     bool BeamWeaponFiring;
     
 public:
-    ARemnantBeamWeapon();
+    ARemnantBeamWeapon(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void SetBeamFiring_Server(bool Firing);
     

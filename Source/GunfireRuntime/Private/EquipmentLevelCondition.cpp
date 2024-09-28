@@ -4,3 +4,4 @@ UEquipmentLevelCondition::UEquipmentLevelCondition() {
     this->RequiredLevel = 0;
 }
 
+

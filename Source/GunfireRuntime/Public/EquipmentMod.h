@@ -48,9 +48,10 @@ protected:
     TArray<FLoadableItemAsset> EquipmentModAssets;
     
 public:
-    AEquipmentMod();
+    AEquipmentMod(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool ValidateAttach(ACharacterGunfire* ToCharacter) const;
     
@@ -73,6 +74,9 @@ protected:
 public:
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnEquipmentInHandEvent(bool InHand);
+    
+    UFUNCTION(BlueprintCallable)
+    void OnEquipmentEquipStateUpdated(AEquipment* Equipment);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnDetached();
@@ -131,7 +135,7 @@ protected:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AreEquipmentModAssetsLoaded() const;
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

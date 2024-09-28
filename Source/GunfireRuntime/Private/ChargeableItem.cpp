@@ -1,6 +1,16 @@
 #include "ChargeableItem.h"
 #include "Net/UnrealNetwork.h"
 
+AChargeableItem::AChargeableItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->Conditions = NULL;
+    this->ActivationType = EChargeableActivateType::Press;
+    this->ConsumeInput = true;
+    this->HoldTime = 0.50f;
+    this->ChargeTimeInSeconds = 5.00f;
+    this->State = EChargeState::None;
+    this->Charge = 0.00f;
+}
+
 bool AChargeableItem::ValidateUse_Implementation() {
     return false;
 }
@@ -46,13 +56,4 @@ void AChargeableItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutL
     DOREPLIFETIME(AChargeableItem, Charge);
 }
 
-AChargeableItem::AChargeableItem() {
-    this->Conditions = NULL;
-    this->ActivationType = EChargeableActivateType::Press;
-    this->ConsumeInput = true;
-    this->HoldTime = 0.50f;
-    this->ChargeTimeInSeconds = 5.00f;
-    this->State = EChargeState::None;
-    this->Charge = 0.00f;
-}
 

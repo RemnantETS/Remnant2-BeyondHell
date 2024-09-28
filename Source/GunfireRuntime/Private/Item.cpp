@@ -3,6 +3,35 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+AItem::AItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bReplicates = true;
+    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
+    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
+    this->PersistenceComp = CreateDefaultSubobject<UPersistenceComponent>(TEXT("Persistence"));
+    this->Type = NULL;
+    this->Category = NULL;
+    this->MaxStackCount = 1;
+    this->BaseMaxQuantity = -1;
+    this->KeepInInventoryWithNoQuantity = false;
+    this->InstanceData = NULL;
+    this->Unique = false;
+    this->bNeedsQuantityToSelect = true;
+    this->Icon = NULL;
+    this->HUDIcon = NULL;
+    this->Interactable = true;
+    this->UseInteractInfo = false;
+    this->InteractIcon = NULL;
+    this->LootFxAttachNode = TEXT("LootFX");
+    this->LootFxOverride = NULL;
+    this->DoBounce = true;
+    this->RequiredAccountAward = NULL;
+    this->RequiredEntitlement = NULL;
+    this->bOnGround = true;
+    this->LootFxParticles = NULL;
+    this->Inspecting = false;
+    this->ItemSocket = NULL;
+}
+
 bool AItem::ValidateAdd_Implementation(UInventoryComponent* Inventory, int32 DesiredQuantity, int32& AllowedQuantity) {
     return false;
 }
@@ -104,29 +133,4 @@ void AItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimePro
     DOREPLIFETIME(AItem, bOnGround);
 }
 
-AItem::AItem() {
-    this->PersistenceComp = CreateDefaultSubobject<UPersistenceComponent>(TEXT("Persistence"));
-    this->Type = NULL;
-    this->Category = NULL;
-    this->MaxStackCount = 1;
-    this->BaseMaxQuantity = -1;
-    this->KeepInInventoryWithNoQuantity = false;
-    this->InstanceData = NULL;
-    this->Unique = false;
-    this->bNeedsQuantityToSelect = true;
-    this->Icon = NULL;
-    this->HUDIcon = NULL;
-    this->Interactable = true;
-    this->UseInteractInfo = false;
-    this->InteractIcon = NULL;
-    this->LootFxAttachNode = TEXT("LootFX");
-    this->LootFxOverride = NULL;
-    this->DoBounce = true;
-    this->RequiredAccountAward = NULL;
-    this->RequiredEntitlement = NULL;
-    this->bOnGround = true;
-    this->LootFxParticles = NULL;
-    this->Inspecting = false;
-    this->ItemSocket = NULL;
-}
 

@@ -2,6 +2,22 @@
 #include "WeaponAffinityComponent.h"
 #include "Net/UnrealNetwork.h"
 
+ARemnantRangedWeapon::ARemnantRangedWeapon(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->DefaultMod = NULL;
+    this->WeaponAffinity = CreateDefaultSubobject<UWeaponAffinityComponent>(TEXT("WeaponAffinity"));
+    this->bResetAmmoOnEquip = true;
+    this->AltFireInputAction = NULL;
+    this->Power = 0.00f;
+    this->Charges = 0;
+    this->PassiveModPowerRegenFrequency = 1.00f;
+    this->IgnoreWindUp = false;
+    this->bModifyNonAimReticle = false;
+    this->ActiveState = EModActiveState::NotActive;
+    this->ActiveModActionID = 0;
+    this->AdditionalRadius = 0.00f;
+    this->AdditionalDistance = 0.00f;
+}
+
 void ARemnantRangedWeapon::UseMod() {
 }
 
@@ -128,18 +144,4 @@ void ARemnantRangedWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
     DOREPLIFETIME(ARemnantRangedWeapon, ActiveModActionID);
 }
 
-ARemnantRangedWeapon::ARemnantRangedWeapon() {
-    this->DefaultMod = NULL;
-    this->WeaponAffinity = CreateDefaultSubobject<UWeaponAffinityComponent>(TEXT("WeaponAffinity"));
-    this->bResetAmmoOnEquip = true;
-    this->AltFireInputAction = NULL;
-    this->Power = 0.00f;
-    this->Charges = 0;
-    this->PassiveModPowerRegenFrequency = 1.00f;
-    this->IgnoreWindUp = false;
-    this->ActiveState = EModActiveState::NotActive;
-    this->ActiveModActionID = 0;
-    this->AdditionalRadius = 0.00f;
-    this->AdditionalDistance = 0.00f;
-}
 

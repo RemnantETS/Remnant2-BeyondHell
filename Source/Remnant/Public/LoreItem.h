@@ -23,7 +23,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<UImageSet> LoreImageSet;
     
-    ALoreItem();
+    ALoreItem(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static void LoreNotify(UObject* WorldContextObject, const FLorePage& Page);
     

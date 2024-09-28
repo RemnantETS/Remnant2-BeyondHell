@@ -10,7 +10,8 @@ UCLASS(Blueprintable)
 class REMNANT_API AGemBase : public AEquipmentMod {
     GENERATED_BODY()
 public:
-    AGemBase();
+    AGemBase(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnPostComputePrismStats(AActor* OwningCharacter, int32 ComputeLevel) const;
     
@@ -19,6 +20,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ModifyPrismInspectInfo(int32 InspectLevel, UPARAM(Ref) FInspectInfo& Info, int32 PrismMaxLevelReference);
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    TArray<FName> GetSimpleStatNamesForGem() const;
     
 };
 

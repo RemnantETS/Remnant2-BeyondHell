@@ -28,7 +28,8 @@ protected:
     UPrimitiveComponent* OverlapComponent;
     
 public:
-    AFlashlight();
+    AFlashlight(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void ServerToggleFlashlight();

@@ -1,6 +1,18 @@
 #include "GenericItem.h"
 #include "Net/UnrealNetwork.h"
 
+AGenericItem::AGenericItem(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->RandomizedDrop = NULL;
+    this->GenerationType = EGenerationType::TargetPlayerOnly;
+    this->UsePlayerLevel = true;
+    this->bUseGeneratedObjectLabel = true;
+    this->bUseGeneratedObjectIcon = true;
+    this->bUseGeneratedObjectPickupSound = false;
+    this->bAddToInventory = false;
+    this->bSaveOnAward = true;
+    this->ForceSyncLoad = false;
+}
+
 bool AGenericItem::ValidatePickupHandled_Implementation(UInventoryComponent* Inventory) {
     return false;
 }
@@ -36,14 +48,4 @@ void AGenericItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLife
     DOREPLIFETIME(AGenericItem, CachedSpawnInfo);
 }
 
-AGenericItem::AGenericItem() {
-    this->RandomizedDrop = NULL;
-    this->GenerationType = EGenerationType::TargetPlayerOnly;
-    this->UsePlayerLevel = true;
-    this->bUseGeneratedObjectLabel = true;
-    this->bUseGeneratedObjectIcon = true;
-    this->bUseGeneratedObjectPickupSound = false;
-    this->bAddToInventory = false;
-    this->bSaveOnAward = true;
-}
 

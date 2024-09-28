@@ -5,5 +5,7 @@ FEquipmentModData::FEquipmentModData() {
     this->Mod = NULL;
     this->ModItemID = 0;
     this->ModLevel = 0;
+    this->HasSavedInstanceData = false;
+    this->InstanceData = NULL;
 }
 

@@ -17,7 +17,8 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName VisualID;
     
-    AEquipmentSkin();
+    AEquipmentSkin(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     static bool IsSkinEquipped(UInventoryComponent* Inventory, int32 SkinID);
     

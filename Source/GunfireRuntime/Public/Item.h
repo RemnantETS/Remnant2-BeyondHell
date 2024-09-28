@@ -41,6 +41,9 @@ public:
     TSubclassOf<UItemCategory> Category;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FName> FilterTags;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 MaxStackCount;
     
     UPROPERTY(AssetRegistrySearchable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -100,7 +103,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool UseInteractInfo;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true, MultiLine = "true"))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FText InteractLabel;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -165,9 +168,10 @@ protected:
     UItemSocketComponent* ItemSocket;
     
 public:
-    AItem();
+    AItem(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ValidateAdd(UInventoryComponent* Inventory, int32 DesiredQuantity, int32& AllowedQuantity);
     
@@ -264,7 +268,7 @@ public:
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void Bounce();
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

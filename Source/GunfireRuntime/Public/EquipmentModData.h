@@ -4,6 +4,7 @@
 #include "EquipmentModData.generated.h"
 
 class AEquipmentMod;
+class UItemInstanceData;
 
 USTRUCT(BlueprintType)
 struct FEquipmentModData {
@@ -20,6 +21,12 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
     uint8 ModLevel;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, meta=(AllowPrivateAccess=true))
+    bool HasSavedInstanceData;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, SaveGame, meta=(AllowPrivateAccess=true))
+    UItemInstanceData* InstanceData;
     
     GUNFIRERUNTIME_API FEquipmentModData();
 };

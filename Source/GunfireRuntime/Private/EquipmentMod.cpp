@@ -2,6 +2,17 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+AEquipmentMod::AEquipmentMod(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bNetUseOwnerRelevancy = true;
+    this->Hidden = true;
+    this->ReplicateMod = false;
+    this->CanBeRemoved = true;
+    this->CustomizationSlot = TEXT("Default");
+    this->EquipOwner = NULL;
+    this->EquippedSlot = 0;
+    this->EquippedLevel = 0;
+}
+
 bool AEquipmentMod::ValidateAttach(ACharacterGunfire* ToCharacter) const {
     return false;
 }
@@ -22,6 +33,9 @@ void AEquipmentMod::OnFinishLoadingAssets() {
 void AEquipmentMod::OnEquipmentModAssetsLoaded_Implementation() {
 }
 
+
+void AEquipmentMod::OnEquipmentEquipStateUpdated(AEquipment* Equipment) {
+}
 
 void AEquipmentMod::OnDetached_Implementation() {
 }
@@ -99,13 +113,4 @@ void AEquipmentMod::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME(AEquipmentMod, EquippedLevel);
 }
 
-AEquipmentMod::AEquipmentMod() {
-    this->Hidden = true;
-    this->ReplicateMod = false;
-    this->CanBeRemoved = true;
-    this->CustomizationSlot = TEXT("Default");
-    this->EquipOwner = NULL;
-    this->EquippedSlot = 0;
-    this->EquippedLevel = 0;
-}
 

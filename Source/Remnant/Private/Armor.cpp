@@ -1,5 +1,6 @@
 #include "Armor.h"
 
-AArmor::AArmor() {
+AArmor::AArmor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

@@ -1,5 +1,6 @@
 #include "MeleeWeapon.h"
 
-AMeleeWeapon::AMeleeWeapon() {
+AMeleeWeapon::AMeleeWeapon(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
 }
+
 

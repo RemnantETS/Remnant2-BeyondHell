@@ -3,6 +3,8 @@
 #include "DamageSourceInterface.h"
 #include "Equipment.h"
 #include "ImpactEffectDescriptor.h"
+#include "OnWeaponPhantomBeginDelegateDelegate.h"
+#include "OnWeaponPhantomEndDelegateDelegate.h"
 #include "Templates/SubclassOf.h"
 #include "WeaponBase.generated.h"
 
@@ -19,7 +21,14 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FImpactEffectDescriptor ImpactEffect;
     
-    AWeaponBase();
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnWeaponPhantomBeginDelegate OnWeaponPhantomBegin;
+    
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FOnWeaponPhantomEndDelegate OnWeaponPhantomEnd;
+    
+    AWeaponBase(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     float GetProcChance() const;
     
@@ -37,7 +46,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool AttemptProc(float BonusChance) const;
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

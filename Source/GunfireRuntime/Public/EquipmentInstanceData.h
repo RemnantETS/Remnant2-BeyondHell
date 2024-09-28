@@ -12,7 +12,8 @@ public:
     FEquipmentMods Mods;
     
     UEquipmentInstanceData();
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 };
 

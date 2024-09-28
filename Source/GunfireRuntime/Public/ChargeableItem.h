@@ -44,9 +44,10 @@ protected:
     FTimerHandle HoldTimerHandle;
     
 public:
-    AChargeableItem();
+    AChargeableItem(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ValidateUse();
     

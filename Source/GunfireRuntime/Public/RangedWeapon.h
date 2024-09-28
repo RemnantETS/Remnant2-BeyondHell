@@ -195,7 +195,8 @@ protected:
     TArray<AProjectileBase*> FiredProjectiles;
     
 public:
-    ARangedWeapon();
+    ARangedWeapon(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void TriggerSoundAwareness(float Radius);
     
@@ -506,7 +507,7 @@ protected:
     UFUNCTION(BlueprintCallable)
     void ForceIdle();
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ForceFullReload();
     
 public:
@@ -561,6 +562,9 @@ protected:
     UFUNCTION(BlueprintCallable)
     void CancelWindup();
     
+    UFUNCTION(BlueprintCallable)
+    void CancelReload();
+    
 public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool CanAutoReload() const;
@@ -585,7 +589,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void AddAmmo(int32 Amount, bool NewFillClip);
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

@@ -87,7 +87,8 @@ protected:
     TArray<UUseableItemActivationInstance*> UseInstances;
     
 public:
-    AUseableItem();
+    AUseableItem(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ValidateUse(AActor* Actor, EItemUseType UseType);
     

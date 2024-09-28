@@ -14,7 +14,8 @@ public:
     uint8 EquippedModSlotID;
     
     UEquipmentModInstanceData();
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
 };
 

@@ -7,6 +7,7 @@ UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API AMeleeWeapon : public AWeaponBase {
     GENERATED_BODY()
 public:
-    AMeleeWeapon();
+    AMeleeWeapon(const FObjectInitializer& ObjectInitializer);
+
 };
 

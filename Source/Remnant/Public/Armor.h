@@ -7,6 +7,7 @@ UCLASS(Blueprintable)
 class REMNANT_API AArmor : public AEquipment {
     GENERATED_BODY()
 public:
-    AArmor();
+    AArmor(const FObjectInitializer& ObjectInitializer);
+
 };
 

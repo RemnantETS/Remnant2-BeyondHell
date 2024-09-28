@@ -79,6 +79,9 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FEquipmentDelegate OnUnequippedEvent;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    FEquipmentDelegate OnEquipStateUpdated;
+    
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FInHandDelegate OnInHandChangedEvent;
     
@@ -114,9 +117,10 @@ protected:
     uint8 bIsInHandReplicated: 1;
     
 public:
-    AEquipment();
+    AEquipment(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ValidateEquip(ACharacterGunfire* ToCharacter);
     
@@ -238,6 +242,9 @@ protected:
     float GetStat(FName Stat);
     
 public:
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void GetSlaveAnimLayerOverrideFor(FName AnimationID, UPARAM(Ref) FName& InOutLayer);
+    
     UFUNCTION(BlueprintCallable, BlueprintPure)
     uint8 GetModSlotIndexByNameID(FName SlotNameID);
     
@@ -273,6 +280,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<AEquipmentMod*> GetAttachedMods();
+    
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    FName GetAnimationLayer();
     
     UFUNCTION(BlueprintCallable)
     void Detach();

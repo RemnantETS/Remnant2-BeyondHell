@@ -1,5 +1,8 @@
 #include "EquipmentSkin.h"
 
+AEquipmentSkin::AEquipmentSkin(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
+
 bool AEquipmentSkin::IsSkinEquipped(UInventoryComponent* Inventory, int32 SkinID) {
     return false;
 }
@@ -15,6 +18,4 @@ AEquipmentSkin* AEquipmentSkin::GetSkinForBP(UInventoryComponent* Inventory, TSo
 void AEquipmentSkin::EquipSkin(UInventoryComponent* Inventory, int32 ItemId, int32 SkinID) {
 }
 
-AEquipmentSkin::AEquipmentSkin() {
-}
 

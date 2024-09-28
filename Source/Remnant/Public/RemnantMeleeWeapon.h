@@ -19,6 +19,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSubclassOf<UDamageTypeGunfire> OverridePower2DamageType;
     
-    ARemnantMeleeWeapon();
+    ARemnantMeleeWeapon(const FObjectInitializer& ObjectInitializer);
+
 };
 

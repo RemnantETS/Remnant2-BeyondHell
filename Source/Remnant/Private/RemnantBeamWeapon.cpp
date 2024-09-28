@@ -1,6 +1,10 @@
 #include "RemnantBeamWeapon.h"
 #include "Net/UnrealNetwork.h"
 
+ARemnantBeamWeapon::ARemnantBeamWeapon(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->BeamWeaponFiring = false;
+}
+
 void ARemnantBeamWeapon::SetBeamFiring_Server_Implementation(bool Firing) {
 }
 bool ARemnantBeamWeapon::SetBeamFiring_Server_Validate(bool Firing) {
@@ -26,7 +30,4 @@ void ARemnantBeamWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
     DOREPLIFETIME(ARemnantBeamWeapon, BeamWeaponFiring);
 }
 
-ARemnantBeamWeapon::ARemnantBeamWeapon() {
-    this->BeamWeaponFiring = false;
-}
 

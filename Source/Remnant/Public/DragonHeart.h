@@ -25,7 +25,8 @@ protected:
     UVitalityComponent* DHPoolComponent;
     
 public:
-    ADragonHeart();
+    ADragonHeart(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
     void VerifyQuantity();
     

@@ -1,5 +1,9 @@
 #include "WeaponBase.h"
 
+AWeaponBase::AWeaponBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->DamageType = NULL;
+}
+
 float AWeaponBase::GetProcChance() const {
     return 0.0f;
 }
@@ -19,7 +23,4 @@ bool AWeaponBase::AttemptProc(float BonusChance) const {
     return false;
 }
 
-AWeaponBase::AWeaponBase() {
-    this->DamageType = NULL;
-}
 

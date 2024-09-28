@@ -2,6 +2,43 @@
 #include "AimingComponent.h"
 #include "Templates/SubclassOf.h"
 
+ARangedWeapon::ARangedWeapon(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->FireWhileAimingOnly = true;
+    this->AllowActionOnFlinch = false;
+    this->AmmoType = NULL;
+    this->bUnlimitedAmmoForAICharacters = true;
+    this->FireInputAction = NULL;
+    this->ReloadInputAction = NULL;
+    this->ReloadOnRelease = false;
+    this->AllowAutoReload = true;
+    this->AimInputAction = NULL;
+    this->bRequireTagForAiming = false;
+    this->ScopeInputAction = NULL;
+    this->DoubleClickScopeInputAction = NULL;
+    this->MinimumAimTime = 0.00f;
+    this->FireInputBufferDuration = 0.20f;
+    this->bUseCameraWhenAimingWithScope = false;
+    this->AimScopeInputAction = NULL;
+    this->WeaponDoesHitScanOnFire = true;
+    this->AimTag = TEXT("Aim");
+    this->bRequiresInHandToUse = true;
+    this->ReloadStartTime = 0.00f;
+    this->ReloadLoopTime = 0.00f;
+    this->ReloadEndTime = 0.00f;
+    this->ReloadTime = 0.50f;
+    this->ReloadSpeed = 1.00f;
+    this->AttachMuzzleFX = true;
+    this->UseLowAmmoSounds = false;
+    this->LowAmmoCount = 0;
+    this->BulletWhizByRadius = 150.00f;
+    this->RightOrientationAttachment = TEXT("Gun_Attach");
+    this->LeftOrientationAttachment = TEXT("Gun_Attach_Left");
+    this->UseAltOrientAttachOnReload = false;
+    this->AmmoPoolComponent = NULL;
+    this->Muzzle = NULL;
+    this->AimingComponent = CreateDefaultSubobject<UAimingComponent>(TEXT("AimingComponent"));
+}
+
 void ARangedWeapon::TriggerSoundAwareness(float Radius) {
 }
 
@@ -346,7 +383,7 @@ void ARangedWeapon::ForceReload(bool FireReloadNotifications) {
 void ARangedWeapon::ForceIdle() {
 }
 
-void ARangedWeapon::ForceFullReload() {
+void ARangedWeapon::ForceFullReload_Implementation() {
 }
 
 AActor* ARangedWeapon::FireProjectile(AActor* Cause, const FVector& Origin, const FVector& End, float WeaponSpread, TSubclassOf<AActor> ProjectileBP, float Velocity) {
@@ -404,6 +441,9 @@ bool ARangedWeapon::CanFire() const {
 void ARangedWeapon::CancelWindup() {
 }
 
+void ARangedWeapon::CancelReload() {
+}
+
 bool ARangedWeapon::CanAutoReload() const {
     return false;
 }
@@ -426,40 +466,4 @@ void ARangedWeapon::AddAmmoToClip(int32 Ammo, bool bIsReload) {
 void ARangedWeapon::AddAmmo(int32 Amount, bool NewFillClip) {
 }
 
-ARangedWeapon::ARangedWeapon() {
-    this->FireWhileAimingOnly = true;
-    this->AllowActionOnFlinch = false;
-    this->AmmoType = NULL;
-    this->bUnlimitedAmmoForAICharacters = true;
-    this->FireInputAction = NULL;
-    this->ReloadInputAction = NULL;
-    this->ReloadOnRelease = false;
-    this->AllowAutoReload = true;
-    this->AimInputAction = NULL;
-    this->bRequireTagForAiming = false;
-    this->ScopeInputAction = NULL;
-    this->DoubleClickScopeInputAction = NULL;
-    this->MinimumAimTime = 0.00f;
-    this->FireInputBufferDuration = 0.20f;
-    this->bUseCameraWhenAimingWithScope = false;
-    this->AimScopeInputAction = NULL;
-    this->WeaponDoesHitScanOnFire = true;
-    this->AimTag = TEXT("Aim");
-    this->bRequiresInHandToUse = true;
-    this->ReloadStartTime = 0.00f;
-    this->ReloadLoopTime = 0.00f;
-    this->ReloadEndTime = 0.00f;
-    this->ReloadTime = 0.50f;
-    this->ReloadSpeed = 1.00f;
-    this->AttachMuzzleFX = true;
-    this->UseLowAmmoSounds = false;
-    this->LowAmmoCount = 0;
-    this->BulletWhizByRadius = 150.00f;
-    this->RightOrientationAttachment = TEXT("Gun_Attach");
-    this->LeftOrientationAttachment = TEXT("Gun_Attach_Left");
-    this->UseAltOrientAttachOnReload = false;
-    this->AmmoPoolComponent = NULL;
-    this->Muzzle = NULL;
-    this->AimingComponent = CreateDefaultSubobject<UAimingComponent>(TEXT("AimingComponent"));
-}
 

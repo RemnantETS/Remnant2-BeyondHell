@@ -1,5 +1,8 @@
 #include "GemBase.h"
 
+AGemBase::AGemBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
+
 void AGemBase::OnPostComputePrismStats_Implementation(AActor* OwningCharacter, int32 ComputeLevel) const {
 }
 
@@ -9,6 +12,8 @@ void AGemBase::OnComputePrismStats_Implementation(AActor* OwningCharacter, int32
 void AGemBase::ModifyPrismInspectInfo_Implementation(int32 InspectLevel, FInspectInfo& Info, int32 PrismMaxLevelReference) {
 }
 
-AGemBase::AGemBase() {
+TArray<FName> AGemBase::GetSimpleStatNamesForGem_Implementation() const {
+    return TArray<FName>();
 }
+
 

@@ -1,5 +1,31 @@
 #include "RemnantWeaponMod.h"
 
+ARemnantWeaponMod::ARemnantWeaponMod(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->PowerBasis = 100.00f;
+    this->MaxCharges = 1;
+    this->InputMode = EModInputMode::Press;
+    this->PreviewAnimTags.AddDefaulted(1);
+    this->bStowWeaponForPreview = true;
+    this->MinimumHoldTime = 0.20f;
+    this->MaximumHoldTime = 0.00f;
+    this->bShouldUseChargesDuringWeaponMode = true;
+    this->bUseAllChargesOnConsume = false;
+    this->NumChargesConsumedOnAllConsume = 0;
+    this->NumChargesConsumedOnUse = 1;
+    this->WeaponModeHasInfiniteClip = false;
+    this->bToggleable = true;
+    this->bHasSecondaryAction = false;
+    this->bAllowDeactivateIfNotSecondaryUse = false;
+    this->bRequiresAllowActionForUse = true;
+    this->bBlocksActionsWhileInUse = true;
+    this->AllowWeaponModeDuringAction = false;
+    this->AllowUseDuringWeaponUseDown = true;
+    this->NoModGenWhileModActive = false;
+    this->SkipDeactivateAnimForLastCharge = false;
+    this->LoopUseAnimation = false;
+    this->bStowWeaponForUseAnimation = false;
+}
+
 bool ARemnantWeaponMod::ShowReticule_Implementation() {
     return false;
 }
@@ -148,27 +174,4 @@ void ARemnantWeaponMod::AddModPowerEx(FAddModPowerParams Params) {
 void ARemnantWeaponMod::AddModPower_Implementation(float Damage, float BonusModPowerMod, bool bFillActiveMods) {
 }
 
-ARemnantWeaponMod::ARemnantWeaponMod() {
-    this->PowerBasis = 100.00f;
-    this->MaxCharges = 1;
-    this->InputMode = EModInputMode::Press;
-    this->PreviewAnimTags.AddDefaulted(1);
-    this->bStowWeaponForPreview = true;
-    this->MinimumHoldTime = 0.20f;
-    this->MaximumHoldTime = 0.00f;
-    this->bShouldUseChargesDuringWeaponMode = true;
-    this->bUseAllChargesOnConsume = false;
-    this->NumChargesConsumedOnUse = 1;
-    this->WeaponModeHasInfiniteClip = false;
-    this->bToggleable = true;
-    this->bHasSecondaryAction = false;
-    this->bAllowDeactivateIfNotSecondaryUse = false;
-    this->bRequiresAllowActionForUse = true;
-    this->bBlocksActionsWhileInUse = true;
-    this->AllowWeaponModeDuringAction = false;
-    this->NoModGenWhileModActive = false;
-    this->SkipDeactivateAnimForLastCharge = false;
-    this->LoopUseAnimation = false;
-    this->bStowWeaponForUseAnimation = false;
-}
 
