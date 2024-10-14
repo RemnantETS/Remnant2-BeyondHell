@@ -5,7 +5,7 @@
 #include "InspectStatBase.h"
 #include "StatInfo.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UStatInfo : public UObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:

@@ -1,6 +1,8 @@
 #include "SpawnTableItem.h"
 
 USpawnTableItem::USpawnTableItem() {
+    this->bScaleWeightIfOwned = false;
+    this->OwnedWeightScalar = 0.01f;
     this->QuantityMin = 1;
     this->QuantityMax = 1;
     this->QuantityScalarPerLevel = 0.00f;
@@ -9,4 +11,5 @@ USpawnTableItem::USpawnTableItem() {
     this->GeneratedItemLevelOffsetMin = 0;
     this->GeneratedItemLevelOffsetMax = 0;
 }
+
 

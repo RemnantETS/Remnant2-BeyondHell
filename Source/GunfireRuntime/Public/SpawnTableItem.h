@@ -10,6 +10,12 @@ class GUNFIRERUNTIME_API USpawnTableItem : public USpawnTableElement {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bScaleWeightIfOwned;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    float OwnedWeightScalar;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TSoftClassPtr<AItem> ItemBP;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -40,5 +46,6 @@ public:
     TArray<FName> SpawnPointTags;
     
     USpawnTableItem();
+
 };
 

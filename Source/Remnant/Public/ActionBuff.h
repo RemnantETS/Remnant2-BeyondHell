@@ -40,7 +40,11 @@ protected:
     
 public:
     UActionBuff();
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void SavePersistenceMetadata(TMap<FName, int32>& MetaData) const;
     
     UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
     void ResetTimerWithNewDuration(float InDuration);
@@ -53,6 +57,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnAddedFromPersistence();
+    
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void LoadPersistenceMetadata(const TMap<FName, int32>& MetaData);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsDurationPaused() const;

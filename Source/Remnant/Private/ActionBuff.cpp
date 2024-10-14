@@ -1,6 +1,18 @@
 #include "ActionBuff.h"
 #include "Net/UnrealNetwork.h"
 
+UActionBuff::UActionBuff() {
+    this->Duration = 5.00f;
+    this->Persistent = false;
+    this->ContextualDialogTriggerRate = 10.00f;
+    this->IgnoreOwnerTimeDilation = true;
+    this->VisualPriority = 0;
+    this->ElapsedTime = 0.00f;
+    this->CachedVisuals = NULL;
+    this->CachedActions = NULL;
+}
+
+
 void UActionBuff::ResetTimerWithNewDuration_Implementation(float InDuration) {
 }
 
@@ -9,6 +21,7 @@ void UActionBuff::ResetTimer_Implementation() {
 
 void UActionBuff::PauseDuration(bool Paused) {
 }
+
 
 
 bool UActionBuff::IsDurationPaused() const {
@@ -37,14 +50,4 @@ void UActionBuff::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
     DOREPLIFETIME(UActionBuff, ElapsedTime);
 }
 
-UActionBuff::UActionBuff() {
-    this->Duration = 5.00f;
-    this->Persistent = false;
-    this->ContextualDialogTriggerRate = 10.00f;
-    this->IgnoreOwnerTimeDilation = true;
-    this->VisualPriority = 0;
-    this->ElapsedTime = 0.00f;
-    this->CachedVisuals = NULL;
-    this->CachedActions = NULL;
-}
 

@@ -47,8 +47,9 @@ protected:
     
 public:
     UActionBase();
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent, BlueprintPure)
     bool ValidateAction(AActor* Actor, AActor* Target) const;
     

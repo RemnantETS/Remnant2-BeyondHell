@@ -46,6 +46,7 @@ public:
     TSubclassOf<UEntitlementType> RequiredEntitlement;
     
     UTrait();
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool ShouldApplyStats();
     
@@ -58,7 +59,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void GetModifierBonus(TSubclassOf<UActorModifier> ModifierBP, int32 FromLevel, int32 ToLevel, int32& LevelBonus, int32& MaxLevelBonus);
     
-    
+
     // Fix for true pure virtual functions not being implemented
 };
 

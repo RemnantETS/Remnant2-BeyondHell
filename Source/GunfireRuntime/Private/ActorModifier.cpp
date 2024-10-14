@@ -1,6 +1,15 @@
 #include "ActorModifier.h"
 #include "Net/UnrealNetwork.h"
 
+UActorModifier::UActorModifier() {
+    this->Scope = EActorModifierScope::StatsOnly;
+    this->Level = 0;
+    this->Icon = NULL;
+    this->InspectStats = NULL;
+    this->Owner = NULL;
+    this->StatsComponent = NULL;
+}
+
 void UActorModifier::SetOwner(AActor* NewOwner) {
 }
 
@@ -106,13 +115,3 @@ UWorld* UActorModifier::GetWorld() const
     //Else return null - the latent action will fail to initialize
     return nullptr;
 }
-
-UActorModifier::UActorModifier() {
-    this->Scope = EActorModifierScope::StatsOnly;
-    this->Level = 0;
-    this->Icon = NULL;
-    this->InspectStats = NULL;
-    this->Owner = NULL;
-    this->StatsComponent = NULL;
-}
-

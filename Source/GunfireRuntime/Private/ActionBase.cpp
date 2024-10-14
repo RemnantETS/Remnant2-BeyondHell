@@ -1,6 +1,16 @@
 #include "ActionBase.h"
+#include "EActorModifierScope.h"
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
+
+UActionBase::UActionBase() {
+    this->Scope = EActorModifierScope::Server;
+    this->ActionID = 0;
+    this->ActionCameraEffectHandleID = -1;
+    this->ApplyOnKilled = false;
+    this->AllowChildrenClassesToValidate = false;
+    this->bStopOnCinematic = false;
+}
 
 bool UActionBase::ValidateAction_Implementation(AActor* Actor, AActor* Target) const {
     return false;
@@ -76,11 +86,4 @@ void UActionBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
     DOREPLIFETIME(UActionBase, DamageInfo);
 }
 
-UActionBase::UActionBase() {
-    this->ActionID = 0;
-    this->ActionCameraEffectHandleID = -1;
-    this->ApplyOnKilled = false;
-    this->AllowChildrenClassesToValidate = false;
-    this->bStopOnCinematic = false;
-}
 
