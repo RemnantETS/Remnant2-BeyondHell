@@ -1,6 +1,14 @@
 #include "RemnantTraitsComponent.h"
 #include "Templates/SubclassOf.h"
 
+URemnantTraitsComponent::URemnantTraitsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->ArchetypeNameTable = NULL;
+    this->bUseTypeForSortPriority = true;
+    this->bSortPropertyGreatestToLeast = true;
+    this->TraitPropertySort = ETraitSortProperty::Level;
+    this->ArchetypeTraitType = NULL;
+}
+
 bool URemnantTraitsComponent::IsInitializing() const {
     return false;
 }
@@ -41,11 +49,4 @@ void URemnantTraitsComponent::CheckOnTraitLevelChanged(TSubclassOf<UTrait> Trait
 void URemnantTraitsComponent::CheckOnTraitAdded(TSubclassOf<UTrait> TraitBP) {
 }
 
-URemnantTraitsComponent::URemnantTraitsComponent() {
-    this->ArchetypeNameTable = NULL;
-    this->bUseTypeForSortPriority = true;
-    this->bSortPropertyGreatestToLeast = true;
-    this->TraitPropertySort = ETraitSortProperty::Level;
-    this->ArchetypeTraitType = NULL;
-}
 

@@ -11,6 +11,6 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ETraitProgressionType ProgressionType;
     
-    ULegacyTraitsComponent();
+    ULegacyTraitsComponent(const FObjectInitializer& ObjectInitializer);
 };
 

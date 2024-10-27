@@ -1,5 +1,20 @@
 #include "Quest.h"
+#include "Components/SceneComponent.h"
 #include "Net/UnrealNetwork.h"
+
+AQuest::AQuest(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->bAlwaysRelevant = true;
+    this->bReplicates = true;
+    const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
+    (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
+    this->RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("QuestRoot"));
+    this->ID = 0;
+    this->ParentQuestID = -1;
+    this->Seed = 0;
+    this->QuestState = EQuestState::Active;
+    this->QuestResult = EQuestResult::Success;
+    this->ParentQuestComponent = NULL;
+}
 
 void AQuest::SetObjectiveCounterMax(FName NameID, int32 MaxCount) {
 }
@@ -133,12 +148,4 @@ void AQuest::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimePr
     DOREPLIFETIME(AQuest, QuestResult);
 }
 
-AQuest::AQuest() {
-    this->ID = 0;
-    this->ParentQuestID = -1;
-    this->Seed = 0;
-    this->QuestState = EQuestState::Active;
-    this->QuestResult = EQuestResult::Success;
-    this->ParentQuestComponent = NULL;
-}
 

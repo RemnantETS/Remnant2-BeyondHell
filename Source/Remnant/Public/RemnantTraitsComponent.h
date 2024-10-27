@@ -44,7 +44,8 @@ private:
     TSet<TSubclassOf<UTrait>> ArchetypeAddedTraits;
     
 public:
-    URemnantTraitsComponent();
+    URemnantTraitsComponent(const FObjectInitializer& ObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsInitializing() const;

@@ -2,6 +2,14 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+UTraitsComponent::UTraitsComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->TraitPointsPerLevelTable = NULL;
+    this->TraitPointsPerLevel = 1;
+    this->MaxTraitPoints = 60;
+    this->UnlockedTraitLevel = 1;
+    this->TraitPoints = 0;
+}
+
 void UTraitsComponent::Unequip_Implementation(int32 SlotIndex) {
 }
 bool UTraitsComponent::Unequip_Validate(int32 SlotIndex) {
@@ -195,11 +203,4 @@ void UTraitsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
     DOREPLIFETIME(UTraitsComponent, Traits);
 }
 
-UTraitsComponent::UTraitsComponent() {
-    this->TraitPointsPerLevelTable = NULL;
-    this->TraitPointsPerLevel = 1;
-    this->MaxTraitPoints = 60;
-    this->UnlockedTraitLevel = 1;
-    this->TraitPoints = 0;
-}
 

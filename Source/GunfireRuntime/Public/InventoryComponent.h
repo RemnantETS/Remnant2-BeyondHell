@@ -263,7 +263,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void MarkFavorited(const int32 ItemId, bool Favorited);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta = (AutoCreateRefTerm = "OnAdded"))
     void K2_AddItemSoft(TSoftClassPtr<AItem> ItemBP, int32 Quantity, int32 ItemLevel, EItemNotifyReason Reason, const FInventoryAddedItem& OnAdded, bool ForceEquip, bool SendNotification);
     
     UFUNCTION(BlueprintCallable)

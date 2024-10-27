@@ -43,6 +43,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, SaveGame, ReplicatedUsing=OnRep_TraitPoints, meta=(AllowPrivateAccess=true))
     int32 TraitPoints;
     
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<TSubclassOf<UTraitType>> TransientTraitTypes;
+    
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnTraitDelegate OnTraitUpdated;
     
@@ -75,9 +78,10 @@ protected:
     TArray<FTraitInfo> OldTraits;
     
 public:
-    UTraitsComponent();
+    UTraitsComponent(const FObjectInitializer& ObjectInitializer);
+
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
-    
+
     UFUNCTION(BlueprintCallable, Reliable, Server, WithValidation)
     void Unequip(int32 SlotIndex);
     
@@ -131,7 +135,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void MarkPreviewingChanges();
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(AutoCreateRefTerm = "OnUnlockedTrait"))
     void K2_UnlockTraitSoft(TSoftClassPtr<UTrait> TraitBP, const FTraitDeferredDelegate& OnUnlockedTrait, int32 StartingLevel, bool bAllowAutoEquip);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)

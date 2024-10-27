@@ -4,6 +4,36 @@
 #include "Net/UnrealNetwork.h"
 #include "Templates/SubclassOf.h"
 
+ARemnantQuest::ARemnantQuest(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->NetDormancy = DORM_DormantAll;
+    this->PersistenceComponent = CreateDefaultSubobject<UPersistenceComponent>(TEXT("Persistence"));
+    this->VariableComponent = CreateDefaultSubobject<UVariableComponent>(TEXT("Variables"));
+    this->Type = ERemnantQuestType::Default;
+    this->Rarity = ERemnantQuestRarity::Common;
+    this->MaxUsageCount = 1;
+    this->DebugState = ERemnantQuestDebugState::None;
+    this->IsOneShot = false;
+    this->ManualOrderID = 0;
+    this->IgnoreTileExclusivity = false;
+    this->IgnoresTileIDRequirement = false;
+    this->QuestGameMode = EQuestMode::Campaign;
+    this->RequiredAward = NULL;
+    this->LevelMin = 0;
+    this->LevelMax = 100;
+    this->Level = 1;
+    this->Difficulty = 1;
+    this->SlotID = -2;
+    this->ZoneID = -1;
+    this->RequiredEntitlement = NULL;
+    this->bDisableMultiplayer = false;
+    this->ItemValueTable = NULL;
+    this->ServerStatus = ERemnantQuestStatus::Unloaded;
+    this->LastCheckpointZoneID = -1;
+    this->RespawnZoneID = -1;
+    this->ContainerLevel = NULL;
+    this->Created = false;
+}
+
 bool ARemnantQuest::ShowQuestBreadcrumbs() {
     return false;
 }
@@ -28,7 +58,10 @@ void ARemnantQuest::OnRep_Status() {
 void ARemnantQuest::OnRep_BreadcrumbInfo() {
 }
 
-void ARemnantQuest::MulticastUnloadContainerLevel_Implementation() {
+void ARemnantQuest::OnComponentAdded(UQuestComponent* QuestComponent, int32 OptionalSeed) {
+}
+
+void ARemnantQuest::MulticastUnloadContainerLevel_Implementation(bool UpdateServerStatus) {
 }
 
 void ARemnantQuest::MulticastSetCheckpoint_Implementation() {
@@ -50,6 +83,14 @@ bool ARemnantQuest::IsLoaded() const {
     return false;
 }
 
+bool ARemnantQuest::IsChildQuest() const {
+    return false;
+}
+
+bool ARemnantQuest::HasRootQuestSlotID() const {
+    return false;
+}
+
 bool ARemnantQuest::HasRespawn() const {
     return false;
 }
@@ -62,7 +103,11 @@ bool ARemnantQuest::HasLastCheckpoint() const {
     return false;
 }
 
-bool ARemnantQuest::HasFailedToLoad() const {
+bool ARemnantQuest::HasFailed() const {
+    return false;
+}
+
+bool ARemnantQuest::HasBaseQuestSlotID() const {
     return false;
 }
 
@@ -89,7 +134,11 @@ FZoneLinkInfo ARemnantQuest::GetRespawn() const {
     return FZoneLinkInfo{};
 }
 
-int32 ARemnantQuest::GetQuestLevel() {
+bool ARemnantQuest::GetQuestZoneLabelOverride_Implementation(FText& OutText) {
+    return false;
+}
+
+int32 ARemnantQuest::GetQuestLevel() const {
     return 0;
 }
 
@@ -146,36 +195,9 @@ void ARemnantQuest::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
     DOREPLIFETIME(ARemnantQuest, SlotID);
     DOREPLIFETIME(ARemnantQuest, ZoneID);
     DOREPLIFETIME(ARemnantQuest, BreadcrumbInfo);
-    DOREPLIFETIME(ARemnantQuest, Status);
+    DOREPLIFETIME(ARemnantQuest, ServerStatus);
     DOREPLIFETIME(ARemnantQuest, LastCheckpointZoneID);
     DOREPLIFETIME(ARemnantQuest, LastCheckpointNameID);
 }
 
-ARemnantQuest::ARemnantQuest() {
-    this->PersistenceComponent = CreateDefaultSubobject<UPersistenceComponent>(TEXT("Persistence"));
-    this->VariableComponent = CreateDefaultSubobject<UVariableComponent>(TEXT("Variables"));
-    this->Type = ERemnantQuestType::Default;
-    this->Rarity = ERemnantQuestRarity::Common;
-    this->MaxUsageCount = 1;
-    this->DebugState = ERemnantQuestDebugState::None;
-    this->IsOneShot = false;
-    this->IgnoreTileExclusivity = false;
-    this->IgnoresTileIDRequirement = false;
-    this->QuestGameMode = EQuestMode::Campaign;
-    this->RequiredAward = NULL;
-    this->LevelMin = 0;
-    this->LevelMax = 100;
-    this->Level = 1;
-    this->Difficulty = 1;
-    this->SlotID = -2;
-    this->ZoneID = -1;
-    this->RequiredEntitlement = NULL;
-    this->bDisableMultiplayer = false;
-    this->ItemValueTable = NULL;
-    this->Status = ERemnantQuestStatus::Unloaded;
-    this->LastCheckpointZoneID = -2;
-    this->RespawnZoneID = -2;
-    this->ContainerLevel = NULL;
-    this->Created = false;
-}
 

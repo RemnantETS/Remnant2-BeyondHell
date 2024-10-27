@@ -1,10 +1,11 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
+#include "EPrismSegmentCategory.h"
 #include "PrismStoneDataTableRow.generated.h"
 
+class UActionBase;
 class UConditionList;
-class UObject;
 
 USTRUCT(BlueprintType)
 struct FPrismStoneDataTableRow : public FTableRowBase {
@@ -14,10 +15,19 @@ public:
     FText DisplayName;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TSoftObjectPtr<UObject> DataObject;
+    TSoftClassPtr<UObject> ClassObject;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 Rarity;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    EPrismSegmentCategory Category;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool ComboSegment;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TSoftClassPtr<UActionBase> ActionClass;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UConditionList* PrismRequirementsToRoll;
