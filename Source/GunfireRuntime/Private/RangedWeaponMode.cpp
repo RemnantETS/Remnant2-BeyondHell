@@ -16,7 +16,7 @@ FRangedWeaponMode::FRangedWeaponMode() {
     this->SprayCount = 0.00f;
     this->Reticule = NULL;
     this->HasScope = false;
-    this->ScopeFOV = 60.00f;
+    this->ScopeFOV = 0.00f;
     this->ScopeReticule = NULL;
     this->ScopeWidget = NULL;
     this->MinimumAimDelayForScope = 0.00f;
@@ -27,7 +27,8 @@ FRangedWeaponMode::FRangedWeaponMode() {
     this->AllowReload = false;
     this->ReloadAfterStartLoop = false;
     this->AllowReloadWithNoAmmo = false;
-    this->AllowInfiniteClip = false;
+    this->AllowInfiniteClip = true;
+    this->AllowAmmoPerClipMod = true;
     this->RequiredFireEndToRefire = false;
     this->TrajectoryMode = ERangedWeaponTrajectoryMode::Socket;
     this->MuzzleObstructionDistance = 0.00f;

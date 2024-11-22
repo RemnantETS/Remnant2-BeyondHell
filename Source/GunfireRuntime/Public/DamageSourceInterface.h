@@ -32,7 +32,7 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void NotifyHealedTarget(const FHealingInfo& HealingInfo);
     
-    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent, meta=(ForceAsFunction))
     void ModifyDamage(UPARAM(Ref) FDamageInfo& Info);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)

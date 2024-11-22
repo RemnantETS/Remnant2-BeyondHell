@@ -9,6 +9,7 @@ FStatModTableEntry::FStatModTableEntry() {
     this->OverrideExistingLevel = false;
     this->LevelScalingOwner = NULL;
     this->RequiredContextSlot = 0;
+    this->AllowOverrideRequiredContextSlot = false;
     this->Hidden = false;
 }
 
