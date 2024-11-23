@@ -1,5 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
+#include "ItemQuantity.h"
 #include "EquipmentMod.h"
 #include "InspectInfo.h"
 #include "EPrismSegmentCategory.h"
@@ -100,8 +101,8 @@ protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FeedFinalCurveExpGiven;
     
-    //UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    //TArray<FItemQuantity> ItemsToConsumeOnFlush;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    TArray<FItemQuantity> ItemsToConsumeOnFlush;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UConditionList* StoneFeedConditions;
@@ -117,6 +118,9 @@ protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UConditionList* StoneRemoveSegmentsConditions;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UConditionList* StoneRemoveMythicSegmentsConditions;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     UConditionList* PlayerRemoveSegmentsConditions;
@@ -141,6 +145,9 @@ public:
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
     void ServerGenerateStartSeed();
+    
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void ServerFlushSegment(int32 SegmentIndex, int32 NumRefundLevels);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
     void ServerFlushPrismStone(bool RemoveSegments, bool RemovePendingExp, bool RemoveFeedData, bool RemoveStoredLevels);
@@ -173,6 +180,11 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsComboSegmentByNameID(FName NameID) const;
     
+protected:
+    UFUNCTION(BlueprintCallable)
+    void InvalidateCharacterStats();
+    
+public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasSegmentWithNameID(FName NameID);
     
@@ -282,6 +294,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     bool CanRemoveSegments();
+    
+    UFUNCTION(BlueprintCallable)
+    bool CanRemoveMythicSegments();
     
     UFUNCTION(BlueprintCallable)
     bool CanFlushStone();

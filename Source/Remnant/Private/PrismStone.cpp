@@ -34,6 +34,7 @@ APrismStone::APrismStone(const FObjectInitializer& ObjectInitializer) : Super(Ob
     this->StoneFlushConditions = NULL;
     this->PlayerFlushConditions = NULL;
     this->StoneRemoveSegmentsConditions = NULL;
+    this->StoneRemoveMythicSegmentsConditions = NULL;
     this->PlayerRemoveSegmentsConditions = NULL;
     this->StoneComboBypassConditions = NULL;
     this->PlayerComboBypassConditions = NULL;
@@ -47,6 +48,9 @@ void APrismStone::ServerSetHasRolled_Implementation(bool Rolled) {
 }
 
 void APrismStone::ServerGenerateStartSeed_Implementation() {
+}
+
+void APrismStone::ServerFlushSegment_Implementation(int32 SegmentIndex, int32 NumRefundLevels) {
 }
 
 void APrismStone::ServerFlushPrismStone_Implementation(bool RemoveSegments, bool RemovePendingExp, bool RemoveFeedData, bool RemoveStoredLevels) {
@@ -76,6 +80,9 @@ bool APrismStone::IsMythicSegmentByNameID(FName NameID) const {
 
 bool APrismStone::IsComboSegmentByNameID(FName NameID) const {
     return false;
+}
+
+void APrismStone::InvalidateCharacterStats() {
 }
 
 bool APrismStone::HasSegmentWithNameID(FName NameID) {
@@ -218,6 +225,10 @@ bool APrismStone::CanRoll() {
 }
 
 bool APrismStone::CanRemoveSegments() {
+    return false;
+}
+
+bool APrismStone::CanRemoveMythicSegments() {
     return false;
 }
 
