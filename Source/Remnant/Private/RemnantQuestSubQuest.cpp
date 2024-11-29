@@ -13,7 +13,7 @@ ARemnantQuest* URemnantQuestSubQuest::GetSubQuest() {
     return NULL;
 }
 
-URemnantQuestSubQuest::URemnantQuestSubQuest() {
+URemnantQuestSubQuest::URemnantQuestSubQuest(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer) {
     this->QuestType = ERemnantQuestType::Default;
     this->ChanceToSpawn = 100.00f;
     this->Optional = false;

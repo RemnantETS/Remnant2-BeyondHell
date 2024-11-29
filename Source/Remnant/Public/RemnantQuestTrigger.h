@@ -26,7 +26,7 @@ protected:
     AQuestTrigger* Trigger;
     
 public:
-    URemnantQuestTrigger();
+    URemnantQuestTrigger(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable)
     void OnActorRegistered(AActor* Actor);

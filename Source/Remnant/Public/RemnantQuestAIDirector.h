@@ -37,7 +37,7 @@ private:
     FQuestAIDirectorNamedEvent OnEncounterEvent;
     
 public:
-    URemnantQuestAIDirector();
+    URemnantQuestAIDirector(const FObjectInitializer& ObjectInitializer);
 private:
     UFUNCTION(BlueprintCallable)
     void StopAllGroups(bool DestroyActiveSpawns);

@@ -39,7 +39,7 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FQuestActorDelegate OnDestroyed;
     
-    UQuestEntity();
+    UQuestEntity(const FObjectInitializer& ObjectInitializer);
     UFUNCTION(BlueprintCallable)
     void StartEventTree(UEventTree* NewEventTree);
     

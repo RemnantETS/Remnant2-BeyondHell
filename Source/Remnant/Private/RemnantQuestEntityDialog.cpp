@@ -3,7 +3,7 @@
 void URemnantQuestEntityDialog::OnActorSpawned(AActor* Actor) {
 }
 
-URemnantQuestEntityDialog::URemnantQuestEntityDialog() {
+URemnantQuestEntityDialog::URemnantQuestEntityDialog(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer) {
     this->Dialog = NULL;
     this->ShouldBeContextProviderForDefaultTree = false;
 }

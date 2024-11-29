@@ -65,7 +65,7 @@ protected:
     TSubclassOf<ARemnantQuest> CachedQuest;
     
 public:
-    URemnantQuestSubQuest();
+    URemnantQuestSubQuest(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable)
     void SubQuestComplete(AQuest* Quest, EQuestResult Result);

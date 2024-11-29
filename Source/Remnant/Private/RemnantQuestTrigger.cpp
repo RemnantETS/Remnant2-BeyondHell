@@ -21,7 +21,7 @@ void URemnantQuestTrigger::EventPlayerExit(ARemnantCharacter* Player) {
 void URemnantQuestTrigger::EventPlayerEnter(ARemnantCharacter* Player) {
 }
 
-URemnantQuestTrigger::URemnantQuestTrigger() {
+URemnantQuestTrigger::URemnantQuestTrigger(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer) {
     this->Trigger = NULL;
 }
 

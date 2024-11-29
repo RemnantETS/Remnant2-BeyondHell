@@ -13,7 +13,8 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class REMNANT_API URemnantQuestComponent : public UQuestComponent {
     GENERATED_BODY()
 public:
-    URemnantQuestComponent();
+    URemnantQuestComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsZoneLoaded();
     

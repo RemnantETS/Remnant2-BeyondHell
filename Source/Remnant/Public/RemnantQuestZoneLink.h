@@ -24,6 +24,9 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FName Destination;
     
+    UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool GenerateZoneLink;
+    
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool StartsActive;
     
@@ -56,9 +59,10 @@ protected:
     bool OwnsLink;
     
 public:
-    URemnantQuestZoneLink();
+    URemnantQuestZoneLink(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable)
-    void TravelTo();
+    void TravelTo(FName Context);
     
     UFUNCTION(BlueprintCallable)
     void SetWaypointDisabled(bool Disabled);

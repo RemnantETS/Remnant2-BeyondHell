@@ -11,7 +11,7 @@ bool URemnantQuestTile::GetTileAttribute(FName Key, FMapGenAttribute& Out) {
     return false;
 }
 
-URemnantQuestTile::URemnantQuestTile() {
+URemnantQuestTile::URemnantQuestTile(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer) {
     this->IsWorldMapLocation = false;
     this->IsMainPath = false;
     this->Exclusive = true;

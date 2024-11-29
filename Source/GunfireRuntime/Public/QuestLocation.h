@@ -7,6 +7,6 @@ UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
 class GUNFIRERUNTIME_API UQuestLocation : public UQuestComponent {
     GENERATED_BODY()
 public:
-    UQuestLocation();
+    UQuestLocation(const FObjectInitializer& ObjectInitializer);
 };
 

@@ -31,7 +31,8 @@ protected:
     TArray<FString> Errors;
     
 public:
-    UQuestComponent();
+    UQuestComponent(const FObjectInitializer& ObjectInitializer);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnResetQuest();
     
@@ -88,7 +89,7 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable)
-    void DebugTravelTo(APlayerController* Player);
+    void DebugTravelTo(FName Context, APlayerController* Player);
     
     UFUNCTION(BlueprintCallable)
     bool DebugCanTravelTo();

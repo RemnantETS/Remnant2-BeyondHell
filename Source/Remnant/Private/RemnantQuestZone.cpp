@@ -27,7 +27,7 @@ void URemnantQuestZone::ParentMapLoaded() {
 void URemnantQuestZone::MapLoaded() {
 }
 
-URemnantQuestZone::URemnantQuestZone() {
+URemnantQuestZone::URemnantQuestZone(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer) {
     this->ZoneDef = NULL;
     this->Static = false;
     this->RequestedID = -1;

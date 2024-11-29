@@ -31,7 +31,7 @@ void URemnantQuestWaveEncounter::EventOnEnd() {
 void URemnantQuestWaveEncounter::Begin(AActor* Target) {
 }
 
-URemnantQuestWaveEncounter::URemnantQuestWaveEncounter() {
+URemnantQuestWaveEncounter::URemnantQuestWaveEncounter(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer) {
     this->SpawnTable = NULL;
     this->EncounterTarget = NULL;
     this->EventRegion = NULL;

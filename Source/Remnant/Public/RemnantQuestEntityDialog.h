@@ -17,7 +17,7 @@ public:
     UPROPERTY(AdvancedDisplay, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool ShouldBeContextProviderForDefaultTree;
     
-    URemnantQuestEntityDialog();
+    URemnantQuestEntityDialog(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable)
     void OnActorSpawned(AActor* Actor);

@@ -52,7 +52,7 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FQuestTileActiveDelegate OnSetTileActive;
     
-    URemnantQuestTile();
+    URemnantQuestTile(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable)
     void SetTileActive(int32 ID, bool Active);

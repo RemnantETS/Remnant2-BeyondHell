@@ -32,7 +32,7 @@ void URemnantQuestAIDirector::EventPlayerEnter(FEventRegionCharacter Character) 
 void URemnantQuestAIDirector::EventEncounterEvent(UEncounterGroupInstance* EncounterGroup, FName EventName) {
 }
 
-URemnantQuestAIDirector::URemnantQuestAIDirector() {
+URemnantQuestAIDirector::URemnantQuestAIDirector(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer) {
     this->IncludeZoneGroups = false;
 }
 

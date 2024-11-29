@@ -61,7 +61,7 @@ protected:
     TArray<FRemnantQuestEntityInfo> Spawns;
     
 public:
-    URemnantQuestEntity();
+    URemnantQuestEntity(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable)
     void ZoneUnloaded();

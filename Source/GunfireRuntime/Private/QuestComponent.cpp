@@ -1,5 +1,10 @@
 #include "QuestComponent.h"
 
+UQuestComponent::UQuestComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->Seed = 0;
+    this->bQuestAutoActivate = true;
+}
+
 void UQuestComponent::OnResetQuest_Implementation() {
 }
 
@@ -57,7 +62,7 @@ FString UQuestComponent::GetDebugLabel() {
     return TEXT("");
 }
 
-void UQuestComponent::DebugTravelTo(APlayerController* Player) {
+void UQuestComponent::DebugTravelTo(FName Context, APlayerController* Player) {
 }
 
 bool UQuestComponent::DebugCanTravelTo() {
@@ -74,8 +79,4 @@ bool UQuestComponent::AreAssetsLoaded() {
 void UQuestComponent::ActivateQuest() {
 }
 
-UQuestComponent::UQuestComponent() {
-    this->Seed = 0;
-    this->bQuestAutoActivate = true;
-}
 

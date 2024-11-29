@@ -67,7 +67,7 @@ void URemnantQuestEventRegion::CompleteEvent() {
 void URemnantQuestEventRegion::Begin() {
 }
 
-URemnantQuestEventRegion::URemnantQuestEventRegion() {
+URemnantQuestEventRegion::URemnantQuestEventRegion(const FObjectInitializer& ObjectInitializer):Super(ObjectInitializer) {
     this->MusicSet = NULL;
     this->bOverrideExistingSet = true;
     this->EventRegion = NULL;

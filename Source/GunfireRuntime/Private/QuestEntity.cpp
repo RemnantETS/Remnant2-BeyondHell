@@ -28,7 +28,7 @@ void UQuestEntity::DialogTrigger(FName TriggerName, AActor* Initiator, bool Push
 void UQuestEntity::BeginDialog(AActor* Initiator) {
 }
 
-UQuestEntity::UQuestEntity() {
+UQuestEntity::UQuestEntity(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->ShouldBeContextProviderForDefaultTree = false;
     this->OwnerContext = EQuestEntityOwnerContext::Quest;
 }

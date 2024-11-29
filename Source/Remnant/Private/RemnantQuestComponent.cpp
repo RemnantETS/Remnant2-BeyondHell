@@ -1,5 +1,8 @@
 #include "RemnantQuestComponent.h"
 
+URemnantQuestComponent::URemnantQuestComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+}
+
 bool URemnantQuestComponent::IsZoneLoaded() {
     return false;
 }
@@ -24,6 +27,4 @@ URemnantQuestEntity* URemnantQuestComponent::GetQuestEntity() {
     return NULL;
 }
 
-URemnantQuestComponent::URemnantQuestComponent() {
-}
 

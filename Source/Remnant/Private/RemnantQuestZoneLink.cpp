@@ -1,6 +1,17 @@
 #include "RemnantQuestZoneLink.h"
 
-void URemnantQuestZoneLink::TravelTo() {
+URemnantQuestZoneLink::URemnantQuestZoneLink(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
+    this->Type = EZoneLinkType::Link;
+    this->GenerateZoneLink = true;
+    this->StartsActive = false;
+    this->CanBeRespawnLink = true;
+    this->IsMainPath = false;
+    this->WaypointBP = NULL;
+    this->WaypointSpawnPointTag = TEXT("Waypoint");
+    this->OwnsLink = true;
+}
+
+void URemnantQuestZoneLink::TravelTo(FName Context) {
 }
 
 void URemnantQuestZoneLink::SetWaypointDisabled(bool Disabled) {
@@ -38,13 +49,4 @@ void URemnantQuestZoneLink::DeactivateWaypoint() {
 void URemnantQuestZoneLink::ActivateWaypoint(bool SetAsRespawnPoint) {
 }
 
-URemnantQuestZoneLink::URemnantQuestZoneLink() {
-    this->Type = EZoneLinkType::Link;
-    this->StartsActive = false;
-    this->CanBeRespawnLink = true;
-    this->IsMainPath = false;
-    this->WaypointBP = NULL;
-    this->WaypointSpawnPointTag = TEXT("Waypoint");
-    this->OwnsLink = true;
-}
 

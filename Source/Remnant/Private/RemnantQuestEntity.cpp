@@ -54,7 +54,7 @@ TArray<AActor*> URemnantQuestEntity::GetActors() {
     return TArray<AActor*>();
 }
 
-URemnantQuestEntity::URemnantQuestEntity() {
+URemnantQuestEntity::URemnantQuestEntity(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->SpawnTable = NULL;
     this->Transient = false;
     this->ForceSpawnIfNotFound = false;

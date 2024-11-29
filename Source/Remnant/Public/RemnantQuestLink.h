@@ -38,7 +38,7 @@ protected:
     int32 AutoLinkQuestID;
     
 public:
-    URemnantQuestLink();
+    URemnantQuestLink(const FObjectInitializer& ObjectInitializer);
 protected:
     UFUNCTION(BlueprintCallable)
     void OnLinkDeactivated(UQuestComponent* Component);

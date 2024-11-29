@@ -95,7 +95,7 @@ protected:
     bool AssetsGathered;
     
 public:
-    URemnantQuestZone();
+    URemnantQuestZone(const FObjectInitializer& ObjectInitializer);
     UFUNCTION(BlueprintCallable)
     void ZoneUnloaded();
     
