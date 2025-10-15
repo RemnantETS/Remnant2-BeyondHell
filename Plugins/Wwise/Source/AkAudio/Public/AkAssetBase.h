@@ -9,7 +9,7 @@ UCLASS(Blueprintable)
 class AKAUDIO_API UAkAssetBase : public UAkAudioType {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditInstanceOnly, Instanced, meta=(AllowPrivateAccess=true))
     UAkAssetPlatformData* PlatformAssetData;
     
     UAkAssetBase();

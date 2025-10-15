@@ -28,16 +28,16 @@ public:
     UFUNCTION(BlueprintCallable)
     static bool UseSound();
     
-    UFUNCTION(BlueprintCallable, BlueprintCosmetic, meta=(WorldContext="WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintCosmetic, meta=(WorldContext="WorldContextObject", AutoCreateRefTerm = "StopParams"))
     static void StopSound(UObject* WorldContextObject, const FGunfireAudioPlayingID& PlayingID, const FGunfireAudioStopParams& StopParams);
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, meta=(AutoCreateRefTerm = "PlayParams, AttachParams"))
     static FAudioComponentGunfire SpawnSoundAttached(const FSoundGunfire& Sound, USceneComponent* AttachToComponent, const FGunfireAudioPlayParams& PlayParams, const FGunfireAudioAttachParams& AttachParams);
     
-    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject", AutoCreateRefTerm = "PlayParams"))
     static FAudioComponentGunfire SpawnSoundAtLocation(UObject* WorldContextObject, const FSoundGunfire& Sound, FVector Location, const FGunfireAudioPlayParams& PlayParams);
     
-    UFUNCTION(BlueprintCallable, BlueprintCosmetic, meta=(WorldContext="WorldContextObject"))
+    UFUNCTION(BlueprintCallable, BlueprintCosmetic, meta=(WorldContext="WorldContextObject", AutoCreateRefTerm = "PlayParams"))
     static FAudioComponentGunfire SpawnSound2D(UObject* WorldContextObject, const FSoundGunfire& Sound, const FGunfireAudioPlayParams& PlayParams);
     
 private:

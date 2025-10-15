@@ -10,7 +10,7 @@ UCLASS(Blueprintable)
 class AKAUDIO_API UAkAudioEvent : public UAkAssetBase {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FString, UAkAssetPlatformData*> LocalizedPlatformAssetDataMap;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
