@@ -3,7 +3,7 @@
 #include "SpawnTableEntry.h"
 #include "SpawnTableElement.generated.h"
 
-UCLASS(Abstract, Blueprintable)
+UCLASS()
 class GUNFIRERUNTIME_API USpawnTableElement : public USpawnTableEntry {
     GENERATED_BODY()
 public:

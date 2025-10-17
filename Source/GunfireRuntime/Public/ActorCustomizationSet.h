@@ -9,7 +9,7 @@ class UActorCustomizationSetSlot;
 class UObject;
 
 UCLASS(Blueprintable, EditInlineNew)
-class GUNFIRERUNTIME_API UActorCustomizationSet : public UInheritableAsset, public IHierarchicalEditInterface {
+class GUNFIRERUNTIME_API UActorCustomizationSet : public UDataAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

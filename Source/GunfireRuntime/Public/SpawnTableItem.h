@@ -5,7 +5,7 @@
 
 class AItem;
 
-UCLASS(Blueprintable)
+UCLASS()
 class GUNFIRERUNTIME_API USpawnTableItem : public USpawnTableElement {
     GENERATED_BODY()
 public:

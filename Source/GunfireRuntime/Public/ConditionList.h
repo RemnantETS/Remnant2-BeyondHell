@@ -7,7 +7,7 @@
 class AActor;
 
 UCLASS(Blueprintable)
-class GUNFIRERUNTIME_API UConditionList : public UInheritableObject {
+class GUNFIRERUNTIME_API UConditionList : public UDataAsset {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

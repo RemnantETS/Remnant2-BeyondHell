@@ -6,7 +6,7 @@
 
 class UActorCustomizationID;
 
-UCLASS(Blueprintable, EditInlineNew)
+UCLASS(EditInlineNew)
 class GUNFIRERUNTIME_API UActorCustomizationSetSlot : public UInheritableObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:

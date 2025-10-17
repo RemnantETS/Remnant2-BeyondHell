@@ -6,7 +6,7 @@
 
 class UTrait;
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew)
 class REMNANT_API USpawnTableTrait : public USpawnTableEntry {
     GENERATED_BODY()
 public:

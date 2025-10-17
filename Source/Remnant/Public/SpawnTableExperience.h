@@ -3,7 +3,7 @@
 #include "SpawnTableEntry.h"
 #include "SpawnTableExperience.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew)
 class REMNANT_API USpawnTableExperience : public USpawnTableEntry {
     GENERATED_BODY()
 public:

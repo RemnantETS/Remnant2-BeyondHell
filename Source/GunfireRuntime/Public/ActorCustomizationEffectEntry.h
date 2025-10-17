@@ -5,7 +5,7 @@
 
 class UActorCustomizationEffect;
 
-UCLASS(Blueprintable, EditInlineNew)
+UCLASS(EditInlineNew)
 class GUNFIRERUNTIME_API UActorCustomizationEffectEntry : public UActorCustomizationBase {
     GENERATED_BODY()
 public:

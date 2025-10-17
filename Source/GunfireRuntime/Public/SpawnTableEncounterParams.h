@@ -4,7 +4,7 @@
 #include "SpawnTableEntry.h"
 #include "SpawnTableEncounterParams.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS()
 class GUNFIRERUNTIME_API USpawnTableEncounterParams : public USpawnTableEntry {
     GENERATED_BODY()
 public:

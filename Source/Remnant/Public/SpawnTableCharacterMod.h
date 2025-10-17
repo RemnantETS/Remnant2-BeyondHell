@@ -6,7 +6,7 @@
 
 class UActionBase;
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew)
 class REMNANT_API USpawnTableCharacterMod : public USpawnTableEntry {
     GENERATED_BODY()
 public:

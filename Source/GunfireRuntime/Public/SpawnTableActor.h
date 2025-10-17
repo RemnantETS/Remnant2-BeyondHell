@@ -5,7 +5,7 @@
 
 class AActor;
 
-UCLASS(Blueprintable)
+UCLASS()
 class GUNFIRERUNTIME_API USpawnTableActor : public USpawnTableElement {
     GENERATED_BODY()
 public:

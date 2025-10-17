@@ -5,7 +5,7 @@
 
 class UAccountAward;
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew)
 class REMNANT_API USpawnTableAccountAward : public USpawnTableEntry {
     GENERATED_BODY()
 public:

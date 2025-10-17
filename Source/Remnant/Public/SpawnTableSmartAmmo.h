@@ -4,7 +4,7 @@
 #include "SmartAmmo.h"
 #include "SpawnTableSmartAmmo.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew)
 class REMNANT_API USpawnTableSmartAmmo : public USpawnTableElement {
     GENERATED_BODY()
 public:

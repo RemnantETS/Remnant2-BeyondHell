@@ -4,7 +4,7 @@
 #include "SpawnTableEntry.h"
 #include "SpawnTableChallenge.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew)
 class REMNANT_API USpawnTableChallenge : public USpawnTableEntry {
     GENERATED_BODY()
 public:

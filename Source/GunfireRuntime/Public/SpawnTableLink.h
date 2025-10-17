@@ -5,7 +5,7 @@
 
 class USpawnTable;
 
-UCLASS(Blueprintable)
+UCLASS()
 class GUNFIRERUNTIME_API USpawnTableLink : public USpawnTableEntry {
     GENERATED_BODY()
 public:

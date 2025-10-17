@@ -10,7 +10,7 @@
 class ACharacterGunfire;
 class UFaction;
 
-UCLASS(Blueprintable)
+UCLASS()
 class GUNFIRERUNTIME_API USpawnTableCharacter : public USpawnTableElement {
     GENERATED_BODY()
 public:

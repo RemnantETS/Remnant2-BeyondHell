@@ -6,7 +6,7 @@
 
 class UActorCustomizationEffectEntry;
 
-UCLASS(Blueprintable, EditInlineNew)
+UCLASS(EditInlineNew)
 class GUNFIRERUNTIME_API UActorCustomizationSetEffect : public UInheritableObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
