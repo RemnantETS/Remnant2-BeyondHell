@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "R:\UnrealProjects\Remnant2-BeyondHell\Source\GunfireRuntime\Public\QuestRecordsComponent.h"
+#include "QuestRecordsComponent.h"
 #include "RemnantQuestRecordsComponent.generated.h"
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
