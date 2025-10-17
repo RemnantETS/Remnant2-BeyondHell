@@ -200,6 +200,10 @@
 		{
 			"Name": "XeSS",
 			"Enabled": true
+		},
+		{
+			"Name": "JsonAsAsset",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
