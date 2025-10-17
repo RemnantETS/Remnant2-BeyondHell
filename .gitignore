@@ -139,6 +139,7 @@ obj/
 # Ignore any saved local files
 /Saved/*
 /Saved/Logs/*
+.vs/
 
 !/Content/Shared/Material/MASTER/*
 
