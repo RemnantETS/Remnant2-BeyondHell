@@ -5,7 +5,7 @@
 
 class UAkAssetPlatformData;
 
-UCLASS(Blueprintable)
+UCLASS(NotBlueprintable, EditInlineNew)
 class AKAUDIO_API UAkAssetBase : public UAkAudioType {
     GENERATED_BODY()
 public:

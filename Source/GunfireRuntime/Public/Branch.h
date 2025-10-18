@@ -9,7 +9,7 @@ UCLASS(Blueprintable)
 class GUNFIRERUNTIME_API UBranch : public UEventTreeNode_Base {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UEventTreeNode*> Nodes;
     
     UBranch();

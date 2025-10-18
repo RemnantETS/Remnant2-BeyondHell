@@ -12,10 +12,10 @@ class UEventTreeNode;
 class UEventTreeNode_Standalone;
 
 UCLASS(Blueprintable)
-class GUNFIRERUNTIME_API UEventTree : public UObject, public IHierarchicalEditInterface {
+class GUNFIRERUNTIME_API UEventTree : public UDataAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UEventTreeNode*> Nodes;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

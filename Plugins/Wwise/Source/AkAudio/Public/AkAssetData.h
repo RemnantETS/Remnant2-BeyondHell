@@ -4,8 +4,8 @@
 #include "UObject/Object.h"
 #include "AkAssetData.generated.h"
 
-UCLASS(Blueprintable, EditInlineNew)
-class AKAUDIO_API UAkAssetData : public UDataAsset {
+UCLASS(NotBlueprintable, EditInlineNew)
+class AKAUDIO_API UAkAssetData : public UObject {
     GENERATED_BODY()
 public:
     UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))

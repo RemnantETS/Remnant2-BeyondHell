@@ -3,7 +3,7 @@
 #include "UObject/Object.h"
 #include "AkAudioType.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew)
 class AKAUDIO_API UAkAudioType : public UDataAsset {
     GENERATED_BODY()
 public:

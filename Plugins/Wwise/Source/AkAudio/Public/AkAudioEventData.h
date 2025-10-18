@@ -8,7 +8,7 @@ class UAkAuxBus;
 class UAkGroupValue;
 class UAkTrigger;
 
-UCLASS(Blueprintable, EditInlineNew)
+UCLASS(EditInlineNew)
 class AKAUDIO_API UAkAudioEventData : public UAkAssetDataSwitchContainer {
     GENERATED_BODY()
 public:

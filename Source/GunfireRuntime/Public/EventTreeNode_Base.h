@@ -6,7 +6,7 @@
 #include "VariableStatements.h"
 #include "EventTreeNode_Base.generated.h"
 
-UCLASS(Abstract, Blueprintable)
+UCLASS(Abstract, EditInlineNew)
 class GUNFIRERUNTIME_API UEventTreeNode_Base : public UObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
