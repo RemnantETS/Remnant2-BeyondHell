@@ -31,6 +31,10 @@
 			"Enabled": false
 		},
 		{
+			"Name": "StructUtils",
+			"Enabled": true
+		},
+		{
 			"Name": "OculusVR",
 			"Enabled": false
 		},

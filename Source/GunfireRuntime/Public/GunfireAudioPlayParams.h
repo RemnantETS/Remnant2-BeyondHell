@@ -1,14 +1,14 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Engine/UserDefinedStruct.h"
+#include "InstancedStruct.h"
 #include "GunfireAudioPlayParams.generated.h"
 
 USTRUCT(BlueprintType)
 struct GUNFIRERUNTIME_API FGunfireAudioPlayParams {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    UUserDefinedStruct* UserParams;
+    UPROPERTY(BlueprintReadWrite,Category="Foo", EditAnywhere, meta = (AllowPrivateAccess = true))
+    FInstancedStruct UserParams;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float VolumeMultiplier;
