@@ -211,9 +211,6 @@
 		}
 	],
 	"TargetPlatforms": [
-		"Windows",
-		"PS5",
-		"XSX",
-		"GDK"
+		"Windows"
 	]
 }
