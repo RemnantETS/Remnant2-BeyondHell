@@ -5,12 +5,12 @@
 
 class UInheritableTaggedObject;
 
-UCLASS(Abstract, Blueprintable)
+UCLASS(Abstract, NotBlueprintable)
 class GUNFIRERUNTIME_API UInheritableNameTagObject : public UInheritableNamedObject {
     GENERATED_BODY()
 public:
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UInheritableTaggedObject*> Entries;
     
 public:

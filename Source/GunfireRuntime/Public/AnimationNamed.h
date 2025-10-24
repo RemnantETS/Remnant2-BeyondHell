@@ -5,7 +5,7 @@
 #include "InheritableNameTagObject.h"
 #include "AnimationNamed.generated.h"
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew, NotBlueprintable)
 class GUNFIRERUNTIME_API UAnimationNamed : public UInheritableNameTagObject {
     GENERATED_BODY()
 public:

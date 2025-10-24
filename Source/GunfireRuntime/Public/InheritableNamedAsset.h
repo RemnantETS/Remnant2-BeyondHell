@@ -6,11 +6,11 @@
 
 class UInheritableNamedObject;
 
-UCLASS(Abstract, Blueprintable)
-class GUNFIRERUNTIME_API UInheritableNamedAsset : public UInheritableAsset, public IHierarchicalEditInterface {
+UCLASS(Abstract, EditInlineNew, NotBlueprintable)
+class GUNFIRERUNTIME_API UInheritableNamedAsset : public UDataAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UInheritableNamedObject*> Entries;
     
     UInheritableNamedAsset();

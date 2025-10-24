@@ -5,14 +5,14 @@
 
 class UAnimSequenceBase;
 
-UCLASS(Blueprintable)
+UCLASS(EditInlineNew, NotBlueprintable)
 class GUNFIRERUNTIME_API UAnimationTagged : public UAnimationAssetTagged {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UAnimSequenceBase*> Animations;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UAnimSequenceBase*> SlaveAnimations;
     
     UAnimationTagged();

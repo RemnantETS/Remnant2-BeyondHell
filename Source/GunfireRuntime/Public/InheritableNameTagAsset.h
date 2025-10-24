@@ -3,7 +3,7 @@
 #include "InheritableNamedAsset.h"
 #include "InheritableNameTagAsset.generated.h"
 
-UCLASS(Abstract, Blueprintable)
+UCLASS(Abstract, NotBlueprintable)
 class GUNFIRERUNTIME_API UInheritableNameTagAsset : public UInheritableNamedAsset {
     GENERATED_BODY()
 public:

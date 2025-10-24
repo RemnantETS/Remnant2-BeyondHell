@@ -1,9 +1,9 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/Object.h"
+#include "Engine/DataAsset.h"
 #include "InheritableObject.generated.h"
 
-UCLASS(Abstract, Blueprintable)
+UCLASS(Abstract, NotBlueprintable)
 class GUNFIRERUNTIME_API UInheritableObject : public UObject {
     GENERATED_BODY()
 public:
