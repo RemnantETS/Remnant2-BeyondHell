@@ -34,6 +34,7 @@
 !*.def
 !*.exp
 !*.manifest
+!*.zip
 
 # Java source files
 !*.java
