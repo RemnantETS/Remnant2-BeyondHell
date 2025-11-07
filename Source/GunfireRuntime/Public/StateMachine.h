@@ -7,7 +7,7 @@
 class UActorState;
 
 UCLASS(Blueprintable)
-class GUNFIRERUNTIME_API UStateMachine : public UInheritableAsset, public IHierarchicalEditInterface {
+class GUNFIRERUNTIME_API UStateMachine : public UDataAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
