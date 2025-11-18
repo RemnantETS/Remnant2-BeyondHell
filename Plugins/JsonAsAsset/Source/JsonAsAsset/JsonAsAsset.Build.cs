@@ -61,6 +61,7 @@ public class JsonAsAsset : ModuleRules
 			"RenderCore",
 			"AnimGraphRuntime", 
 			"AnimGraph",
+			"BlueprintGraph",
 
 #if UE_5_0_OR_LATER
 			/* Only Unreal Engine 5 */

@@ -142,6 +142,10 @@ bool IImporter::ReadExportsAndImport(TArray<TSharedPtr<FJsonValue>> Exports, FSt
 	for (const TSharedPtr<FJsonValue>& ExportPtr : Exports) {
 		TSharedPtr<FJsonObject> DataObject = ExportPtr->AsObject();
 
+		if (DataObject->HasField("Outer")) {
+			continue;
+		}
+
 		FString Type = DataObject->GetStringField(TEXT("Type"));
 		FString Name = DataObject->GetStringField(TEXT("Name"));
 

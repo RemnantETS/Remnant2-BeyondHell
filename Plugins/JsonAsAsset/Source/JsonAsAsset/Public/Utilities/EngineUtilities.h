@@ -949,8 +949,45 @@ inline TArray<TSharedPtr<FJsonValue>> RequestArrayURL(const FString& URL) {
 	return DeserializedJSON;
 };
 
-inline TSubclassOf<UObject> LoadClassFromPath(const FString& ObjectName, const FString& ObjectPath) {
+inline FString GetFullPathFromScriptPath(const FString& ObjectName, const FString& ObjectPath) {
 	const FString FullPath = ObjectPath + TEXT(".") + ObjectName;
+	return FullPath;
+}
+
+inline FString GetFullPathFromAssetPath(FString& ObjectPath) {
+	const UJsonAsAssetSettings* Settings = GetDefault<UJsonAsAssetSettings>();
+
+	if (!Settings->AssetSettings.GameName.IsEmpty()) {
+		ObjectPath = ObjectPath.Replace(*(Settings->AssetSettings.GameName + "/Content"), TEXT("/Game"));
+	}
+
+	FString FullPath = ObjectPath;
+	if (FullPath.EndsWith(TEXT(".1"))) {
+		FullPath = FullPath.LeftChop(2);
+	}
+
+	return FullPath;
+}
+
+inline FString GetFullPath(const TSharedPtr<FJsonObject>& SuperStruct) {
+	FString ObjectName = SuperStruct->GetStringField("ObjectName").Replace(TEXT("'"), TEXT(""));
+	if (ObjectName.StartsWith("Class")) {
+		ObjectName = ObjectName.RightChop(5);
+	}
+	FString ObjectPath = SuperStruct->GetStringField("ObjectPath");
+
+	/* It's a C++ class if it has Script in it */
+	if (ObjectPath.Contains("/Script/")) {
+		return GetFullPathFromScriptPath(ObjectName, ObjectPath);
+	}
+
+	ObjectPath.Split(".", &ObjectPath, nullptr);
+
+	return GetFullPathFromAssetPath(ObjectPath);
+}
+
+inline TSubclassOf<UObject> LoadClassFromPath(const FString& ObjectName, const FString& ObjectPath) {
+	const FString FullPath = GetFullPathFromScriptPath(ObjectName, ObjectPath);
 	UObject* LoadedObject = StaticLoadObject(UObject::StaticClass(), nullptr, *FullPath);
 
 	if (LoadedObject) {
@@ -964,16 +1001,8 @@ inline TSubclassOf<UObject> LoadClassFromPath(const FString& ObjectName, const F
 }
 
 inline TSubclassOf<UObject> LoadBlueprintClass(FString& ObjectPath) {
-	const UJsonAsAssetSettings* Settings = GetDefault<UJsonAsAssetSettings>();
 	
-	if (!Settings->AssetSettings.GameName.IsEmpty()) {
-		ObjectPath = ObjectPath.Replace(*(Settings->AssetSettings.GameName + "/Content"), TEXT("/Game"));
-	}
-	
-	FString FullPath = ObjectPath; 
-	if (FullPath.EndsWith(TEXT(".1"))) {
-		FullPath = FullPath.LeftChop(2);
-	}
+	FString FullPath = GetFullPathFromAssetPath(ObjectPath);
 
 	UObject* LoadedObject = StaticLoadObject(UObject::StaticClass(), nullptr, *FullPath);
 
@@ -989,7 +1018,10 @@ inline TSubclassOf<UObject> LoadBlueprintClass(FString& ObjectPath) {
 }
 
 inline UClass* LoadClass(const TSharedPtr<FJsonObject>& SuperStruct) {
-	const FString ObjectName = SuperStruct->GetStringField("ObjectName").Replace(TEXT("Class'"), TEXT("")).Replace(TEXT("'"), TEXT(""));
+	FString ObjectName = SuperStruct->GetStringField("ObjectName").Replace(TEXT("'"), TEXT(""));
+	if (ObjectName.StartsWith("Class")) {
+		ObjectName = ObjectName.RightChop(5);
+	}
 	FString ObjectPath = SuperStruct->GetStringField("ObjectPath");
 
 	/* It's a C++ class if it has Script in it */
@@ -1000,6 +1032,50 @@ inline UClass* LoadClass(const TSharedPtr<FJsonObject>& SuperStruct) {
 	ObjectPath.Split(".", &ObjectPath, nullptr);
 
 	return LoadBlueprintClass(ObjectPath);
+}
+
+inline UStruct* LoadStruct(const TSharedPtr<FJsonObject>& SuperStruct) {
+	const FString ObjectName = SuperStruct->GetStringField("ObjectName").Replace(TEXT("Class'"), TEXT("")).Replace(TEXT("'"), TEXT(""));
+	FString ObjectPath = SuperStruct->GetStringField("ObjectPath");
+
+	const FString FullPath = GetFullPathFromScriptPath(ObjectName, ObjectPath);
+	UObject* LoadedObject = StaticLoadObject(UObject::StaticClass(), nullptr, *FullPath);
+
+	if (LoadedObject) {
+		UStruct* LoadedStruct = Cast<UStruct>(LoadedObject);
+		if (LoadedStruct) {
+			return LoadedStruct;
+		}
+	}
+
+	return nullptr;
+}
+
+inline UEnum* LoadEnum(const TSharedPtr<FJsonObject>& SuperStruct) {
+	const FString ObjectName = SuperStruct->GetStringField("ObjectName").Replace(TEXT("Class'"), TEXT("")).Replace(TEXT("'"), TEXT(""));
+	FString ObjectPath = SuperStruct->GetStringField("ObjectPath");
+
+	FString FullPath;
+
+	/* It's a C++ class if it has Script in it */
+	if (ObjectPath.Contains("/Script/")) {
+		FullPath = GetFullPathFromScriptPath(ObjectName, ObjectPath);
+	}
+	else {
+		ObjectPath.Split(".", &ObjectPath, nullptr);
+		FullPath = GetFullPathFromAssetPath(ObjectPath);
+	}
+
+	UObject* LoadedObject = StaticLoadObject(UObject::StaticClass(), nullptr, *FullPath);
+
+	if (LoadedObject) {
+		UEnum* LoadedClass = Cast<UEnum>(LoadedObject);
+		if (LoadedClass) {
+			return LoadedClass;
+		}
+	}
+
+	return nullptr;
 }
 
 inline void RedirectPath(FString& OutPath) {

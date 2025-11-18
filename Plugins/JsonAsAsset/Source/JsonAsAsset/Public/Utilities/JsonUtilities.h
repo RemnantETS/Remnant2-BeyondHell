@@ -55,3 +55,17 @@ inline FRichCurveKey ObjectToRichCurveKey(const TSharedPtr<FJsonObject>& Object)
 	
 	return FRichCurveKey(Object->GetNumberField(TEXT("Time")), Object->GetNumberField(TEXT("Value")), Object->GetNumberField(TEXT("ArriveTangent")), Object->GetNumberField(TEXT("LeaveTangent")), static_cast<ERichCurveInterpMode>(StaticEnum<ERichCurveInterpMode>()->GetValueByNameString(InterpMode)));
 }
+
+inline void GetFlagProperty(const TSharedPtr<FJsonObject>& Object, const FString &FieldName, TArray<FString>& OutArray) {
+
+	if (!Object->HasField(FieldName)) {
+		return;
+	}
+
+	FString FlagField = Object->GetStringField(FieldName);
+	FString FlagDelim = " | ";
+
+
+	FlagField.ParseIntoArray(OutArray, *FlagDelim, false);
+	return;
+}
