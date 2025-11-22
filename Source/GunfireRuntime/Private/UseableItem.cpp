@@ -49,7 +49,7 @@ void AUseableItem::OnInput(FName ButtonName, ButtonEvent Event) {
 void AUseableItem::MultiCreateUseInstance_Implementation(EItemUseType UseType) {
 }
 
-void AUseableItem::ModifyUseDetails_Implementation(EItemUseType UseType, FUseDetails& OutUseDetails) const {
+void AUseableItem::ModifyUseDetails_Implementation(EItemUseType UseType, FUseDetails& OutUseDetails) {
 }
 
 bool AUseableItem::HasHoldTimerElapsed() const {

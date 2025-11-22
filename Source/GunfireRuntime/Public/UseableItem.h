@@ -136,7 +136,7 @@ protected:
     
 public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    void ModifyUseDetails(EItemUseType UseType, UPARAM(Ref) FUseDetails& OutUseDetails) const;
+    void ModifyUseDetails(EItemUseType UseType, UPARAM(Ref) FUseDetails& OutUseDetails);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool HasHoldTimerElapsed() const;
