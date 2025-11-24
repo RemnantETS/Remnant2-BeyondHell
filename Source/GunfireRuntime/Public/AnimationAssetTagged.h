@@ -3,7 +3,7 @@
 #include "InheritableTaggedObject.h"
 #include "AnimationAssetTagged.generated.h"
 
-UCLASS(Abstract)
+UCLASS(Abstract,meta=(UsesHierarchy))
 class GUNFIRERUNTIME_API UAnimationAssetTagged : public UInheritableTaggedObject {
     GENERATED_BODY()
 public:

@@ -9,7 +9,7 @@
 
 class UActorStateTransition;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, EditInlineNew)
 class GUNFIRERUNTIME_API UActorState : public UInheritableObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
@@ -43,7 +43,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FActorStateDecorators Decorators;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<UActorStateTransition*> Transitions;
     
     UActorState();

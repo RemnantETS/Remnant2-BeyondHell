@@ -11,11 +11,11 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FName> Tags;
     
-    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<UAnimSequenceBase*> Animations;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true, GetByRef))
+    TArray<TSoftObjectPtr<UAnimSequenceBase>> Animations;
     
-    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<UAnimSequenceBase*> SlaveAnimations;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true, GetByRef))
+    TArray< TSoftObjectPtr<UAnimSequenceBase>> SlaveAnimations;
     
     FAnimationEntry();
 };

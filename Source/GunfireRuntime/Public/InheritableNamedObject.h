@@ -5,7 +5,7 @@
 #include "InheritableObject.h"
 #include "InheritableNamedObject.generated.h"
 
-UCLASS(Abstract, EditInlineNew, NotBlueprintable)
+UCLASS(Abstract, EditInlineNew, NotBlueprintable, meta = (UsesHierarchy))
 class GUNFIRERUNTIME_API UInheritableNamedObject : public UInheritableObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:

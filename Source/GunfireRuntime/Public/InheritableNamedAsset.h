@@ -6,7 +6,7 @@
 
 class UInheritableNamedObject;
 
-UCLASS(Abstract, EditInlineNew, NotBlueprintable)
+UCLASS(Abstract, EditInlineNew, NotBlueprintable, meta = (UsesHierarchy))
 class GUNFIRERUNTIME_API UInheritableNamedAsset : public UDataAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:

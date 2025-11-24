@@ -6,11 +6,11 @@
 
 class UCraftingRecipe_Base;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, meta = (UsesHierarchy))
 class GUNFIRERUNTIME_API UCraftingRecipeList : public UDataAsset, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true,ShowInnerProperties))
     TArray<UCraftingRecipe_Base*> Recipes;
     
     UCraftingRecipeList();

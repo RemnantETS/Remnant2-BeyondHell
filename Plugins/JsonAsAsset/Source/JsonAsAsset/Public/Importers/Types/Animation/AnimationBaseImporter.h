@@ -15,5 +15,6 @@ public:
 
 REGISTER_IMPORTER(IAnimationBaseImporter, (TArray<FString>{ 
 	TEXT("AnimSequence"),
+	TEXT("AnimComposite"),
 	TEXT("AnimMontage")
 }), TEXT("Animation Assets"));

@@ -8,7 +8,7 @@
 
 class UActorState;
 
-UCLASS(Blueprintable)
+UCLASS(Blueprintable,EditInlineNew)
 class GUNFIRERUNTIME_API UActorStateTransition : public UInheritableObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:
@@ -28,7 +28,7 @@ public:
     bool bResetDestinationAnimationID;
     
 protected:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, Instanced, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
     UActorState* CachedState;
     
 public:

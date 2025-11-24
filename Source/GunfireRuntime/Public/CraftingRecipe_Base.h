@@ -8,7 +8,7 @@
 
 class AItem;
 
-UCLASS(Abstract, Blueprintable, EditInlineNew)
+UCLASS(Abstract, Blueprintable, EditInlineNew, meta = (UsesHierarchy))
 class GUNFIRERUNTIME_API UCraftingRecipe_Base : public UObject, public IHierarchicalEditInterface {
     GENERATED_BODY()
 public:

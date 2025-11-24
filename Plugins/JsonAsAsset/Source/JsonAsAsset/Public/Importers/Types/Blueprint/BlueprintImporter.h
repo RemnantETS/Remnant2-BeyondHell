@@ -53,8 +53,6 @@ protected:
 	bool bFailedImport;
 };
 
-inline 
-
 REGISTER_IMPORTER(IBlueprintImporter, (TArray<FString>{
 	TEXT("BlueprintGeneratedClass")
 }), TEXT("Blueprint Assets"));
