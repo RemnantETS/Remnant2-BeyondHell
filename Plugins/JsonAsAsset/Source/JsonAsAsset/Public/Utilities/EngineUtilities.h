@@ -1035,10 +1035,7 @@ inline UClass* LoadClass(const TSharedPtr<FJsonObject>& SuperStruct) {
 }
 
 inline UStruct* LoadStruct(const TSharedPtr<FJsonObject>& SuperStruct) {
-	const FString ObjectName = SuperStruct->GetStringField("ObjectName").Replace(TEXT("Class'"), TEXT("")).Replace(TEXT("'"), TEXT(""));
-	FString ObjectPath = SuperStruct->GetStringField("ObjectPath");
-
-	const FString FullPath = GetFullPathFromScriptPath(ObjectName, ObjectPath);
+	const FString FullPath = GetFullPath(SuperStruct);
 	UObject* LoadedObject = StaticLoadObject(UObject::StaticClass(), nullptr, *FullPath);
 
 	if (LoadedObject) {
@@ -1052,19 +1049,8 @@ inline UStruct* LoadStruct(const TSharedPtr<FJsonObject>& SuperStruct) {
 }
 
 inline UEnum* LoadEnum(const TSharedPtr<FJsonObject>& SuperStruct) {
-	const FString ObjectName = SuperStruct->GetStringField("ObjectName").Replace(TEXT("Class'"), TEXT("")).Replace(TEXT("'"), TEXT(""));
-	FString ObjectPath = SuperStruct->GetStringField("ObjectPath");
 
-	FString FullPath;
-
-	/* It's a C++ class if it has Script in it */
-	if (ObjectPath.Contains("/Script/")) {
-		FullPath = GetFullPathFromScriptPath(ObjectName, ObjectPath);
-	}
-	else {
-		ObjectPath.Split(".", &ObjectPath, nullptr);
-		FullPath = GetFullPathFromAssetPath(ObjectPath);
-	}
+	const FString FullPath = GetFullPath(SuperStruct);
 
 	UObject* LoadedObject = StaticLoadObject(UObject::StaticClass(), nullptr, *FullPath);
 
