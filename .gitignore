@@ -130,7 +130,8 @@
 
 # Add exceptions for blueprint files
 !/Content/*
-
+!/ImportantStuff/*
+!*.lua
 !USMAP/*
 
 # Ignore intermediate folders
