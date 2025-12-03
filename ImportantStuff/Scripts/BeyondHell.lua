@@ -6,6 +6,10 @@ local Items = {
     ["/Game/World_DLC3/Items/Trinkets/Amulets/ReactionChain/Amulet_ReactionChain.Amulet_ReactionChain_C"] = {
         ["ModPowerConversion"] = 0.2
     },
+	--Relics
+	["/Game/World_DLC1/Items/Relics/BrokenHeart/Relic_Consumable_BrokenHeart.Relic_Consumable_BrokenHeart_C"] = {
+		["HealthPercetage"] = 0.499999,
+	},
     --Skills
     ["/Game/World_Base/Items/Archetypes/Engineer/Skills/Skill_FlameThrower/Weapon_Deployable_FlameThrower.Weapon_Deployable_FlameThrower_C"] = {
         ["DeployedDamageScalar"]=0.7,
@@ -52,6 +56,7 @@ local Items = {
         ["DamageBuffPerEmpowerment"]=100
     },
     --Weapons
+	
 }
 local function ContainsKey(Key)
     for Item,Values in pairs(Items) do
