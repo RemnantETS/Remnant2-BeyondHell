@@ -56,6 +56,10 @@ local Items = {
 		["PhysicalDamageThreshold"] = 90
 	},
 	--Weapons
+	["/Game/World_DLC2/Items/Weapons/Thorn/Weapon_Thorn.Weapon_Thorn_C"] = {
+		["SingleNeedleExplisionDamage"] = 20,
+		["BaseBlowbackDamage"] = 100
+	},
 }
 local function ContainsKey(Key)
 	for Item,Values in pairs(Items) do
