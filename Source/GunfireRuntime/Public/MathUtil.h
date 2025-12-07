@@ -106,7 +106,7 @@ public:
     static bool BoxLineIntersect(const FBox& Box, const FVector& LineStart, const FVector& LineEnd, FVector& OutIntersectPoint, FVector& OutIntersectNormal, float& OutIntersectTime);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    static float ApplyMod(float Value, float Mod, float Scalar);
+    static float ApplyMod(float Value, float Mod, float Scalar=1.0);
     
 };
 
