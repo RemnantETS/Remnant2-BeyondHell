@@ -9,7 +9,6 @@ local Items = {
 	["/Game/World_DLC1/Items/Trinkets/Rings/AtonementFold/Ring_AtonementFold.Ring_AtonementFold_C"] = {
 		["CritChance"] = 10
 	},
-	--Relics
 	["/Game/World_DLC2/Items/Relics/ProfaneHeart/Relic_Consumable_ProfaneHeart.Relic_Consumable_ProfaneHeart_C"] = {
 		["LifeStealPassiveBuff"] = 1.5
 	},
@@ -81,24 +80,6 @@ end)
 
 local function GetDefault(asset)
     return asset:gsub("%.",".Default__")
-end
-
- local function ModifyStats(asset,name,value)
-    local Item = StaticFindObject(asset)
-    if not Item:IsValid() then return end
-    --Log(asset)
-    --Log('Key:'..name..', Value: '..value)
-	Item:SetPropertyValue(name, value)
-end
-
-local function ModifyStats(asset,StatPairs)
-	local Item = StaticFindObject(asset)
-    if not Item:IsValid() then return end
-	Log(asset)
-	for k,x in pairs(StatPairs) do
-		--Log('Key:'..k..', Value: '..x)
-		Item:SetPropertyValue(k, x)
-	end
 end
 
 local function BulkSet()
