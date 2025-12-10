@@ -243,6 +243,10 @@ bool IBlueprintImporter::Import() {
 
 				*NewPropertyFlags |= GetPropertyFlags(PropertyFlags);
 
+				if (!(*NewPropertyFlags & CPF_DisableEditOnInstance)) {
+					FBlueprintEditorUtils::SetBlueprintVariableMetaData(Blueprint, ChildVarName, nullptr, FBlueprintMetadata::MD_ExposeOnSpawn, "True");
+				}
+
 				FBPVariableDescription NewChildVar = Blueprint->NewVariables[VarIndex];
 				NewChildVar.RepNotifyFunc = PropertyJson->HasTypedField<EJson::String>("RepNotifyFunc") ? FName(PropertyJson->GetStringField("RepNotifyFunc")) : FName("None");
 			}
