@@ -79,7 +79,7 @@ bool IBlueprintImporter::Import() {
 	if (!Blueprint) {
 
 		if (FindObject<UBlueprint>(Package, *AssetName, false) != nullptr) {
-			UE_LOG(LogJson, Warning, TEXT("Tried to override existing Blueprint without selecting it."));
+			UE_LOG(LogJson, Warning, TEXT("Tried to override existing Blueprint."));
 			bFailedImport = true;
 			return false;
 		}
@@ -282,7 +282,7 @@ bool IBlueprintImporter::Import() {
 			const TSharedPtr<FJsonObject> FunctionExport = FunctionExportItem->AsObject();
 
 			FString FuncName = FunctionExport->GetStringField("Name");
-			if (GeneratedFunctionNames.Contains(FuncName) || GeneratedFunctionNames.Contains(FuncName)) {
+			if (GeneratedFunctionNames.Contains(FuncName)) {
 				continue;
 			}
 
@@ -602,6 +602,15 @@ FEdGraphPinType IBlueprintImporter::GetPinTypeFromPropertyItem(const TSharedPtr<
 
 	const FString PropertyType = PropertyItem->GetStringField("Type");
 
+	TArray<FString> PropertyFlags;
+	GetFlagProperty(PropertyItem, "PropertyFlags", PropertyFlags);
+
+	OutPinType.bIsConst = PropertyFlags.Contains("ConstParm");
+	OutPinType.bIsReference = PropertyFlags.Contains("ReferenceParm");
+	OutPinType.bIsUObjectWrapper = PropertyFlags.Contains("UObjectWrapper");
+	//OutPinType.bIsWeakPointer = PropertyFlags.Contains("AutoWeak");
+	//OutPinType.bSerializeAsSinglePrecisionFloat = PropertyFlags.Contains(""); //How to check for this?
+
 	const EPinContainerType* ContainerTypeEntry = PinContainerTypeByTypeName.Find(PropertyType);
 	const EPinContainerType ContainerType = (ContainerTypeEntry) ? *ContainerTypeEntry : EPinContainerType::None;
 	OutPinType.ContainerType = ContainerType;
@@ -833,43 +842,64 @@ EFunctionFlags IBlueprintImporter::GetFunctionFlags(TArray<FString> Flags) {
 	return Out;
 }
 
+const TArray<FString> BindingArrayFieldNames{
+	"ComponentDelegateBindings",
+	"WidgetAnimationDelegateBindings",
+	"InputActionDelegateBindings",
+	"InputAxisDelegateBindings",
+	"InputAxisKeyDelegateBindings",
+	"InputKeyDelegateBindings",
+	"InputTouchDelegateBindings",
+	"InputActionDelegateBindings",
+	"InputActionValueBindings",
+	"InputDebugKeyDelegateBindings"
+};
+
 bool IBlueprintImporter::SetUpDynamicBindings(const TSharedPtr<FJsonObject> DynamicBindings)
 {
-	UEdGraph* EventGraph = FBlueprintEditorUtils::FindEventGraph(Blueprint);
+	//UEdGraph* EventGraph = FBlueprintEditorUtils::FindEventGraph(Blueprint);
+	const FString BindingType = DynamicBindings->GetStringField("Type");
 	const TSharedPtr<FJsonObject> DynBindingProperties = DynamicBindings->GetObjectField("Properties");
 	bool bAllSuccessful = true;
 
-	for (const TSharedPtr<FJsonValue> Binding : DynBindingProperties->GetArrayField("ComponentDelegateBindings")) {
-		const TSharedPtr<FJsonObject> BindingObject = Binding->AsObject();
-		FString FunctionName = BindingObject->GetStringField("FunctionNameToBind");
+	for (FString BindingArrayField : BindingArrayFieldNames) {
+		if (DynBindingProperties->HasTypedField<EJson::Array>(BindingArrayField)) {
+			for (const TSharedPtr<FJsonValue> Binding : DynBindingProperties->GetArrayField(BindingArrayField)) {
+				const TSharedPtr<FJsonObject> BindingObject = Binding->AsObject();
+				FString FunctionName = BindingObject->GetStringField("FunctionNameToBind");
 
-		GeneratedFunctionNames.Add(FunctionName);
+				GeneratedFunctionNames.Add(FunctionName);
 
-		FString ComponentName = BindingObject->GetStringField("ComponentPropertyName");
-		FString DelegateName = BindingObject->GetStringField("DelegatePropertyName");
+				UE_LOG(LogJson, Log, TEXT("Dynamic binding import not implemented: %s -> %s"), *BindingType, *FunctionName);
 
-		UE_LOG(LogJson, Log, TEXT("Import for component event binding not implemented: %s -> %s"), *ComponentName, *DelegateName);
-		/*
-		UObject* Component = FindObject<UActorComponent>(Blueprint, *FunctionName);
+				/*
+				FString ComponentName = BindingObject->GetStringField("ComponentPropertyName");
+				FString DelegateName = BindingObject->GetStringField("DelegatePropertyName");
 
-		if (!Component) {
-			bAllSuccessful = false;
-			UE_LOG(LogJson, Warning, TEXT("No owner component of name %s for event %s"), *ComponentName, *DelegateName);
-			continue;
+				UE_LOG(LogJson, Log, TEXT("Import for component event binding not implemented: %s -> %s"), *ComponentName, *DelegateName);
+
+				UObject* Component = FindObject<UActorComponent>(Blueprint, *FunctionName);
+
+				if (!Component) {
+					bAllSuccessful = false;
+					UE_LOG(LogJson, Warning, TEXT("No owner component of name %s for event %s"), *ComponentName, *DelegateName);
+					continue;
+				}
+
+				UClass* ComponentClass = Component->GetClass();
+
+				FGraphNodeCreator<UK2Node_ComponentBoundEvent> NodeCreator(*EventGraph);
+				UK2Node_ComponentBoundEvent* EventNode = NodeCreator.CreateNode();
+
+				EventNode->ComponentPropertyName = FName(ComponentName);
+				EventNode->DelegatePropertyName = FName(DelegateName);
+				//EventNode->DelegateOwnerClass = ComponentClass;
+
+				OffsetGraphNode(EventNode);
+				NodeCreator.Finalize();
+				*/
+			}
 		}
-
-		UClass* ComponentClass = Component->GetClass();
-		
-		FGraphNodeCreator<UK2Node_ComponentBoundEvent> NodeCreator(*EventGraph);
-		UK2Node_ComponentBoundEvent* EventNode = NodeCreator.CreateNode();
-
-		EventNode->ComponentPropertyName = FName(ComponentName);
-		EventNode->DelegatePropertyName = FName(DelegateName);
-		//EventNode->DelegateOwnerClass = ComponentClass;
-
-		OffsetGraphNode(EventNode);
-		NodeCreator.Finalize();
-		*/
 	}
 
 	return bAllSuccessful;
@@ -888,7 +918,7 @@ bool IBlueprintImporter::AddEventToEventGraph(const TSharedPtr<FJsonObject> Func
 	UFunction* SigFuncObj = nullptr;
 	UClass* SignatureFunction = FBlueprintEditorUtils::GetOverrideFunctionClass(Blueprint, FuncName, &SigFuncObj);
 
-	if (SignatureFunction && (!UEdGraphSchema_K2::FunctionCanBePlacedAsEvent(SigFuncObj)) || FunctionFlags.Contains("FUNC_HasOutParms")) {
+	if (SignatureFunction && (!UEdGraphSchema_K2::FunctionCanBePlacedAsEvent(SigFuncObj))/* || FunctionFlags.Contains("FUNC_HasOutParms")*/) {
 		UE_LOG(LogJson, Warning, TEXT("Function marked as event, but isn't: %s"), *FuncNameRaw);
 		return AddFunctionGraph(FunctionExport, false);
 	}
@@ -934,7 +964,7 @@ bool IBlueprintImporter::AddEventToEventGraph(const TSharedPtr<FJsonObject> Func
 
 		bool bAllPropertySubCatObjectsLoaded = true;
 
-		if (FunctionExport->HasTypedField<EJson::Object>("ChildProperties")) {
+		if (FunctionExport->HasTypedField<EJson::Array>("ChildProperties")) {
 			for (const TSharedPtr<FJsonValue> PropertyItem : FunctionExport->GetArrayField("ChildProperties")) {
 				const TSharedPtr<FJsonObject> PropertyData = PropertyItem->AsObject();
 
@@ -979,7 +1009,8 @@ bool IBlueprintImporter::AddFunctionGraph(const TSharedPtr<FJsonObject> Function
 	const UEdGraphSchema* Schema = NewGraph->GetSchema();
 	const UEdGraphSchema_K2* K2Schema = Cast<const UEdGraphSchema_K2>(Schema);
 
-	UClass* SignatureFunction = FBlueprintEditorUtils::GetOverrideFunctionClass(Blueprint, FuncName);
+	UFunction* SignatureFunctionObj = nullptr;
+	UClass* SignatureFunction = FBlueprintEditorUtils::GetOverrideFunctionClass(Blueprint, FuncName, &SignatureFunctionObj);
 	
 
 	if (!bIsDelegateSignature) {
@@ -997,18 +1028,20 @@ bool IBlueprintImporter::AddFunctionGraph(const TSharedPtr<FJsonObject> Function
 		FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(Blueprint);
 	}
 
-	if (!SignatureFunction) {
+	EFunctionFlags ParsedFlags = (SignatureFunctionObj) ? SignatureFunctionObj->FunctionFlags : GetFunctionFlags(FunctionFlags);
 
-		for (UEdGraphNode* GraphNode : NewGraph->Nodes) {
-			UK2Node_FunctionEntry* EntryNode = Cast< UK2Node_FunctionEntry>(GraphNode);
+	for (UEdGraphNode* GraphNode : NewGraph->Nodes) {
+		UK2Node_FunctionEntry* EntryNode = Cast< UK2Node_FunctionEntry>(GraphNode);
 
-			if (EntryNode) {
-				//UE_LOG(LogJson, Log, TEXT("Setting up function flags: %s"), *FunctionExport->GetStringField("FunctionFlags"));
-				EntryNode->ClearExtraFlags(FUNC_AllFlags);
-				EntryNode->SetExtraFlags(GetFunctionFlags(FunctionFlags));
-				EntryNode->Modify();
-			}
+		if (EntryNode) {
+			//UE_LOG(LogJson, Log, TEXT("Setting up function flags: %s"), *FunctionExport->GetStringField("FunctionFlags"));
+			EntryNode->ClearExtraFlags(FUNC_AllFlags);
+			EntryNode->SetExtraFlags(ParsedFlags);
+			EntryNode->Modify();
 		}
+	}
+
+	if (!SignatureFunction) {
 
 		//setup parameters
 		UK2Node_FunctionEntry* EntryNode = nullptr;
