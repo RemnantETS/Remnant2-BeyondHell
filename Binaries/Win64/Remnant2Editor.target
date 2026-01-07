@@ -3418,6 +3418,18 @@
 			"Type": "RequiredResource"
 		},
 		{
+			"Path": "$(ProjectDir)/Plugins/HierarchicalNodeEditor/Binaries/Win64/UnrealEditor-HierarchicalNodeEditor.dll",
+			"Type": "DynamicLibrary"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/HierarchicalNodeEditor/Binaries/Win64/UnrealEditor-HierarchicalNodeEditor.pdb",
+			"Type": "SymbolFile"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/HierarchicalNodeEditor/Binaries/Win64/UnrealEditor.modules",
+			"Type": "RequiredResource"
+		},
+		{
 			"Path": "$(ProjectDir)/Plugins/HoudiniEngine/Binaries/Win64/UnrealEditor-HoudiniEngineRuntime.dll",
 			"Type": "DynamicLibrary"
 		},
@@ -24877,6 +24889,10 @@
 		},
 		{
 			"Path": "$(EngineDir)/Plugins/XGEController/XGEController.uplugin",
+			"Type": "UFS"
+		},
+		{
+			"Path": "$(ProjectDir)/Plugins/HierarchicalNodeEditor/HierarchicalNodeEditor.uplugin",
 			"Type": "UFS"
 		},
 		{
