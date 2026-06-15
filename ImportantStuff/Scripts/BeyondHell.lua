@@ -104,7 +104,7 @@
 	["/Game/World_Base/Items/Weapons/Melee/Special/Dreamcatcher/Weapon_Dreamcatcher.Weapon_Dreamcatcher_C"] = {
 		["ReverieDuration"] = 30,
 		["DamageChargeThreshold"] = 200,
-		["DreamwaveDamageMod"] = 5,
+		["DreamwaveDamageMod"] = 3.5,
 		["DreamwaveMoveScalarBonus"] = 0.05
 	},
 	["/Game/World_Base/Items/Weapons/Melee/Special/TalRatha_Hammer/Weapon_TalRatha_Hammer.Weapon_TalRatha_Hammer_C"] = {
@@ -151,7 +151,7 @@
 		["ImpactDamage"] = 330,
 		["BleedDuration"] = 10,
 		["NumProjectilesIndex"] = 6,
-		["AttachDamage"] = 100
+		["AttachDamage"] = 200
 	},
 	["/Game/World_Base/Items/Weapons/LongGuns/Special/Merciless/Mod_Bloodline/Mod_Bloodline.Mod_Bloodline_C"] = {
 		["Damage"] = 225,
@@ -159,7 +159,7 @@
 	},
 	["/Game/World_Nerud/Items/Mods/Bore/Mod_Bore.Mod_Bore_C"] = {
 		["BoreDuration"] = 15,
-		["BurrowDamage"] = 100
+		["BurrowDamage"] = 80
 	},
 	["/Game/World_Base/Items/Weapons/HandGuns/Special/Enigma/Mod_ChaosDriver/Mod_ChaosDriver.Mod_ChaosDriver_C"] = {
 		["LinkDamagePerSecond"] = 50,
@@ -216,7 +216,7 @@
 		["CorrodedDOTDuration"] = 5
 	},
 	["/Game/World_Base/Items/Weapons/HandGuns/Special/Nebula/Mod_NanoSwarm/Mod_NanoSwarm.Mod_NanoSwarm_C"] = {
-		["Damage"] = 10,
+		["Damage"] = 6,
 		["Duration"] = 15
 	},	
 	["/Game/World_DLC1/Items/Mods/Mod_RingOfSpears/Mod_RingOfSpears.Mod_RingOfSpears_C"] = {
@@ -227,9 +227,6 @@
 	["/Game/World_Jungle/Items/Mods/Mod_Rootlash/Mod_Rootlash.Mod_Rootlash_C"] = {
 		["Damage"] = 50,
 		["RateOfFire"] = 2
-	},
-	["/Game/World_Jungle/Items/Mods/Mod_RottedArrow/Mod_RottedArrow.Mod_RottedArrow_C"] = {
-		["CloudDamagePerSecond"] = 50
 	},
 	["/Game/World_DLC2/Items/Weapons/Monolith/Mod_Sandstorm/Mod_Sandstorm.Mod_Sandstorm_C"] = {
 		["CycloneDPS"] = 65
@@ -245,8 +242,8 @@
 		["BlastRadius"] = 400
 	},
 	["/Game/World_Base/Items/Weapons/LongGuns/Special/Sporebloom/Mod_SporeShot/Mod_SporeShot.Mod_SporeShot_C"] = {
-		["DOTDamage"] = 75,
-		["Damage"] = 225
+		["DOTDamage"] = 100,
+		["Damage"] = 325
 	},
 	["/Game/World_Base/Items/Weapons/LongGuns/Special/Sagittarius/Mod_Starfall/Mod_Starfall.Mod_Starfall_C"] = {
 		["ArrowImpactDamage"] = 300,
@@ -255,7 +252,7 @@
 		["StarFragmentBlastRadius"] = 300
 	},
 	["/Game/World_Nerud/Items/Mods/StasisBeam/Mod_StasisBeam.Mod_StasisBeam_C"] = {
-		["Damage"] = 50,
+		["Damage"] = 75,
 		["MaxCharges"] = 50
 	},
 	["/Game/World_Jungle/Items/Mods/Mod_Tremor/Mod_Tremor.Mod_Tremor_C"] = {
@@ -297,6 +294,7 @@ NotifyOnNewObject("/Script/GunfireRuntime.Equipment", function(Item)
     ExecuteInGameThread(function()
         local ItemClass = Item:GetClass():GetFullName():sub(25)
         if not ContainsKey(ItemClass) then return end
+		Log("EquipmentLoad: "..ItemClass)
         for Stat, Value in pairs(Items[ItemClass]) do
             Item:SetPropertyValue(Stat,Value)
         end
@@ -307,6 +305,7 @@ NotifyOnNewObject("/Script/GunfireSaveSystem.PersistenceComponent", function(Ite
         Item = Item:GetOuter()
         local ItemClass = Item:GetClass():GetFullName():sub(25)
 		if not ContainsKey(ItemClass) then return end
+		Log("PersistenceLoad: "..ItemClass)
         for Stat, Value in pairs(Items[ItemClass]) do
             Item:SetPropertyValue(Stat,Value)
         end
@@ -319,7 +318,7 @@ end
 
 local function BulkSet()
     for Item,Stats in pairs(Items) do
-        local DItem = StaticFindObject(GetDefault(Item))
+      local DItem = StaticFindObject(GetDefault(Item))
         for Stat,Value in pairs(Stats) do
             if DItem:IsValid() then
                 --Log("Default Item Set: %s %s %.1f",Item,Stat,Value)
