@@ -153,7 +153,7 @@
 		["CritChance"] = 10
 	},
 	["/Game/World_DLC1/Items/Trinkets/Rings/BurdenOfTheSciolist/Ring_BurdenOfTheSciolist.Ring_BurdenOfTheSciolist_C"] = {
-		["Skill/ModDamageBonus"] = 25
+		["Skill/ModDamageBonus"] = 20
 	},
 	["/Game/World_Fae/Items/Trinkets/Rings/AssassinsSeal/Action_Ring_AssassinsSeal.Action_Ring_AssassinsSeal_C"] = {
 		["DetectionMod"] = -60.0,
@@ -257,7 +257,7 @@
 		["ShieldDuration"] = 25.0
 	},
 	["/Game/World_Fae/Items/Trinkets/Rings/FaelinsSigil/Ring_FaelinsSigil.Ring_FaelinsSigil_C"] = {
-		["ModPowerMod"] = 20.0
+		["ModPowerMod"] = 0.20
 	},
 	["/Game/World_Fae/Items/Trinkets/Rings/FaerinsSigil/Ring_FaerinsSigil.Ring_FaerinsSigil_C"] = {
 		["ModPowerMod"] = 0.2
@@ -270,9 +270,9 @@
 		["ConsumeCooldownTime"] = 20.0
 	},
 	["/Game/World_DLC3/Items/Trinkets/Rings/ForceMultiplier/Ring_ForceMultiplier.Ring_ForceMultiplier_C"] = {
-		["TimeThreshold"] = 0.25,
-		["DamageMultiplier"] = 0.1,
-		["MaxMultiplier"] = 1.4
+		["TimeThreshold"] = 0.20,
+		["DamageMultiplier"] = 0.15,
+		["MaxMultiplier"] = 1.75
 	},
 	["/Game/World_DLC3/Items/Trinkets/Rings/ImpactAugment/Ring_ImpactAugment.Ring_ImpactAugment_C"] = {
 		["BuffDuration"] = 20.0
@@ -314,7 +314,7 @@
 		["Duration"] = 15.0
 	},
 	["/Game/World_DLC1/Items/Trinkets/Rings/Offering_Stone/Action_Ring_OfferingStone.Action_Ring_OfferingStone_C"] = {
-		["DamageModPerLevel"] = 3.0,
+		["DamageModPerLevel"] = 1.5,
 		["FreezeTime"] = 20.0
 	},
 	["/Game/World_DLC1/Items/Trinkets/Rings/PowerComplex/Ring_PowerComplex.Ring_PowerComplex_C"] = {
@@ -383,6 +383,12 @@
 	},
 	["/Game/World_Nerud/Items/Trinkets/Rings/StoneOfContinuance/Action_Ring_StoneOfContinuance.Action_Ring_StoneOfContinuance_C"] = {
 		["SkillDurationMod"] = 25.0
+	},
+	["/Game/World_Fae/Items/Trinkets/Rings/StoneOfMalevolence/Action_Ring_StoneOfMalevolence.Action_Ring_StoneOfMalevolence_C"] = {
+		["ModPowerModScalar"] = 0.20
+	},
+	["/Game/World_Fae/Items/Trinkets/Rings/StoneOfMalevolence/Ring_StoneOfMalevolence.Ring_StoneOfMalevolence_C"] = {
+		["ModPowerConversionScalar"] = 0.20
 	},
 	["/Game/World_DLC3/Items/Trinkets/Rings/StoneOfRevelation/Ring_StoneOfRevelation.Ring_StoneOfRevelation_C"] = {
 		["ModDamagePct"] = 7.5,
@@ -461,7 +467,17 @@
 		["BurningDuration"] = 5
 	},
 	["/Game/World_Base/Items/Archetypes/Engineer/Skills/Skill_Gatling/Weapon_Deployable_Gatling.Weapon_Deployable_Gatling_C"] = {
-		["DeployedDamageScalar"] = 0.7
+		["DeployedDamageScalar"] = 0.85
+	},
+	["/Game/World_Base/Items/Archetypes/Engineer/Skills/Skill_ImpactCannon/Weapon_Deployable_ImpactCannon.Weapon_Deployable_ImpactCannon_C"] = {
+		["DeployedBaseDamage"] = 52
+	},
+	["/Game/World_DLC3/Items/Archetypes/Warden/Skills/CombatDrone/Character_Minion_Summon_CombatDrone.Character_Minion_Summon_CombatDrone_C"] = {
+		["RocketCD"] = 0.5
+	},
+	["/Game/World_DLC3/Items/Archetypes/Warden/Skills/CombatDrone/Projectile_CombatDrone_Helix_Homing.Projectile_CombatDrone_Helix_Homing_C"] = {
+		["InitialHomingAcceleration"] = 5000.0,
+		["HomingAccelerationIncreasePerSecond"] = 3000.0
 	},
 	["/Game/World_Base/Items/Archetypes/Archon/Skills/HavocForm/Skill_HavocForm.Skill_HavocForm_C"] = {
 		["FireSkillDurationReduction"] = 0.0,
@@ -552,6 +568,27 @@
 		["StaminaCost"] = 5,
 		["StaminaCostHeavy"] = 7
 	},
+	["/Game/World_Base/Items/Weapons/HandGuns/Special/Enigma/Weapon_Enigma.Weapon_Enigma_C"] = {
+		["ShockDamage"] = 75,
+		[ "JumpScalarReduction"] = 0.20
+	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/Savior/Weapon_Savior.Weapon_Savior_C"] = {
+		["NumModChargesToReachFastestFireRate"] = 3.0,
+		["BaseRateOfFireScalar"] = 2.0,
+		["PerfectShotTolerance"] = 1.02
+	},
+	["/Game/World_Base/Items/Weapons/HandGuns/Special/StarShot/Weapon_StarShot.Weapon_StarShot_C"] = {
+		["BlastDamage"] = 35
+	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/TwistedArbalest/Projectile_TwistedArbalest.Projectile_TwistedArbalest_C"] = {
+		["TargetRadius"] = 1000,
+		["MaxBounces"] = 6,
+		["MaxRicochetPitch"] = 360,
+		["BounceLifetime"] = 5,
+		["MaxLifetime"] = 10,
+		["PenetrationDamageScalarInitial"] = 0.90,
+		["PenetrationDamageScalarIncrement"] = .90
+	},
 
 	--------------------------------------------------------------Mods------------------------------------------------------------------
 	["/Game/World_Jungle/Items/Mods/Mod_AstralBurst/Mod_AstralBurst.Mod_AstralBurst_C"] = {
@@ -568,6 +605,11 @@
 	["/Game/World_Base/Items/Weapons/LongGuns/Special/AlphaOmega/Mod_BetaRay/Action_Buff_BetaRayMark.Action_Buff_BetaRayMark_C"] = {
 		["DamageScalarIncreasePerBonusLevel"] = 0.75
 	},
+	["/Game/World_Base/Items/Weapons/HandGuns/Special/StarShot/Mod_BigBang/Mod_BigBang.Mod_BigBang_C"] = {
+		["DamageModPerChargeUsed"] = 6.0,
+		["FireDamage"] = 100.0,
+		
+	},
 	["/Game/World_Fae/Items/Mods/Mod_BloodDraw/Mod_BloodDraw.Mod_BloodDraw_C"] = {
 		["ImpactDamage"] = 330,
 		["BleedDuration"] = 10,
@@ -577,6 +619,17 @@
 	["/Game/World_Base/Items/Weapons/LongGuns/Special/Merciless/Mod_Bloodline/Mod_Bloodline.Mod_Bloodline_C"] = {
 		["Damage"] = 225,
 		["RateOfFire"] = 2
+	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/CorruptedMerciless/Mod_Bloodshot/Mod_Bloodshot.Mod_Bloodshot_C"] = {
+		["ModDuration"] = 15.0,
+		["RateOfFire"] = 2
+	},
+	["/Game/World_DLC1/Items/Weapons/Monarch/Mod_Monarch/Mod_ChainOfCommand.Mod_ChainOfCommand_C"] = {
+		["HarpoonDamage"] = 500.0,
+		["AOEDamage"] = 550.0
+	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/CorruptedMerciless/Weapon_CorruptedMerciless.Weapon_CorruptedMerciless_C"] = {
+		["BleedDamage"] = 350.0
 	},
 	["/Game/World_Nerud/Items/Mods/Bore/Mod_Bore.Mod_Bore_C"] = {
 		["BoreDuration"] = 15,
@@ -633,12 +686,23 @@
 		["NeedleExplosionDelay"] = 1
 	},
 	["/Game/Events/Valentines/Items/Weapons/CorruptedNebula/Mod_NanoPhase/Mod_NanoPhase.Mod_NanoPhase_C"] = {
-		["ExplosionBaseDamage"] = 75,
-		["CorrodedDOTDuration"] = 5
+		["ExplosionBaseDamage"] = 75.0,
+		["CorrodedDOTDuration"] = 10.0,
+		["ExplosionPerWispDamage"] = 20.0
 	},
 	["/Game/World_Base/Items/Weapons/HandGuns/Special/Nebula/Mod_NanoSwarm/Mod_NanoSwarm.Mod_NanoSwarm_C"] = {
 		["Damage"] = 6,
 		["Duration"] = 15
+	},	
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/Deceit/Mod_Ouroboros/Mod_Ouroboros.Mod_Ouroboros_C"] = {
+		["ProximityDamage"] = 100
+	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/Deceit/Mod_Ouroboros/Mod_Ouroboros_Aura.Mod_Ouroboros_Aura_C"] = {
+		["InitialDistance"] = 200
+	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/Deceit/Mod_Ouroboros/Action_TaintedBlood_Debuff.Action_TaintedBlood_Debuff_C"] = {
+		["Duration"] = 5,
+		["MaxDebuffTime"] = 10
 	},	
 	["/Game/World_DLC1/Items/Mods/Mod_RingOfSpears/Mod_RingOfSpears.Mod_RingOfSpears_C"] = {
 		["SpearImpactBaseDamage"] = 125,
@@ -662,15 +726,35 @@
 		["RateOfFire"] = 2.5,
 		["BlastRadius"] = 400
 	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/Savior/Mod_Shatterstar/Mod_Shatterstar.Mod_Shatterstar_C"] = {
+		["SidewinderRadius"] = 800.0,
+		["FragmentDamageScalar"] = 0.60
+	},
+	["/Game/World_Jungle/Items/Mods/Mod_Soulbinder/Mod_Soulbinder.Mod_Soulbinder_C"] = [
+		["DamageShareScalar"] = 0.95,
+		["Radius"] = 900,
+		["Duration"] = 20
+	},
 	["/Game/World_Base/Items/Weapons/LongGuns/Special/Sporebloom/Mod_SporeShot/Mod_SporeShot.Mod_SporeShot_C"] = {
 		["DOTDamage"] = 100,
-		["Damage"] = 325
+		["Damage"] = 325,
+		["BlastRadius"] = 400.0,
+		["CloudDuration"] = 10.0
 	},
 	["/Game/World_Base/Items/Weapons/LongGuns/Special/Sagittarius/Mod_Starfall/Mod_Starfall.Mod_Starfall_C"] = {
 		["ArrowImpactDamage"] = 300,
 		["ExplosionDamage"] = 60,
 		["Duration"] = 10,
-		["StarFragmentBlastRadius"] = 300
+		["StarFragmentBlastRadius"] = 300,
+		["RateOfFire"] = 2.0
+	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/Aphelion/Mod_Supernova/Mod_Supernova.Mod_Supernova_C"] = {
+		["FireDamage"] = 400,
+		["ImplosionDamage"] = 200
+	},
+	["/Game/World_Base/Items/Weapons/LongGuns/Special/CorruptedAphelion/Mod_Micronova/Mod_Micronova.Mod_Micronova_C"] = {
+		["ImplosionRadius"] = 325.0,
+		["ImplosionDamage"] = 100
 	},
 	["/Game/World_Nerud/Items/Mods/StasisBeam/Mod_StasisBeam.Mod_StasisBeam_C"] = {
 		["Damage"] = 75,
@@ -723,7 +807,8 @@
 		["MaxValue"] = 13.0
 	},
 	["/Game/World_DLC1/Items/Gems/Ranged/Dreadful/MetaGem_Dreadful.MetaGem_Dreadful_C"] = {
-		["MaxDamage"] = 35.0
+		["MaxDamage"] = 35.0,
+		["MaxValue"] = 3.0
 	},
 	["/Game/World_DLC2/Items/Gems/Ranged/FarSighted/MetaGem_FarSighted.MetaGem_FarSighted_C"] = {
 		["MaxDamageBuff"] = 30.0,
@@ -770,7 +855,7 @@
 		["MoveSpeedBuff"] = 5.0
 	},
 	["/Game/World_Base/Items/Gems/Ranged/MetaGems/Refunder/MetaGem_Refunder.MetaGem_Refunder_C"] = {
-		["MaxLevelStatBonus"] = 50.0,
+		["MaxLevelStatBonus"] = 0.50,
 		["MaxValue"] = .75
 	},
 	["/Game/World_DLC2/Items/Gems/Ranged/SearingWounds/MetaGem_SearingWounds.MetaGem_SearingWounds_C"] = {
@@ -794,10 +879,10 @@
 		["ReloadBuffDuration"] = 12.0
 	},
 	["/Game/World_Base/Items/Gems/Ranged/MetaGems/SpiritHealer/MetaGem_SpiritHealer.MetaGem_SpiritHealer_C"] = {
-		["AllyBuffAmount"] = 75.0
+		["AllyBuffAmount"] = 0.75
 	},
 	["/Game/World_DLC3/Items/Gems/Ranged/SuperHeated/MetaGem_SuperHeated.MetaGem_SuperHeated_C"] = {
-		["ExplosiveDamage(Bonus)"] = 600,
+		["ExplosiveDamage(Bonus)"] = 550,
 		["BurningDamage"] = 300.0,
 		["MaxValue"] = 1.5
 	},
