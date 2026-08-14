@@ -730,7 +730,7 @@
 		["SidewinderRadius"] = 800.0,
 		["FragmentDamageScalar"] = 0.60
 	},
-	["/Game/World_Jungle/Items/Mods/Mod_Soulbinder/Mod_Soulbinder.Mod_Soulbinder_C"] = [
+	["/Game/World_Jungle/Items/Mods/Mod_Soulbinder/Mod_Soulbinder.Mod_Soulbinder_C"] = {
 		["DamageShareScalar"] = 0.95,
 		["Radius"] = 900,
 		["Duration"] = 20
