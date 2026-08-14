@@ -990,7 +990,7 @@ NotifyOnNewObject("/Script/GunfireRuntime.Equipment", function(Item)
     ExecuteInGameThread(function()
         local ItemClass = Item:GetClass():GetFullName():sub(25)
         if not ContainsKey(ItemClass) then return end
-		Log("EquipmentLoad: "..ItemClass)
+		--Log("EquipmentLoad: "..ItemClass)
         for Stat, Value in pairs(Items[ItemClass]) do
             Item:SetPropertyValue(Stat,Value)
         end
@@ -1001,7 +1001,7 @@ NotifyOnNewObject("/Script/GunfireSaveSystem.PersistenceComponent", function(Ite
         Item = Item:GetOuter()
         local ItemClass = Item:GetClass():GetFullName():sub(25)
 		if not ContainsKey(ItemClass) then return end
-		Log("PersistenceLoad: "..ItemClass)
+		--Log("PersistenceLoad: "..ItemClass)
         for Stat, Value in pairs(Items[ItemClass]) do
             Item:SetPropertyValue(Stat,Value)
         end
