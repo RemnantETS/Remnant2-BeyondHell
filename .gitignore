@@ -182,3 +182,16 @@ Config/DefaultEditorPerProjectUserSettings.ini
 /Content/Mods/*
 !/Content/Mods/Z_BeyondHell_P/
 !/Content/Mods/Z_BeyondHell_P/**/*.uasset
+/Content/World_*/
+!/Content/World_Base/**
+!/Content/World_City/**
+!/Content/World_DLC1/**
+!/Content/World_DLC2/**
+!/Content/World_DLC3/**
+!/Content/World_DLC4/**
+!/Content/World_ETS/**
+!/Content/World_Fae/**
+!/Content/World_Jungle/**
+!/Content/World_Labyrinth/**
+!/Content/World_Nerud/**
+!/Content/World_Root/**
